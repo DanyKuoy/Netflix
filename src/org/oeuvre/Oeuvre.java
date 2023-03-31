@@ -1,4 +1,4 @@
-package package1;
+package org.oeuvre;
 
 public class Oeuvre {
     /// Attributs
