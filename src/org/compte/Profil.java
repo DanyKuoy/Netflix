@@ -1,6 +1,6 @@
 package org.compte;
 
-import org.oeuvre.Oeuvre;
+import org.oeuvre.*;
 
 import java.lang.*;
 import java.util.*;

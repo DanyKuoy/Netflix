@@ -10,7 +10,10 @@ public class Compte {
     private String mdpCompte;
     private boolean staff;                  // True=staff, False=client
 
-    /** Constructeur **/
+    /** Constructeurs **/
+    public Compte() {
+
+    }
     public Compte(String prenomCompte, String nomCompte, String emailCompte, String mdpCompte, boolean staff) {
         this.prenomCompte = prenomCompte;
         this.nomCompte = nomCompte;
@@ -59,4 +62,7 @@ public class Compte {
     public void setStaff(boolean staff) {
         this.staff = staff;
     }
+
+    /** Méthodes **/
+
 }
