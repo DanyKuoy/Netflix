@@ -1,4 +1,4 @@
 package org.oeuvre;
 
-public class Documentaire extends Oeuvre {
+public class Documentaire{
 }
