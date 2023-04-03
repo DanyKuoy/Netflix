@@ -8,6 +8,8 @@ import java.util.*;
 public class Profil {
     /** Attributs **/
     private String prenomProfil;
+    private String emailProfil;
+    private int idProfil;
     private boolean restrictionAge;
     private boolean repriseVideo;
     private int qualiteVideo;
@@ -17,8 +19,9 @@ public class Profil {
     private Stack<Oeuvre> historique;
 
     /** Constructeur **/
-    public Profil(String prenomProfil, boolean restrictionAge, boolean repriseVideo, int qualiteVideo, String sousTitres) {
+    public Profil(String prenomProfil, String emailProfil, boolean restrictionAge, boolean repriseVideo, int qualiteVideo, String sousTitres) {
         this.prenomProfil = prenomProfil;
+        this.emailProfil = emailProfil;
         this.restrictionAge = restrictionAge;
         this.repriseVideo = repriseVideo;
         this.qualiteVideo = qualiteVideo;
@@ -31,6 +34,10 @@ public class Profil {
     /** Getters et setters **/
     public String getPrenomProfil() {
         return prenomProfil;
+    }
+
+    public String getEmailProfil() {
+        return emailProfil;
     }
 
     public boolean getRestrictionAge() {
