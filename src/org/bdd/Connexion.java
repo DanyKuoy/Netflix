@@ -46,9 +46,8 @@ public class Connexion {
     /** Méthodes **/
     /* Méthode permettant de se connecter à un compte.
     La méthode passe en paramètre l'email et le mot de passe. Elle retourne un compte */
-    public Compte seConnecter() {
+    public Compte seConnecter(Scanner clavier) {
         /// Creation d'objets et de variables
-        Scanner clavier = new Scanner(System.in);
         boolean trouve = false;
         Compte compte = new Compte();
 
@@ -93,7 +92,6 @@ public class Connexion {
             }
         }
         while(trouve==false);
-        clavier.close();
         return compte;
     }
 

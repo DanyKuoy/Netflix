@@ -9,17 +9,10 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) {
         Connexion connexion = new Connexion();
-        connexion.seConnecter();
-        Scanner clavier2 = new Scanner(System.in);
-        int choix = 0;
-        do {
-            System.out.print("1=Ajouter, 0=Quitter ? ");
-            choix = clavier2.nextInt();
-            if(choix==1) {
-                connexion.getMonCompte().ajouterProfil(connexion.getMonCompte().getEmailCompte());
-            }
-        }
-        while(choix==0);
-        clavier2.close();
+        Scanner clavier = new Scanner(System.in);
+        Compte compte = connexion.seConnecter(clavier);
+        connexion.setMonCompte(compte);
+        connexion.getMonCompte().supprimerProfil(clavier, connexion.getMonCompte().getEmailCompte());
+        clavier.close();
     }
 }

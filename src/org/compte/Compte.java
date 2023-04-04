@@ -1,10 +1,7 @@
 package org.compte;
 
 import java.lang.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.*;
 
 public class Compte {
@@ -84,8 +81,7 @@ public class Compte {
     /** Méthodes **/
 
     /* Méthode permettant d'ajouter un profil dans un compte */
-    public void ajouterProfil(String email) {
-        Scanner clavier = new Scanner(System.in);
+    public void ajouterProfil(Scanner clavier, String email) {
 
         try {
             /// Saisie de l'utilisateur
@@ -117,7 +113,6 @@ public class Compte {
             statement.setInt(5, qualiteVideo);
             statement.setString(6, sousTitres);
             statement.executeUpdate();
-            clavier.close();
             connection.close();
         }
         catch(ClassNotFoundException e) {
@@ -128,4 +123,39 @@ public class Compte {
         }
     }
 
+    /* Méthode permettant de supprimer un profil */
+    public void supprimerProfil(Scanner clavier, String email) {
+        /// Saisie de l'utilisateur
+        System.out.print("Quel compte voulez-vous supprimer (taper le prenom)? ");
+        String prenom = clavier.nextLine();
+
+        /// Communication avec la base de données
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
+            String urlBDD = "jdbc:mysql://localhost:3306/ece_(net)flix";
+            String usernameBDD = "root";
+            String passwordBDD = "";
+            Connection connection = DriverManager.getConnection(urlBDD, usernameBDD, passwordBDD);        // Etablissement de la connexion avec la BDD
+            String sql = "SELECT * FROM profil";                                                                                        // Ecriture de la requête SQL
+            Statement statement =  connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            /// Vérification si le profil existe et appartient au compte
+            while(result.next()) {
+                if(result.getString("emailProfil").equals(email) && result.getString("prenomProfil").equals(prenom)) {    // Si le compte a été trouvé
+                    PreparedStatement statement2 = connection.prepareStatement("DELETE FROM profil WHERE emailProfil = ? AND prenomProfil = ? ");                                                                                        // Ecriture de la requête SQL
+                    statement2.setString(1, email);
+                    statement2.setString(2, prenom);
+                    statement2.executeUpdate();
+                }
+            }
+            connection.close();
+        }
+        catch(ClassNotFoundException e) {
+            System.out.println("Erreur: le pilote JDBC n'a pas ete trouve!");
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+    }
 }
