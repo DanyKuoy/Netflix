@@ -46,18 +46,13 @@ public class Connexion {
     /** Méthodes **/
     /* Méthode permettant de se connecter à un compte.
     La méthode passe en paramètre l'email et le mot de passe. Elle retourne un compte */
-    public Compte seConnecter(Scanner clavier) {
+    public Compte seConnecter(String ID, String MDP) {
         /// Creation d'objets et de variables
+
         boolean trouve = false;
         Compte compte = new Compte();
-
         do {
             try {
-                /// Saisie de l'utilisateur
-                System.out.print("Saisir l'email: ");
-                String email = clavier.nextLine();
-                System.out.print("Saisir le mot de passe: ");
-                String mdp = clavier.nextLine();
 
                 /// Communication avec la base de données
                 Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
@@ -68,8 +63,11 @@ public class Connexion {
 
                 /// Recherche du compte
                 while(result.next()) {
-                    if(result.getString("emailCompte").equals(email) && result.getString("mdpCompte").equals(mdp)) {    // Si le compte a été trouvé
+                    System.out.println("Test : " + ID + MDP);
+                    System.out.println(result.getString("emailCompte") + result.getString("mdpCompte"));
+                    if(result.getString("emailCompte").equals(ID) && result.getString("mdpCompte").equals(MDP)) {    // Si le compte a été trouvé
                         trouve = true;
+                        System.out.println("Compte trouvé");
 
                         /// Création du compte à retourner
                         compte.setPrenomCompte(result.getString("prenomCompte"));
@@ -95,21 +93,10 @@ public class Connexion {
         return compte;
     }
 
-    public void creerCompte() {
+    public void creerCompte(String prenom, String nom, String email, String mdp, int isstaff) {
         Scanner clavier = new Scanner(System.in);
 
         try {
-            /// Saisie de l'utilisateur
-            System.out.print("Saisir votre prenom: ");
-            String prenom = clavier.nextLine();
-            System.out.print("Saisir votre nom: ");
-            String nom = clavier.nextLine();
-            System.out.print("Saisir votre email: ");
-            String email = clavier.nextLine();
-            System.out.print("Saisir votre mot de passe: ");
-            String mdp = clavier.nextLine();
-            System.out.print("Etes-vous un membre du staff (1=OUI, 0=NON): ");
-            int isstaff = clavier.nextInt();
 
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
