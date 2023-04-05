@@ -16,7 +16,7 @@ public class Profil {
     private String sousTitres;
     private ArrayList<Oeuvre> listeReprise;
     private ArrayList<Oeuvre> listeFavoris;
-    private Stack<Oeuvre> historique;
+    private ArrayList<Oeuvre> historique;
 
     /** Constructeur **/
     public Profil(String prenomProfil, String emailProfil, boolean restrictionAge, boolean repriseVideo, int qualiteVideo, String sousTitres) {
@@ -28,7 +28,7 @@ public class Profil {
         this.sousTitres = sousTitres;
         this.listeReprise = new ArrayList<>();
         this.listeFavoris = new ArrayList<>();
-        this.historique = new Stack<>();
+        this.historique = new ArrayList<>();
     }
 
     /** Getters et setters **/
@@ -64,7 +64,7 @@ public class Profil {
         return listeFavoris;
     }
 
-    public Stack<Oeuvre> getHistorique() {
+    public ArrayList<Oeuvre> getHistorique() {
         return historique;
     }
 
@@ -123,4 +123,15 @@ public class Profil {
         }
     }
 
+    /* Méthode permettant d'ajouter un film dans l'historique */
+    public void ajouterHistorique(Oeuvre newOeuvre) {
+        this.getHistorique().add(newOeuvre);
+    }
+
+    /* Méthode pour vider l'historique */
+    public void supprimerHistorique() {
+        for(int i=0; i<this.getHistorique().size(); i++) {
+            this.getHistorique().remove(i);
+        }
+    }
 }

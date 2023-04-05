@@ -113,6 +113,9 @@ public class Compte {
             statement.setInt(5, qualiteVideo);
             statement.setString(6, sousTitres);
             statement.executeUpdate();
+            PreparedStatement statement2 = connection.prepareStatement("UPDATE compte SET nbProfil = nbProfil+1 WHERE emailProfil = ?");
+            statement2.setString(1, email);
+            statement2.executeUpdate();
             connection.close();
         }
         catch(ClassNotFoundException e) {
@@ -143,6 +146,9 @@ public class Compte {
             /// Vérification si le profil existe et appartient au compte
             while(result.next()) {
                 if(result.getString("emailProfil").equals(email) && result.getString("prenomProfil").equals(prenom)) {    // Si le compte a été trouvé
+                    PreparedStatement statement3 = connection.prepareStatement("UPDATE compte SET nbProfil = nbProfil-1 WHERE emailProfil = ?");
+                    statement3.setString(1, email);
+                    statement3.executeUpdate();
                     PreparedStatement statement2 = connection.prepareStatement("DELETE FROM profil WHERE emailProfil = ? AND prenomProfil = ? ");                                                                                        // Ecriture de la requête SQL
                     statement2.setString(1, email);
                     statement2.setString(2, prenom);
