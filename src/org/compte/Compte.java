@@ -82,7 +82,6 @@ public class Compte {
 
     /* Méthode permettant d'ajouter un profil dans un compte */
     public void ajouterProfil(Scanner clavier, String email) {
-
         try {
             /// Saisie de l'utilisateur
             System.out.print("Saisir votre prenom: ");

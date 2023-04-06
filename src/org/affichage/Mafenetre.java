@@ -170,7 +170,6 @@ public class Mafenetre extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         /// Code à exécuter lorsqu'un événement est déclenché
-
         if(e.getSource() == BConnecte){
             AffichageConnexion();
         }

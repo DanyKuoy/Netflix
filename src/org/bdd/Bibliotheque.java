@@ -17,13 +17,15 @@ public class Bibliotheque {
     /** Attributs **/
     private ArrayList<Film> listeFilm;
     private ArrayList<Serie> listeSerie;
-    private ArrayList<Personne> listePersonne;
+    private Map<String, ArrayList<Film>> triFilm;
+    private Map<String, ArrayList<Serie>> triSerie;
 
     /** Constructeur **/
     public Bibliotheque() {
         this.listeFilm = new ArrayList<>();
         this.listeSerie = new ArrayList<>();
-        this.listePersonne = new ArrayList<>();
+        this.triFilm =  new HashMap<>();
+        this.triSerie = new HashMap<>();
     }
 
     /** Getters et setters **/
@@ -35,8 +37,12 @@ public class Bibliotheque {
         return listeSerie;
     }
 
-    public ArrayList<Personne> getListePersonne() {
-        return listePersonne;
+    public Map<String, ArrayList<Film>> getTriFilm() {
+        return triFilm;
+    }
+
+    public Map<String, ArrayList<Serie>> getTriSerie() {
+        return triSerie;
     }
 
     public void setListeFilm(ArrayList<Film> listeFilm) {
@@ -47,8 +53,12 @@ public class Bibliotheque {
         this.listeSerie = listeSerie;
     }
 
-    public void setListePersonne(ArrayList<Personne> listePersonne) {
-        this.listePersonne = listePersonne;
+    public void setTriFilm(Map<String, ArrayList<Film>> triFilm) {
+        this.triFilm = triFilm;
+    }
+
+    public void setTriSerie(Map<String, ArrayList<Serie>> triSerie) {
+        this.triSerie = triSerie;
     }
 
     /** Méthodes **/
@@ -186,5 +196,43 @@ public class Bibliotheque {
             throw new RuntimeException(e);
         }
         return liste;
+    }
+
+    /* Méthodes permettant de trier les films selon le genre */
+    public Map<String, ArrayList<Film>> trierFilms() {
+        /// Déclaration de variables
+        Map<String, ArrayList<Film>> listeTrie = new HashMap<>();
+
+        /// Tri des films
+        for(int i=0; i<this.getListeFilm().size(); i++) {
+            /// Récupération des genres du film
+            String[] genres = this.getListeFilm().get(i).getGenreOeuvre().split(", ");
+            for(String genre: genres) {
+                if(!listeTrie.containsKey(genre)) {                     // Si le genre n'a pas encore été créé, on créé une liste pour le genre
+                    listeTrie.put(genre, new ArrayList<>());
+                }
+                listeTrie.get(genre).add(this.getListeFilm().get(i));
+            }
+        }
+        return listeTrie;
+    }
+
+    /* Méthodes permettant de trier les series selon le genre */
+    public Map<String, ArrayList<Serie>> trierSeries() {
+        /// Déclaration de variables
+        Map<String, ArrayList<Serie>> listeTrie = new HashMap<>();
+
+        /// Tri des séries
+        for(int i=0; i<this.getListeSerie().size(); i++) {
+            /// Récupération des genres du séries
+            String[] genres = this.getListeSerie().get(i).getGenreOeuvre().split(", ");
+            for(String genre: genres) {
+                if(!listeTrie.containsKey(genre)) {                     // Si le genre n'a pas encore été créé, on créé une liste pour le genre
+                    listeTrie.put(genre, new ArrayList<>());
+                }
+                listeTrie.get(genre).add(this.getListeSerie().get(i));
+            }
+        }
+        return listeTrie;
     }
 }
