@@ -7,25 +7,27 @@ public class Oeuvre {
     /** Attributs **/
     protected String nomOeuvre;
     protected int anneeOeuvre;
-    protected Personne realisateurOeuvre;
-    protected ArrayList<Personne> distributionOeuvre;
+    protected String realisateurOeuvre;
+    protected String distributionOeuvre;
     protected int classificationOeuvre;
     protected String synopsisOeuvre;
     protected Image imageOeuvre;
     protected String typeOeuvre;                    // Film, Serie, Documentaire
     protected String genreOeuvre;
+    protected float noteOeuvre;
 
     /** Constructeur **/
-    public Oeuvre(String nomOeuvre, int anneeOeuvre, Personne realisateurOeuvre, int classificationOeuvre, String synopsisOeuvre, Image imageOeuvre, String typeOeuvre, String genreOeuvre) {
+    public Oeuvre(String nomOeuvre, int anneeOeuvre, String realisateurOeuvre, String distributionOeuvre, int classificationOeuvre, String synopsisOeuvre, Image imageOeuvre, String typeOeuvre, String genreOeuvre, float noteOeuvre) {
         this.nomOeuvre = nomOeuvre;
         this.anneeOeuvre = anneeOeuvre;
         this.realisateurOeuvre = realisateurOeuvre;
+        this.distributionOeuvre = distributionOeuvre;
         this.classificationOeuvre = classificationOeuvre;
         this.synopsisOeuvre = synopsisOeuvre;
         this.imageOeuvre = imageOeuvre;
         this.typeOeuvre = typeOeuvre;
         this.genreOeuvre = genreOeuvre;
-        this.distributionOeuvre = new ArrayList<>();
+        this.noteOeuvre = noteOeuvre;
     }
 
     /** Getters et setters **/
@@ -37,11 +39,11 @@ public class Oeuvre {
         return anneeOeuvre;
     }
 
-    public Personne getRealisateurOeuvre() {
+    public String getRealisateurOeuvre() {
         return realisateurOeuvre;
     }
 
-    public ArrayList<Personne> getDistributionOeuvre() {
+    public String getDistributionOeuvre() {
         return distributionOeuvre;
     }
 
@@ -65,6 +67,10 @@ public class Oeuvre {
         return genreOeuvre;
     }
 
+    public float getNoteOeuvre() {
+        return noteOeuvre;
+    }
+
     public void setNomOeuvre(String nomOeuvre) {
         this.nomOeuvre = nomOeuvre;
     }
@@ -73,8 +79,12 @@ public class Oeuvre {
         this.anneeOeuvre = anneeOeuvre;
     }
 
-    public void setRealisateurOeuvre(Personne realisateurOeuvre) {
+    public void setRealisateurOeuvre(String realisateurOeuvre) {
         this.realisateurOeuvre = realisateurOeuvre;
+    }
+
+    public void setDistributionOeuvre(String distributionOeuvre) {
+        this.distributionOeuvre = distributionOeuvre;
     }
 
     public void setClassificationOeuvre(int classificationOeuvre) {
@@ -97,11 +107,7 @@ public class Oeuvre {
         this.typeOeuvre = typeOeuvre;
     }
 
-    /** Méthodes **/
-
-    /* Méthode permettant d'ajouter une personne à la distribution d'une oeuvre. */
-    public void ajouterDistributionOeuvre(Personne personne) {
-        this.getDistributionOeuvre().add(personne);
+    public void setNoteOeuvre(float noteOeuvre) {
+        this.noteOeuvre = noteOeuvre;
     }
-
 }

@@ -1,7 +1,7 @@
 package org.affichage;
 
-import org.bdd.Connexion;
-import org.compte.Compte;
+import org.bdd.*;
+import org.compte.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.awt.event.*;
 import java.util.Scanner;
 
 public class Mafenetre extends JFrame implements ActionListener{
-
+    /** Attributs **/
     private JButton BConnexion = new JButton("Connexion");
     private JButton BConnecte = new JButton("Connexion");
     private JButton BCreation = new JButton("Création");
@@ -17,37 +17,31 @@ public class Mafenetre extends JFrame implements ActionListener{
     private JButton BCreer = new JButton("Connexion");
     private JButton BRetour2 = new JButton("Retour");
     private JButton BCreer2 = new JButton("Créer le compte");
-
-    private JCheckBox Staff = new JCheckBox("Chocher si membre du staff");
-
+    private JCheckBox Staff = new JCheckBox("Cocher si membre du staff");
     private JPanel panel = new JPanel(new GridBagLayout());
     private JPanel panelConnexion = new JPanel(new GridBagLayout());
     private JPanel panelCreation = new JPanel(new GridBagLayout());
-
     private JLabel labelMDP = new JLabel("MDP : ");
-    private JLabel labelID = new JLabel("ID : ");
+    private JLabel labelID = new JLabel("E-mail : ");
     private JLabel labelMDP2 = new JLabel("MDP : ");
-    private JLabel labelID2 = new JLabel("ID : ");
+    private JLabel labelID2 = new JLabel("E-mail : ");
     private JLabel labelPrenom = new JLabel("Prénom : ");
     private JLabel labelNom = new JLabel("Nom : ");
-
     private String ID_Connexion;
     private String MDP_Connexion;
     private String ID_Creation;
     private String MDP_Creation;
     private String Prenom_Creation;
     private String Nom_Creation;
-
     private JTextField ID =  new JTextField(15);
     private JTextField MDP = new JTextField(15);
     private JTextField ID2 = new JTextField(15);
     private JTextField MDP2 = new JTextField(15);
     private JTextField Prenom = new JTextField(15);
     private JTextField Nom = new JTextField(15);
-
     private int IsStaff;
 
-
+    /** Constructeur **/
     public Mafenetre() {
         super();
         build();
@@ -59,9 +53,9 @@ public class Mafenetre extends JFrame implements ActionListener{
 
     }
 
+    /** Méthodes **/
     private void build(){
-//*création de la fenètre*/
-
+        /// Création de la fenètre*/
         setTitle("Fenêtre");
         setSize(1440, 720);
         setLocationRelativeTo(null);
@@ -175,35 +169,26 @@ public class Mafenetre extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        // code à exécuter lorsqu'un événement est déclenché
+        /// Code à exécuter lorsqu'un événement est déclenché
 
         if(e.getSource() == BConnecte){
-
             AffichageConnexion();
-
         }
-
         else if(e.getSource() == BCreation){
-
             AffichageCreation();
-
         }
-
         else if(e.getSource() == BRetour || e.getSource() == BRetour2){
-
             panelCreation.setVisible(false);
             panelConnexion.setVisible(false);
-
             getContentPane().add(panel, BorderLayout.CENTER);
             revalidate();
             repaint();
-
             panel.setVisible(true);
-
         }
-        //*Vérification de si l'utilisateur est dans la base de données
+
+        /// Vérification de si l'utilisateur est dans la base de données
         else if(e.getSource() == BCreer){
-            //*Récupération de la saisie clavier*/
+            /// Récupération de la saisie clavier
             ID_Connexion = ID.getText();
             MDP_Connexion = MDP.getText();
             System.out.println("ID_Connexion: " + ID_Connexion);
@@ -212,12 +197,12 @@ public class Mafenetre extends JFrame implements ActionListener{
             Connexion connexion = new Connexion();
             Compte compte = connexion.seConnecter(ID_Connexion, MDP_Connexion);
             connexion.setMonCompte(compte);
-            //connexion.getMonCompte().supprimerProfil(clavier, connexion.getMonCompte().getEmailCompte());
 
         }
-        //*Ajout de l'utilisateur dans la base de données si il n'existe pas déjà
+
+        /// Ajout de l'utilisateur dans la base de données si il n'existe pas déjà
         else if(e.getSource() == BCreer2){
-            //*Récupération de la saisie clavier*/
+            /// Récupération de la saisie clavier
             ID_Creation = ID2.getText();
             MDP_Creation = MDP2.getText();
             Nom_Creation = Nom.getText();

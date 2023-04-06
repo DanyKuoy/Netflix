@@ -53,7 +53,6 @@ public class Connexion {
         Compte compte = new Compte();
         do {
             try {
-
                 /// Communication avec la base de données
                 Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
                 Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
@@ -97,7 +96,6 @@ public class Connexion {
         Scanner clavier = new Scanner(System.in);
 
         try {
-
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
             Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
