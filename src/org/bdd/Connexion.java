@@ -77,7 +77,7 @@ public class Connexion {
                     }
                 }
                 if(trouve==false) {
-                    System.out.println("Erreur dans l'email ou le mot de passe!");
+                    return null;
                 }
                 connection.close();             // Fermeture de la connexion à la BDD
             }
