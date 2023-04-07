@@ -49,6 +49,7 @@ public class Mafenetre extends JFrame implements ActionListener{
 
 
     public Mafenetre() {
+
         super();
         build();
         InitAccueil();
@@ -206,16 +207,16 @@ public class Mafenetre extends JFrame implements ActionListener{
             //*Récupération de la saisie clavier*/
             ID_Connexion = ID.getText();
             MDP_Connexion = MDP.getText();
-            System.out.println("ID_Connexion: " + ID_Connexion);
-            System.out.println("MDP_Connexion: " + MDP_Connexion);
 
             Connexion connexion = new Connexion();
             Compte compte = connexion.seConnecter(ID_Connexion, MDP_Connexion);
             connexion.setMonCompte(compte);
-            //connexion.getMonCompte().supprimerProfil(clavier, connexion.getMonCompte().getEmailCompte());
 
+            ID_Connexion = "";
+            MDP_Connexion = "";
         }
-        //*Ajout de l'utilisateur dans la base de données si il n'existe pas déjà
+
+        //*Ajout de l'utilisateur dans la base de données si il n'existe pas déjà*/
         else if(e.getSource() == BCreer2){
             //*Récupération de la saisie clavier*/
             ID_Creation = ID2.getText();
@@ -232,6 +233,13 @@ public class Mafenetre extends JFrame implements ActionListener{
 
             Connexion connexion = new Connexion();
             connexion.creerCompte(Prenom_Creation, Nom_Creation, ID_Creation, MDP_Creation, IsStaff);
+
+            ID_Creation = "";
+            MDP_Creation = "";
+            Nom_Creation = "";
+            Prenom_Creation = "";
+
+            BRetour.doClick();
 
         }
     }
