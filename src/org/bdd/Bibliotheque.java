@@ -1,16 +1,7 @@
 package org.bdd;
 
-import org.bdd.*;
-import org.compte.*;
 import org.oeuvre.*;
-import org.dao.*;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.*;
 import java.util.*;
 import java.lang.*;
 

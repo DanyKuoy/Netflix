@@ -1,16 +1,12 @@
 package org.dao;
 
-import org.oeuvre.Episode;
-import org.oeuvre.Film;
-import org.oeuvre.Serie;
+import org.oeuvre.*;
 
-import javax.imageio.ImageIO;
+import javax.imageio.*;
 import java.awt.*;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class BibliothequeDAO {
     /** Attributs **/
