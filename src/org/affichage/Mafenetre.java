@@ -1,7 +1,7 @@
 package org.affichage;
 
-import org.bdd.Connexion;
-import org.compte.Compte;
+import org.bdd.*;
+import org.compte.*;
 import org.dao.*;
 
 import javax.swing.*;
@@ -79,6 +79,7 @@ public class Mafenetre extends JFrame implements ActionListener{
 
     private Compte compte;
     private CompteDAO compteDAO;
+    private ConnexionDAO connexionDAO;
 
 
     public Mafenetre() {
@@ -237,6 +238,7 @@ public class Mafenetre extends JFrame implements ActionListener{
         panelCreationProfil.add(BRetour3, constraints);
 
         compteDAO = new CompteDAO();
+        connexionDAO = new ConnexionDAO();
     }
 
     private void AffichageConnexion(){
@@ -414,7 +416,7 @@ public class Mafenetre extends JFrame implements ActionListener{
             MDP_Connexion = MDP.getText();
 
             Connexion connexion = new Connexion();
-            compte = connexion.seConnecter(ID_Connexion, MDP_Connexion);
+            compte = connexionDAO.seConnecter(ID_Connexion, MDP_Connexion);
             connexion.setMonCompte(compte);
 
             ID_Connexion = "";
@@ -439,8 +441,7 @@ public class Mafenetre extends JFrame implements ActionListener{
                 IsStaff = 0;
             }
 
-            Connexion connexion = new Connexion();
-            connexion.creerCompte(Prenom_Creation, Nom_Creation, ID_Creation, MDP_Creation, IsStaff);
+            connexionDAO.creerCompte(Prenom_Creation, Nom_Creation, ID_Creation, MDP_Creation, IsStaff);
 
             ID_Creation = "";
             MDP_Creation = "";
