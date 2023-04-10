@@ -55,7 +55,6 @@ public class Mafenetre extends JFrame implements ActionListener{
     private JLabel Profil3 = new JLabel("                  Profil 3");
     private JLabel Profil4 = new JLabel("                  Profil 4");
 
-
     private String ID_Connexion;
     private String MDP_Connexion;
     private String ID_Creation;
@@ -79,7 +78,6 @@ public class Mafenetre extends JFrame implements ActionListener{
 
     private Compte compte;
     private CompteDAO compteDAO;
-    private ConnexionDAO connexionDAO;
 
 
     public Mafenetre() {
@@ -93,6 +91,14 @@ public class Mafenetre extends JFrame implements ActionListener{
         getContentPane().add(panel, BorderLayout.CENTER);
         setVisible(true);
 
+    }
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
     }
 
     private void build(){
@@ -238,7 +244,6 @@ public class Mafenetre extends JFrame implements ActionListener{
         panelCreationProfil.add(BRetour3, constraints);
 
         compteDAO = new CompteDAO();
-        connexionDAO = new ConnexionDAO();
     }
 
     private void AffichageConnexion(){
@@ -415,14 +420,13 @@ public class Mafenetre extends JFrame implements ActionListener{
             ID_Connexion = ID.getText();
             MDP_Connexion = MDP.getText();
 
-            Connexion connexion = new Connexion();
-            compte = connexionDAO.seConnecter(ID_Connexion, MDP_Connexion);
-            connexion.setMonCompte(compte);
+            Compte newCompte = compteDAO.seConnecter(ID_Connexion, MDP_Connexion);
+            this.setCompte(newCompte);
 
             ID_Connexion = "";
             MDP_Connexion = "";
 
-            InitProfil(compte);
+            InitProfil(this.getCompte());
             AffichageProfil();
         }
 
@@ -441,7 +445,7 @@ public class Mafenetre extends JFrame implements ActionListener{
                 IsStaff = 0;
             }
 
-            connexionDAO.creerCompte(Prenom_Creation, Nom_Creation, ID_Creation, MDP_Creation, IsStaff);
+            compteDAO.creerCompte(Prenom_Creation, Nom_Creation, ID_Creation, MDP_Creation, IsStaff);
 
             ID_Creation = "";
             MDP_Creation = "";
@@ -505,9 +509,9 @@ public class Mafenetre extends JFrame implements ActionListener{
             else {
                 repriseVideo = true;
             }
-            compte.getListeProfil().add(new Profil(Prenom_Profil, compte.getEmailCompte(), restrictionAge, repriseVideo, Quality, ""));
+            this.getCompte().getListeProfil().add(new Profil(Prenom_Profil, compte.getEmailCompte(), restrictionAge, repriseVideo, Quality, ""));
 
-            InitProfil(compte);
+            InitProfil(this.getCompte());
 
             panelCreation.setVisible(false);
             panelConnexion.setVisible(false);
