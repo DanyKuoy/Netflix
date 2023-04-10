@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+
 public class Mafenetre extends JFrame implements ActionListener{
 
     private JButton BConnexion = new JButton("Connexion");
@@ -21,7 +22,10 @@ public class Mafenetre extends JFrame implements ActionListener{
     private JButton BProfil2 = new JButton("Profil 2");
     private JButton BProfil3 = new JButton("Profil 3");
     private JButton BProfil4 = new JButton("Profil 4");
-    private JButton BProfilCreer = new JButton("Créer profil");
+
+    //private Image icon = new ImageIcon(getClass().getResource("/BackgroundNetflix.png")).getImage();
+
+    private JButton BProfilCreer = new JButton("Créer le profil");
     private JButton BProfilValider = new JButton("Valider le profil");
 
     private JCheckBox Staff = new JCheckBox("Chocher si membre du staff");
@@ -29,7 +33,7 @@ public class Mafenetre extends JFrame implements ActionListener{
     private JCheckBox RepriseVideo = new JCheckBox("Chocher si vous voulez activer la reprise automatique des vidéos");
     private JCheckBox QualiteVideoBasse = new JCheckBox("Basse qualitée");
     private JCheckBox QualiteVideoMoyenne = new JCheckBox("Moyenne qualité");
-    private JCheckBox QualiteVideoHaute = new JCheckBox("haute qualité");
+    private JCheckBox QualiteVideoHaute = new JCheckBox("Haute qualité");
 
     private JPanel panel = new JPanel(new GridBagLayout());
     private JPanel panelConnexion = new JPanel(new GridBagLayout());
@@ -42,6 +46,7 @@ public class Mafenetre extends JFrame implements ActionListener{
     private JLabel labelMDP2 = new JLabel("MDP : ");
     private JLabel labelID2 = new JLabel("ID : ");
     private JLabel labelPrenom = new JLabel("Prénom : ");
+    private JLabel labelPrenomProfil = new JLabel("Prénom : ");
     private JLabel labelNom = new JLabel("Nom : ");
     private JLabel labelQualite = new JLabel("Qualité : ");
 
@@ -60,6 +65,8 @@ public class Mafenetre extends JFrame implements ActionListener{
     private JTextField Prenom = new JTextField(15);
     private JTextField Nom = new JTextField(15);
     private JTextField PrenomProfil = new JTextField(15);
+
+    //private Image backgroundImage = new ImageIcon(getClass().getResource("/BackgroundNetflix.png")).getImage();
 
     private int IsStaff;
     private int IsResAge;
@@ -183,7 +190,7 @@ public class Mafenetre extends JFrame implements ActionListener{
         constraints.anchor = GridBagConstraints.WEST;
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        panelCreationProfil.add(labelPrenom, constraints);
+        panelCreationProfil.add(labelPrenomProfil, constraints);
 
         constraints.gridx = 1;
         panelCreationProfil.add(PrenomProfil, constraints);
@@ -223,7 +230,6 @@ public class Mafenetre extends JFrame implements ActionListener{
 
         panelCreationProfil.add(BRetour3, constraints);
     }
-
 
 
     private void AffichageConnexion(){
