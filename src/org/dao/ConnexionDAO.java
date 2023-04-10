@@ -1,4 +1,4 @@
-package org.bdd;
+package org.dao;
 
 import org.compte.*;
 import org.oeuvre.*;
@@ -7,19 +7,17 @@ import java.lang.*;
 import java.sql.*;
 import java.util.*;
 
-public class Connexion {
+public class ConnexionDAO {
     /** Attributs **/
     private String urlBDD;
     private String usernameBDD;
     private String passwordBDD;
-    private Compte monCompte;
 
     /** Constructeur **/
-    public Connexion() {
+    public ConnexionDAO() {
         this.urlBDD = "jdbc:mysql://localhost:3306/ece_(net)flix";
         this.usernameBDD = "root";
         this.passwordBDD = "";
-        this.monCompte = null;
     }
 
     /** Getters et setters **/
@@ -35,15 +33,8 @@ public class Connexion {
         return passwordBDD;
     }
 
-    public Compte getMonCompte() {
-        return monCompte;
-    }
-
-    public void setMonCompte(Compte monCompte) {
-        this.monCompte = monCompte;
-    }
-
     /** Méthodes **/
+
     /* Méthode permettant de se connecter à un compte.
     La méthode passe en paramètre l'email et le mot de passe. Elle retourne un compte */
     public Compte seConnecter(String ID, String MDP) {
@@ -92,6 +83,7 @@ public class Connexion {
         return compte;
     }
 
+    /* Méthode permettant de créer un compte dans la base de données */
     public void creerCompte(String prenom, String nom, String email, String mdp, int isstaff) {
         Scanner clavier = new Scanner(System.in);
 
