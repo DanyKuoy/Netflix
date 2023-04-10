@@ -29,10 +29,10 @@ public class Mafenetre extends JFrame implements ActionListener{
     private JButton BProfilCreer = new JButton("Créer le profil");
     private JButton BProfilValider = new JButton("Valider le profil");
 
-    private JCheckBox Staff = new JCheckBox("Chocher si membre du staff");
-    private JCheckBox ResAge = new JCheckBox("Chocher si le compte est soumis à une restriction d'âge");
-    private JCheckBox RepriseVideo = new JCheckBox("Chocher si vous voulez activer la reprise automatique des vidéos");
-    private JCheckBox QualiteVideoBasse = new JCheckBox("Basse qualitée");
+    private JCheckBox Staff = new JCheckBox("Cocher si membre du staff");
+    private JCheckBox ResAge = new JCheckBox("Cocher si le compte est soumis à une restriction d'âge");
+    private JCheckBox RepriseVideo = new JCheckBox("Cocher si vous voulez activer la reprise automatique des vidéos");
+    private JCheckBox QualiteVideoBasse = new JCheckBox("Basse qualité");
     private JCheckBox QualiteVideoMoyenne = new JCheckBox("Moyenne qualité");
     private JCheckBox QualiteVideoHaute = new JCheckBox("Haute qualité");
 
@@ -50,6 +50,10 @@ public class Mafenetre extends JFrame implements ActionListener{
     private JLabel labelPrenomProfil = new JLabel("Prénom : ");
     private JLabel labelNom = new JLabel("Nom : ");
     private JLabel labelQualite = new JLabel("Qualité : ");
+    private JLabel Profil1 = new JLabel("                  Profil 1");
+    private JLabel Profil2 = new JLabel("                  Profil 2");
+    private JLabel Profil3 = new JLabel("                  Profil 3");
+    private JLabel Profil4 = new JLabel("                  Profil 4");
 
 
     private String ID_Connexion;
@@ -277,41 +281,53 @@ public class Mafenetre extends JFrame implements ActionListener{
 
         System.out.println(compte.getNbProfil());
 
-        if(compte.getNbProfil()==0){
+        if(compte.getNbProfil()>0){
             BProfilCreer.addActionListener(this);
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
 
-        if(compte.getNbProfil()>0){
+        if(compte.getNbProfil()==0){
             BProfil1.addActionListener(this);
             BProfil1.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil1, constraints);
+            constraints.gridy = 1;
+            panelProfil.add(Profil1, constraints);
         }
 
-        if(compte.getNbProfil()>1){
+        if(compte.getNbProfil()==0){
             constraints.gridx = 1;
+            constraints.gridy = 0;
             BProfil2.addActionListener(this);
             BProfil2.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil2, constraints);
+            constraints.gridy = 1;
+            panelProfil.add(Profil2, constraints);
         }
 
-        if(compte.getNbProfil()>2){
+        if(compte.getNbProfil()==0){
             constraints.gridx = 2;
+            constraints.gridy = 0;
             BProfil3.addActionListener(this);
             BProfil3.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil3, constraints);
+            constraints.gridy = 1;
+            panelProfil.add(Profil3, constraints);
         }
 
-        if(compte.getNbProfil()>3){
+        if(compte.getNbProfil()>0){
             constraints.gridx = 3;
+            constraints.gridy = 0;
             BProfil4.addActionListener(this);
             BProfil4.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil4, constraints);
+            constraints.gridy = 1;
+            panelProfil.add(Profil4, constraints);
         }
 
         if(compte.getNbProfil()==1){
             constraints.gridx = 1;
+            constraints.gridy = 0;
             BProfilCreer.addActionListener(this);
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
@@ -319,13 +335,15 @@ public class Mafenetre extends JFrame implements ActionListener{
 
         if(compte.getNbProfil()==2){
             constraints.gridx = 2;
+            constraints.gridy = 0;
             BProfilCreer.addActionListener(this);
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
 
-        if(compte.getNbProfil()==3){
+        if(compte.getNbProfil()==0){
             constraints.gridx = 3;
+            constraints.gridy = 0;
             BProfilCreer.addActionListener(this);
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
