@@ -487,7 +487,25 @@ public class Mafenetre extends JFrame implements ActionListener{
                 Quality = 2;
             }
 
+            /// Ajout du nouveau profil dans la BDD
             compteDAO.ajouterProfil(Prenom_Profil, compte.getEmailCompte(), IsResAge, IsRepriseVideo, Quality, "");
+
+            /// Ajout du nouveau profil dans le compte
+            boolean restrictionAge;
+            boolean repriseVideo;
+            if(IsResAge==0) {
+                restrictionAge = false;
+            }
+            else {
+                restrictionAge = true;
+            }
+            if(IsRepriseVideo==0) {
+                repriseVideo = false;
+            }
+            else {
+                repriseVideo = true;
+            }
+            compte.getListeProfil().add(new Profil(Prenom_Profil, compte.getEmailCompte(), restrictionAge, repriseVideo, Quality, ""));
 
             InitProfil(compte);
 

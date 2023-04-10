@@ -56,6 +56,10 @@ public class Compte {
         return nbProfil;
     }
 
+    public ArrayList<Profil> getListeProfil() {
+        return listeProfil;
+    }
+
     public void setPrenomCompte(String prenomCompte) {
         this.prenomCompte = prenomCompte;
     }
@@ -79,6 +83,5 @@ public class Compte {
     public void setNbProfil(int nbProfil) {
         this.nbProfil = nbProfil;
     }
-
 
 }
