@@ -1,6 +1,6 @@
 package org.dao;
 
-import org.compte.Profil;
+import org.compte.*;
 import org.oeuvre.*;
 
 import javax.imageio.*;
@@ -38,22 +38,8 @@ public class CompteDAO {
     /** Méthodes **/
 
     /* Méthode permettant d'ajouter un profil dans un compte */
-    public void ajouterProfil(Scanner clavier, String email) {
+    public void ajouterProfil(String prenom, String email, int restrictionAge, int repriseVideo, int qualiteVideo, String sousTitres) {
         try {
-            /// Saisie de l'utilisateur
-            System.out.print("Saisir votre prenom: ");
-            String prenom = clavier.nextLine();
-            System.out.print("Restriction d'age (1=OUI, 0=NON): ");
-            int restrictionAge = clavier.nextInt();
-            System.out.print("Reprise video (1=OUI, 0=NON): ");
-            clavier.nextLine();
-            int repriseVideo = clavier.nextInt();
-            System.out.print("Saisir la qualite video (720, 1080, 1440, 2180): ");
-            clavier.nextLine();
-            int qualiteVideo = clavier.nextInt();
-            System.out.print("Saisir le language des sous-titres parmi ceux proposes (Francais, Anglais, Espagnol, Chinois, Allemand, Portugais, Italien, Coreen): ");
-            clavier.nextLine();
-            String sousTitres= clavier.nextLine();
 
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC

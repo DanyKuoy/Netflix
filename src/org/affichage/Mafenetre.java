@@ -2,6 +2,7 @@ package org.affichage;
 
 import org.bdd.Connexion;
 import org.compte.Compte;
+import org.dao.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,6 +74,7 @@ public class Mafenetre extends JFrame implements ActionListener{
     private int Quality;
 
     private Compte compte;
+    private CompteDAO compteDAO;
 
 
     public Mafenetre() {
@@ -229,6 +231,8 @@ public class Mafenetre extends JFrame implements ActionListener{
         constraints.gridx = 2;
 
         panelCreationProfil.add(BRetour3, constraints);
+
+        compteDAO = new CompteDAO();
     }
 
     private void AffichageConnexion(){
@@ -275,62 +279,55 @@ public class Mafenetre extends JFrame implements ActionListener{
 
         if(compte.getNbProfil()==0){
             BProfilCreer.addActionListener(this);
-            BProfilCreer.setPreferredSize(new Dimension(100, 100));
+            BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
 
         if(compte.getNbProfil()>0){
             BProfil1.addActionListener(this);
-            BProfil1.setPreferredSize(new Dimension(100, 100));
+            BProfil1.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil1, constraints);
         }
 
         if(compte.getNbProfil()>1){
             constraints.gridx = 1;
             BProfil2.addActionListener(this);
-            BProfil2.setPreferredSize(new Dimension(100, 100));
+            BProfil2.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil2, constraints);
         }
 
         if(compte.getNbProfil()>2){
             constraints.gridx = 2;
             BProfil3.addActionListener(this);
-            BProfil3.setPreferredSize(new Dimension(100, 100));
+            BProfil3.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil3, constraints);
         }
 
         if(compte.getNbProfil()>3){
             constraints.gridx = 3;
             BProfil4.addActionListener(this);
-            BProfil4.setPreferredSize(new Dimension(100, 100));
+            BProfil4.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil4, constraints);
         }
 
         if(compte.getNbProfil()==1){
             constraints.gridx = 1;
             BProfilCreer.addActionListener(this);
-            BProfilCreer.setPreferredSize(new Dimension(100, 100));
+            BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
 
         if(compte.getNbProfil()==2){
             constraints.gridx = 2;
             BProfilCreer.addActionListener(this);
-            BProfilCreer.setPreferredSize(new Dimension(100, 100));
+            BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
 
-        if(compte.getNbProfil()==0){
+        if(compte.getNbProfil()==3){
             constraints.gridx = 3;
             BProfilCreer.addActionListener(this);
-            BProfilCreer.setPreferredSize(new Dimension(100, 100));
-            panelProfil.add(BProfilCreer, constraints);
-        }
-
-        if(compte.getNbProfil()==4){
-            constraints.gridx = 4;
-            BProfilCreer.addActionListener(this);
-            BProfilCreer.setPreferredSize(new Dimension(100, 100));
+            BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
     }
@@ -471,7 +468,7 @@ public class Mafenetre extends JFrame implements ActionListener{
                 Quality = 2;
             }
 
-            compte.ajouterProfil(Prenom_Profil, compte.getEmailCompte(), IsResAge, IsRepriseVideo, Quality, "");
+            compteDAO.ajouterProfil(Prenom_Profil, compte.getEmailCompte(), IsResAge, IsRepriseVideo, Quality, "");
 
             InitProfil(compte);
 
