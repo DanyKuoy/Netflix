@@ -92,4 +92,28 @@ public class Bibliotheque {
         }
         return listeTrie;
     }
+
+    /* Méthode permettant de réaliser une recherche d'oeuvre par son titre */
+    public ArrayList<Oeuvre> rechercheTitre(String nom) {
+        /// Déclaration de variable
+        ArrayList<Oeuvre> listeRecherche = new ArrayList<>();
+
+        /// Recherche dans la liste des films
+        for(int i=0; i<this.getListeFilm().size(); i++) {
+            if(this.getListeFilm().get(i).getNomOeuvre().toLowerCase().contains(nom.toLowerCase())) {
+                listeRecherche.add(this.getListeFilm().get(i));
+            }
+        }
+
+        /*
+        /// Recherche dans la liste des series
+        for(int j=0; j<this.getListeSerie().size(); j++) {
+            if(this.getListeSerie().get(j).getNomOeuvre().toLowerCase().contains(nom.toLowerCase())) {
+                listeRecherche.add(this.getListeSerie().get(j));
+            }
+        }
+        */
+
+        return listeRecherche;
+    }
 }

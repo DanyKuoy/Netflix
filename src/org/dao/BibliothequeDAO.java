@@ -133,7 +133,7 @@ public class BibliothequeDAO {
                     while(result2.next()) {
                         if(result2.getString("idSerie").equals(idSerie) && result2.getString("numeroSaison").equals(i+1)) {    // Si le compte a été trouvé
                             /// Création de l'episode
-                            int idSerie2 = result2.getInt("idSerie2");
+                            String idSerie2 = result2.getString("idSerie2");
                             int numeroSaison = result2.getInt("numeroSaison");
                             int numeroEpisode = result2.getInt("numeroEpisode");
                             int dureeEpisode = result2.getInt("dureeEpisode");
@@ -164,4 +164,5 @@ public class BibliothequeDAO {
         }
         return liste;
     }
+
 }
