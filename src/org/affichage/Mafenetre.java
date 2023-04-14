@@ -420,14 +420,20 @@ public class Mafenetre extends JFrame implements ActionListener{
             MDP_Connexion = MDP.getText();
 
             boolean trouve = false;
-            Compte newCompte = compteDAO.seConnecter(ID_Connexion, MDP_Connexion, trouve);
-            this.setCompte(newCompte);
 
-            ID_Connexion = "";
-            MDP_Connexion = "";
-
-            InitProfil(this.getCompte());
-            AffichageProfil();
+            trouve = compteDAO.verifierCompte(ID_Connexion, MDP_Connexion);
+            if(trouve==true) {
+                ID_Connexion = "";
+                MDP_Connexion = "";
+                this.setCompte(compteDAO.chargerCompte(ID_Connexion, MDP_Connexion));
+                InitProfil(this.getCompte());
+                AffichageProfil();
+            }
+            else {
+                ID_Connexion = "";
+                MDP_Connexion = "";
+                System.out.println("FAUX");
+            }
         }
 
         //*Ajout de l'utilisateur dans la base de données si il n'existe pas déjà*/
