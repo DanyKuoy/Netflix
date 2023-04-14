@@ -420,7 +420,8 @@ public class Mafenetre extends JFrame implements ActionListener{
             ID_Connexion = ID.getText();
             MDP_Connexion = MDP.getText();
 
-            Compte newCompte = compteDAO.seConnecter(ID_Connexion, MDP_Connexion);
+            boolean trouve = false;
+            Compte newCompte = compteDAO.seConnecter(ID_Connexion, MDP_Connexion, trouve);
             this.setCompte(newCompte);
 
             ID_Connexion = "";

@@ -4,7 +4,9 @@ import org.compte.*;
 import org.oeuvre.*;
 import org.dao.*;
 
+import java.awt.*;
 import java.lang.*;
+import java.net.*;
 import java.util.*;
 import java.sql.*;
 
@@ -16,10 +18,13 @@ public class Main {
         Bibliotheque b1 = new Bibliotheque();
         BibliothequeDAO b = new BibliothequeDAO();
         b1.setListeFilm(b.chargerFilms());
-        b1.setListeSerie(b.chargerSeries());
+        //b1.setListeSerie(b.chargerSeries());
 
-        Map<String, ArrayList<Film>> listeTrie = new HashMap<>();
+        //Map<String, ArrayList<Film>> listeTrie = new HashMap<>();
 
+        System.out.println(b1.getListeFilm().get(0).getNomOeuvre());
+
+        /*
         /// Tri des films
         b1.setTriFilm(b1.trierFilms());
 
@@ -45,7 +50,24 @@ public class Main {
                 System.out.println("");
             }
         }
-
         */
+
+        /*
+        /// Renvoyer vers la page web de la vidéo de l'oeuvre
+        try {
+            String lienVideo1 = b1.getListeFilm().get(0).getLienFilm();
+            String path = lienVideo1.substring(0, lienVideo1.length()-2);       // Si y'a un "?" dans le lien, mettre -3
+            URI lienVideo2 = new URI(path);
+            Desktop.getDesktop().browse(lienVideo2);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        */
+
+
+
+
+
     }
 }

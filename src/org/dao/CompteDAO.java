@@ -144,49 +144,46 @@ public class CompteDAO {
 
     /* Méthode permettant de se connecter à un compte.
     La méthode passe en paramètre l'email et le mot de passe. Elle retourne un compte */
-    public Compte seConnecter(String ID, String MDP) {
+    public Compte seConnecter(String ID, String MDP, boolean trouve) {
         /// Creation d'objets et de variables
 
-        boolean trouve = false;
+        trouve = false;
         Compte compte = new Compte();
-        do {
-            try {
-                /// Communication avec la base de données
-                Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
-                Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
-                String sql = "SELECT * FROM compte";                                                                                        // Ecriture de la requête SQL
-                Statement statement =  connection.createStatement();
-                ResultSet result = statement.executeQuery(sql);
+        try {
+            /// Communication avec la base de données
+            Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
+            Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
+            String sql = "SELECT * FROM compte";                                                                                        // Ecriture de la requête SQL
+            Statement statement =  connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
 
-                /// Recherche du compte
-                while(result.next()) {
-                    System.out.println("Test : " + ID + MDP);
-                    System.out.println(result.getString("emailCompte") + result.getString("mdpCompte"));
-                    if(result.getString("emailCompte").equals(ID) && result.getString("mdpCompte").equals(MDP)) {    // Si le compte a été trouvé
-                        trouve = true;
-                        System.out.println("Compte trouvé");
+            /// Recherche du compte
+            while(result.next()) {
+                System.out.println("Test : " + ID + MDP);
+                System.out.println(result.getString("emailCompte") + result.getString("mdpCompte"));
+                if(result.getString("emailCompte").equals(ID) && result.getString("mdpCompte").equals(MDP)) {    // Si le compte a été trouvé
+                    trouve = true;
+                    System.out.println("Compte trouvé");
 
-                        /// Création du compte à retourner
-                        compte.setPrenomCompte(result.getString("prenomCompte"));
-                        compte.setNomCompte(result.getString("nomCompte"));
-                        compte.setEmailCompte(result.getString("emailCompte"));
-                        compte.setMdpCompte(result.getString("mdpCompte"));
-                        compte.setStaff(result.getBoolean("staff"));
-                    }
+                    /// Création du compte à retourner
+                    compte.setPrenomCompte(result.getString("prenomCompte"));
+                    compte.setNomCompte(result.getString("nomCompte"));
+                    compte.setEmailCompte(result.getString("emailCompte"));
+                    compte.setMdpCompte(result.getString("mdpCompte"));
+                    compte.setStaff(result.getBoolean("staff"));
                 }
-                if(trouve==false) {
-                    System.out.println("Erreur dans l'email ou le mot de passe!");
-                }
-                connection.close();             // Fermeture de la connexion à la BDD
             }
-            catch(ClassNotFoundException e) {
-                System.out.println("Erreur: le pilote JDBC n'a pas ete trouve!");
+            if(trouve==false) {
+                System.out.println("Erreur dans l'email ou le mot de passe!");
             }
-            catch(SQLException e) {
-                System.out.println("Erreur: " + e.getMessage());
-            }
+            connection.close();             // Fermeture de la connexion à la BDD
         }
-        while(trouve==false);
+        catch(ClassNotFoundException e) {
+            System.out.println("Erreur: le pilote JDBC n'a pas ete trouve!");
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
         return compte;
     }
 

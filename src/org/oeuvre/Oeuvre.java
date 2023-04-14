@@ -1,6 +1,7 @@
 package org.oeuvre;
 
 import java.awt.*;
+import java.net.*;
 import java.util.*;
 
 public class Oeuvre {
