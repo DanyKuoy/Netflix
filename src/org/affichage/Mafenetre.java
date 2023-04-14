@@ -1,13 +1,11 @@
 package org.affichage;
 
-import org.bdd.*;
 import org.compte.*;
 import org.dao.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Scanner;
 
 public class Mafenetre extends JFrame implements ActionListener{
 
@@ -64,9 +62,9 @@ public class Mafenetre extends JFrame implements ActionListener{
     private String Prenom_Profil;
 
     private JTextField ID =  new JTextField(15);
-    private JTextField MDP = new JTextField(15);
+    private JPasswordField MDP = new JPasswordField(15);
     private JTextField ID2 = new JTextField(15);
-    private JTextField MDP2 = new JTextField(15);
+    private JPasswordField MDP2 = new JPasswordField(15);
     private JTextField Prenom = new JTextField(15);
     private JTextField Nom = new JTextField(15);
     private JTextField PrenomProfil = new JTextField(15);
@@ -84,13 +82,14 @@ public class Mafenetre extends JFrame implements ActionListener{
 
         super();
         build();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         InitAccueil();
         InitConnexionCreation();
         InitProfilCreation();
         setLocationRelativeTo(null);
         getContentPane().add(panel, BorderLayout.CENTER);
         setVisible(true);
-
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public Compte getCompte() {
@@ -532,6 +531,22 @@ public class Mafenetre extends JFrame implements ActionListener{
         else if(e.getSource() == QualiteVideoHaute){
             QualiteVideoBasse.setSelected(false);
             QualiteVideoMoyenne.setSelected(false);
+        }
+        else if(e.getSource() == BProfil1){
+            this.dispose();
+            new InterfaceGraphique(compte, 1);
+        }
+        else if(e.getSource() == BProfil2){
+            this.dispose();
+            new InterfaceGraphique(compte, 2);
+        }
+        else if(e.getSource() == BProfil3){
+            this.dispose();
+            new InterfaceGraphique(compte, 3);
+        }
+        else if(e.getSource() == BProfil4){
+            this.dispose();
+            new InterfaceGraphique(compte, 4);
         }
     }
 }
