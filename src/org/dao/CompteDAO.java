@@ -217,8 +217,6 @@ public class CompteDAO {
 
     /* Méthode permettant de créer un compte dans la base de données */
     public void creerCompte(String prenom, String nom, String email, String mdp, int isstaff) {
-        Scanner clavier = new Scanner(System.in);
-
         try {
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
@@ -230,7 +228,28 @@ public class CompteDAO {
             statement.setString(4, mdp);
             statement.setInt(5, isstaff);
             statement.executeUpdate();
-            clavier.close();
+            connection.close();
+        }
+        catch(ClassNotFoundException e) {
+            System.out.println("Erreur: le pilote JDBC n'a pas ete trouve!");
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+    }
+
+    /* Méthode permettant de modifier un compte */
+    public void modifierCompte(String prenom, String nom, String mdp, boolean staff) {
+        try {
+            /// Communication avec la base de données
+            Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
+            Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
+            PreparedStatement statement3 = connection.prepareStatement("UPDATE compte SET prenomCompte = ?, nomCompte = ?, mdpCompte = ?, staff = ? WHERE emailProfil = ?");
+            statement3.setString(1, prenom);
+            statement3.setString(2, nom);
+            statement3.setString(3, mdp);
+            statement3.setBoolean(4, staff);
+            statement3.executeUpdate();
             connection.close();
         }
         catch(ClassNotFoundException e) {
