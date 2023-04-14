@@ -1,5 +1,6 @@
 package org.affichage;
 
+import org.bdd.Bibliotheque;
 import org.compte.*;
 import org.oeuvre.*;
 
@@ -7,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class InterfaceGraphique extends JFrame implements ActionListener {
     private JPanel panel = new JPanel();
@@ -43,16 +46,23 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
     private JButton[] BFilm3 = new JButton[45];
     private JButton[] BFilm4 = new JButton[45];
     private JButton BFermerInfo = new JButton();
+    private JButton BRetourConnexion = new JButton("RETOUR");
 
     private JTextField recherche = new JTextField(15);
 
     private Dimension dim = new Dimension(200, 50);
     private Dimension esp = new Dimension(1440,50);
 
+    private Bibliotheque biblio = new Bibliotheque();
+
+    private Map<String, ArrayList<Film>> listeFilm;
+    private Map<String, ArrayList<Serie>> listeSerie;
+
     public InterfaceGraphique(Compte compte, int profil) {
 
         setSize(1440, 720);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         InitInterface();
 
         setContentPane(scrollPage);
@@ -81,8 +91,10 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
         BRecherche.setPreferredSize(new Dimension(100, 25));
 
         constraints.gridx = 0;
+        BFilm.addActionListener(this);
         panelBandeau.add(BFilm, constraints);
         constraints.gridx = 1;
+        BSerie.addActionListener(this);
         panelBandeau.add(BSerie, constraints);
 
         panelBandeau.add(espace);
@@ -90,7 +102,11 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
         constraints.gridx = 3;
         panelBandeau.add(recherche, constraints);
         constraints.gridx = 4;
+        BRecherche.addActionListener(this);
         panelBandeau.add(BRecherche, constraints);
+        constraints.gridx = 5;
+        BRetourConnexion.addActionListener(this);
+        panelBandeau.add(BRetourConnexion, constraints);
 
         panel.add(panelBandeau);
 
@@ -198,6 +214,10 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
   }
     if (e.getSource() == BFermerInfo){
         panelInfoFilm.setVisible(false);
+    }
+    if(e.getSource() == BRetourConnexion){
+        this.dispose();
+        new Mafenetre();
     }
 }
 }

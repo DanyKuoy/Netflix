@@ -52,6 +52,7 @@ public class Mafenetre extends JFrame implements ActionListener{
     private JLabel Profil2 = new JLabel("                  Profil 2");
     private JLabel Profil3 = new JLabel("                  Profil 3");
     private JLabel Profil4 = new JLabel("                  Profil 4");
+    private JLabel Erreur = new JLabel("");
 
     private String ID_Connexion;
     private String MDP_Connexion;
@@ -148,7 +149,7 @@ public class Mafenetre extends JFrame implements ActionListener{
         panelCreation.add(Prenom, constraints);
 
         constraints.gridx = 0;
-        constraints.gridy = 10;
+        constraints.gridy = 1;
         panelConnexion.add(labelMDP, constraints);
         panelCreation.add(labelNom, constraints);
 
@@ -156,7 +157,7 @@ public class Mafenetre extends JFrame implements ActionListener{
         panelConnexion.add(MDP, constraints);
         panelCreation.add(Nom, constraints);
 
-        constraints.gridy = 20;
+        constraints.gridy = 2;
         constraints.gridx = 0;
         panelCreation.add(labelID2, constraints);
 
@@ -164,14 +165,14 @@ public class Mafenetre extends JFrame implements ActionListener{
         panelCreation.add(ID2, constraints);
 
         constraints.gridx = 0;
-        constraints.gridy = 30;
+        constraints.gridy = 3;
         panelCreation.add(labelMDP2, constraints);
 
         constraints.gridx = 1;
         panelCreation.add(MDP2, constraints);
 
         constraints.gridx = 1;
-        constraints.gridy = 40;
+        constraints.gridy = 4;
 
         panelCreation.add(Staff,constraints);
 
@@ -191,6 +192,9 @@ public class Mafenetre extends JFrame implements ActionListener{
 
         panelConnexion.add(BRetour, constraints);
         panelCreation.add(BRetour2, constraints);
+
+        Erreur.setText("");
+        panelConnexion.add(Erreur,constraints);
     }
 
 
@@ -380,6 +384,19 @@ public class Mafenetre extends JFrame implements ActionListener{
         repaint();
     }
 
+    public void InitError(){
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.insets = new Insets(10, 10, 10, 10);
+
+        constraints.gridy = 100;
+        constraints.gridx = 1;
+        Erreur.setText("Mot de passe ou identifiant invalide");
+        Erreur.setForeground(Color.red);
+        panelConnexion.add(Erreur,constraints);
+    }
+
     public void actionPerformed(ActionEvent e) {
         // code à exécuter lorsqu'un événement est déclenché
 
@@ -402,6 +419,14 @@ public class Mafenetre extends JFrame implements ActionListener{
             panelProfil.setVisible(false);
             panelCreationProfil.setVisible(false);
 
+            ID.setText("");
+            MDP.setText("");
+            ID2.setText("");
+            MDP2.setText("");
+            Prenom.setText("");
+            Nom.setText("");
+
+            InitConnexionCreation();
             getContentPane().add(panel, BorderLayout.CENTER);
             revalidate();
             repaint();
@@ -423,6 +448,9 @@ public class Mafenetre extends JFrame implements ActionListener{
 
             trouve = compteDAO.verifierCompte(ID_Connexion, MDP_Connexion);
             if(trouve==true) {
+                ID.setText("");
+                MDP.setText("");
+
                 ID_Connexion = "";
                 MDP_Connexion = "";
                 this.setCompte(compteDAO.chargerCompte(ID_Connexion, MDP_Connexion));
@@ -430,9 +458,12 @@ public class Mafenetre extends JFrame implements ActionListener{
                 AffichageProfil();
             }
             else {
+                ID.setText("");
+                MDP.setText("");
+
                 ID_Connexion = "";
                 MDP_Connexion = "";
-                System.out.println("FAUX");
+                InitError();
             }
         }
 
@@ -452,6 +483,11 @@ public class Mafenetre extends JFrame implements ActionListener{
             }
 
             compteDAO.creerCompte(Prenom_Creation, Nom_Creation, ID_Creation, MDP_Creation, IsStaff);
+
+            ID2.setText("");
+            MDP2.setText("");
+            Nom.setText("");
+            Prenom.setText("");
 
             ID_Creation = "";
             MDP_Creation = "";

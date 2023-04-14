@@ -12,8 +12,8 @@ import java.sql.*;
 
 public class Main {
     public static void main(String[] args) {
-        Mafenetre fenetre = new Mafenetre();
-
+        //new Mafenetre();
+        new InterfaceGraphique(new Compte(), 1);
         /*
         Bibliotheque b1 = new Bibliotheque();
         BibliothequeDAO b = new BibliothequeDAO();
