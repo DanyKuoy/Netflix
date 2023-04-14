@@ -231,103 +231,116 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
         BoxLayout boxLayout = new BoxLayout(panelFilm1, BoxLayout.Y_AXIS); // BoxLayout avec un alignement vertical
         panelFilm1.setLayout(boxLayout);
 
-        panelFilm1.setLayout(new GridLayout(1, 1));
-        panelFilm2.setLayout(new GridLayout(1, 1));
-        panelFilm3.setLayout(new GridLayout(1, 1));
-        panelFilm4.setLayout(new GridLayout(1, 1));
-        panelFilm5.setLayout(new GridLayout(1, 1));
-        panelFilm6.setLayout(new GridLayout(1, 1));
-        panelFilm7.setLayout(new GridLayout(1, 1));
-        panelFilm8.setLayout(new GridLayout(1, 1));
-        panelFilm9.setLayout(new GridLayout(1, 1));
-        panelFilm10.setLayout(new GridLayout(1,1));
-        panelFilm11.setLayout(new GridLayout(1,1));
-        panelFilm12.setLayout(new GridLayout(1,1));
+        panelFilm1.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelFilm2.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelFilm3.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelFilm4.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelFilm5.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelFilm6.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelFilm7.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelFilm8.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelFilm9.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelFilm10.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelFilm11.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        panelFilm12.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
 
+        panelFilm1.setBackground(Color.darkGray);
+        panelFilm2.setBackground(Color.darkGray);
+        panelFilm3.setBackground(Color.darkGray);
+        panelFilm4.setBackground(Color.darkGray);
+        panelFilm5.setBackground(Color.darkGray);
+        panelFilm6.setBackground(Color.darkGray);
+        panelFilm7.setBackground(Color.darkGray);
+        panelFilm8.setBackground(Color.darkGray);
+        panelFilm9.setBackground(Color.darkGray);
+        panelFilm10.setBackground(Color.darkGray);
+        panelFilm11.setBackground(Color.darkGray);
+        panelFilm12.setBackground(Color.darkGray);
+
+        scrollFilm1.setBorder(null);
+        scrollFilm2.setBorder(null);
+        scrollFilm3.setBorder(null);
+        scrollFilm4.setBorder(null);
+        scrollFilm5.setBorder(null);
+        scrollFilm6.setBorder(null);
+        scrollFilm7.setBorder(null);
+        scrollFilm8.setBorder(null);
+        scrollFilm9.setBorder(null);
+        scrollFilm10.setBorder(null);
+        scrollFilm11.setBorder(null);
+        scrollFilm12.setBorder(null);
 
         for (int i = 0; i < 30; i++) {
             BFilm1[i] = new JButton("Film " + i);
-            BFilm1[i].setSize(100,150);
-            BFilm1[i].setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            BFilm1[i].setPreferredSize(new Dimension(110,160));
             BFilm1[i].addActionListener(this);
             panelFilm1.add(BFilm1[i]);
         }
         for (int i = 0; i < 30; i++) {
-            constraints.gridx = i;
             BFilm2[i] = new JButton("Film " + i);
-            BFilm2[i].setSize(100,150);
+            BFilm2[i].setPreferredSize(new Dimension(110,160));
             BFilm2[i].addActionListener(this);
-            panelFilm2.add(BFilm2[i],constraints);
+            panelFilm2.add(BFilm2[i]);
         }
         for (int i = 0; i < 30; i++) {
-            constraints.gridx = 5*i;
             BFilm3[i] = new JButton("Film " + i);
-            BFilm3[i].setSize(100,150);
+            BFilm3[i].setPreferredSize(new Dimension(110,160));
             BFilm3[i].addActionListener(this);
-            panelFilm3.add(BFilm3[i],constraints);
+            panelFilm3.add(BFilm3[i]);
         }
         for (int i = 0; i < 30; i++) {
-            constraints.gridx = 5*i;
             BFilm4[i] = new JButton("Film " + i);
-            BFilm4[i].setSize(100,150);
+            BFilm4[i].setPreferredSize(new Dimension(110,160));
             BFilm4[i].addActionListener(this);
-            panelFilm4.add(BFilm4[i],constraints);
+            panelFilm4.add(BFilm4[i]);
         }
         for (int i = 0; i < 30; i++) {
-            constraints.gridx = 5*i;
             BFilm5[i] = new JButton("Film " + i);
-            BFilm5[i].setSize(100,150);
+            BFilm5[i].setPreferredSize(new Dimension(110,160));
             BFilm5[i].addActionListener(this);
-            panelFilm5.add(BFilm5[i],constraints);
+            panelFilm5.add(BFilm5[i]);
         }
         for (int i = 0; i < 30; i++) {
-            constraints.gridx = 5*i;
             BFilm6[i] = new JButton("Film " + i);
-            BFilm6[i].setSize(100,150);
+            BFilm6[i].setPreferredSize(new Dimension(110,160));
             BFilm6[i].addActionListener(this);
-            panelFilm6.add(BFilm6[i],constraints);
+            panelFilm6.add(BFilm6[i]);
         }
         for (int i = 0; i < 30; i++) {
-            constraints.gridx = 5*i;
             BFilm7[i] = new JButton("Film " + i);
-            BFilm7[i].setSize(100,150);
+            BFilm7[i].setPreferredSize(new Dimension(110,160));
             BFilm7[i].addActionListener(this);
-            panelFilm7.add(BFilm7[i],constraints);
+            panelFilm7.add(BFilm7[i]);
         }
         for (int i = 0; i < 30; i++) {
-            constraints.gridx = 5*i;
             BFilm8[i] = new JButton("Film " + i);
-            BFilm8[i].setSize(100,150);
+            BFilm8[i].setPreferredSize(new Dimension(110,160));
             BFilm8[i].addActionListener(this);
-            panelFilm8.add(BFilm8[i],constraints);
+            panelFilm8.add(BFilm8[i]);
         }
         for (int i = 0; i < 30; i++) {
-            constraints.gridx = 5*i;
             BFilm9[i] = new JButton("Film " + i);
-            BFilm9[i].setSize(100,150);
+            BFilm9[i].setPreferredSize(new Dimension(110,160));
             BFilm9[i].addActionListener(this);
-            panelFilm9.add(BFilm9[i],constraints);
+            panelFilm9.add(BFilm9[i]);
         }
         for (int i = 0; i < 30; i++) {
-            constraints.gridx = 5*i;
             BFilm10[i] = new JButton("Film " + i);
-            BFilm10[i].setSize(100,150);
+            BFilm10[i].setPreferredSize(new Dimension(110,160));
             BFilm10[i].addActionListener(this);
-            panelFilm10.add(BFilm10[i],constraints);
+            panelFilm10.add(BFilm10[i]);
         }
         for (int i = 0; i < 30; i++) {
-            constraints.gridx = 5*i;
             BFilm11[i] = new JButton("Film " + i);
-            BFilm11[i].setSize(100,150);
+            BFilm11[i].setPreferredSize(new Dimension(110,160));
             BFilm11[i].addActionListener(this);
-            panelFilm11.add(BFilm11[i],constraints);
+            panelFilm11.add(BFilm11[i]);
         }
         for (int i = 0; i < 30; i++) {
-            constraints.gridx = 5*i;
             BFilm12[i] = new JButton("Film " + i);
-            BFilm12[i].setSize(100,150);
+            BFilm12[i].setPreferredSize(new Dimension(110,160));
             BFilm12[i].addActionListener(this);
-            panelFilm12.add(BFilm12[i],constraints);
+            panelFilm12.add(BFilm12[i]);
         }
 
         espaceFilm1.setPreferredSize(esp);
@@ -458,31 +471,83 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
 
         Object source = e.getSource();
 
-  for(int i=0;i<40;i++) {
-      if (e.getSource() == BFilm1[i]) {
-          System.out.println("Film : " + BFilm1[i].getText());
-          // Icon icon = BFilm1[i].getIcon();
-          // Image image1 = ((ImageIcon) icon).getImage(); //Récupération de l'image du bouton
-          // Image image2;
-          // while(!image1.equals(image2)){
-          // image2 = Récupération de l'image dans la base de donnée
-          //}
-          // Oeuvre oeuvre = Récupération de l'oeuvre
-          InitInfoFilm();
-          AffichageInfoFilm();
-          i=50;
+        for (int i = 0; i < 40; i++) {
+            if (e.getSource() == BFilm1[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
 
-      } else if (e.getSource() == BFilm2[i]) {
-          System.out.println("Film : " + BFilm1[i].getText());
-          //Icon icon = BFilm2[i].getIcon();
-          //Image image1 = ((ImageIcon) icon).getImage();
-      } else if (e.getSource() == BFilm3[i]) {
-          System.out.println("Film : " + BFilm1[i].getText());
-          //Icon icon = BFilm3[i].getIcon();
-          //Image image1 = ((ImageIcon) icon).getImage();
-      }
-  }
-    if (e.getSource() == BFermerInfo){
+                this.dispose();
+                new InforamtionOeuvre();
+
+            }
+            else if (e.getSource() == BFilm2[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
+
+                this.dispose();
+                new InforamtionOeuvre();
+            }
+            else if (e.getSource() == BFilm3[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
+
+                this.dispose();
+                new InforamtionOeuvre();
+            }
+            else if (e.getSource() == BFilm4[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
+
+                this.dispose();
+                new InforamtionOeuvre();
+            }
+            else if (e.getSource() == BFilm5[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
+
+                this.dispose();
+                new InforamtionOeuvre();
+            }
+            else if (e.getSource() == BFilm6[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
+
+                this.dispose();
+                new InforamtionOeuvre();
+            }
+            else if (e.getSource() == BFilm7[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
+
+                this.dispose();
+                new InforamtionOeuvre();
+             }
+            else if (e.getSource() == BFilm8[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
+
+                this.dispose();
+                new InforamtionOeuvre();
+            }
+            else if (e.getSource() == BFilm9[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
+
+                this.dispose();
+                new InforamtionOeuvre();
+            }
+            else if (e.getSource() == BFilm10[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
+
+                this.dispose();
+                new InforamtionOeuvre();
+            }
+            else if (e.getSource() == BFilm11[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
+
+                this.dispose();
+                new InforamtionOeuvre();
+            }
+            else if (e.getSource() == BFilm12[i]) {
+                System.out.println("Film : " + BFilm1[i].getText());
+
+                this.dispose();
+                new InforamtionOeuvre();
+            }
+
+        }
+        if (e.getSource() == BFermerInfo){
         panelInfoFilm.setVisible(false);
         panel.setVisible(true);
         InitInterface();
