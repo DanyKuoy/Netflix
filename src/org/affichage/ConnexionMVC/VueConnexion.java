@@ -1,13 +1,16 @@
-package org.affichage;
+package org.affichage.ConnexionMVC;
 
-import org.compte.*;
-import org.dao.*;
+import org.compte.Compte;
+import org.compte.Profil;
+import org.dao.CompteDAO;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Mafenetre extends JFrame implements ActionListener{
+
+public class VueConnexion extends JFrame {
 
     private JButton BConnexion = new JButton("Connexion");
     private JButton BConnecte = new JButton("Connexion");
@@ -54,14 +57,6 @@ public class Mafenetre extends JFrame implements ActionListener{
     private JLabel Profil4 = new JLabel("                  Profil 4");
     private JLabel Erreur = new JLabel("");
 
-    private String ID_Connexion;
-    private String MDP_Connexion;
-    private String ID_Creation;
-    private String MDP_Creation;
-    private String Prenom_Creation;
-    private String Nom_Creation;
-    private String Prenom_Profil;
-
     private JTextField ID =  new JTextField(15);
     private JPasswordField MDP = new JPasswordField(15);
     private JTextField ID2 = new JTextField(15);
@@ -70,16 +65,9 @@ public class Mafenetre extends JFrame implements ActionListener{
     private JTextField Nom = new JTextField(15);
     private JTextField PrenomProfil = new JTextField(15);
 
-    private int IsStaff;
-    private int IsResAge;
-    private int IsRepriseVideo;
-    private int Quality;
-
-    private Compte compte;
-    private CompteDAO compteDAO;
 
 
-    public Mafenetre() {
+    public VueConnexion() {
 
         super();
         build();
@@ -87,21 +75,18 @@ public class Mafenetre extends JFrame implements ActionListener{
         InitAccueil();
         InitConnexionCreation();
         InitProfilCreation();
+
+    }
+
+    public void Afficher(){
         setLocationRelativeTo(null);
         getContentPane().add(panel, BorderLayout.CENTER);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public Compte getCompte() {
-        return compte;
-    }
 
-    public void setCompte(Compte compte) {
-        this.compte = compte;
-    }
-
-    private void build(){
+    public void build(){
 //*création de la fenètre*/
 
         setTitle("Fenêtre");
@@ -111,7 +96,127 @@ public class Mafenetre extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private void InitAccueil(){
+    public JButton getBConnexion(){
+        return BConnexion;
+    }
+    public JButton getBConnecte(){
+        return BConnecte;
+    }
+    public JButton getBCreation(){
+        return BCreation;
+    }
+    public JButton getBRetour(){
+        return BRetour;
+    }
+    public JButton getBRetour2(){
+        return BRetour2;
+    }
+    public JButton getBRetour3(){
+        return BRetour3;
+    }
+    public JButton getBCreer(){
+        return BCreer;
+    }
+    public JButton getBCreer2(){
+        return BCreer2;
+    }
+    public JButton getBProfil1(){
+        return BProfil1;
+    }
+    public JButton getBProfil2(){
+        return BProfil2;
+    }
+    public JButton getBProfil3(){
+        return BProfil3;
+    }
+    public JButton getBProfil4(){
+        return BProfil4;
+    }
+    public JButton getBProfilCreer(){
+        return BProfilCreer;
+    }
+    public JButton getBProfilValider(){
+        return BProfilValider;
+    }
+    public JCheckBox getStaff(){
+        return Staff;
+    }
+    public JCheckBox getResAge(){
+        return ResAge;
+    }
+    public JCheckBox getRepriseVideo(){
+        return RepriseVideo;
+    }
+    public JCheckBox getQualiteVideoBasse(){
+        return QualiteVideoBasse;
+    }
+    public JCheckBox getQualiteVideoMoyenne(){
+        return QualiteVideoMoyenne;
+    }
+    public JCheckBox getQualiteVideoHaute(){
+        return QualiteVideoHaute;
+    }
+
+    public JPanel getpanel(){
+        return panel;
+    }
+    public JPanel getpanelConnexion(){
+        return panelConnexion;
+    }
+    public JPanel getpanelCreation(){
+        return panelCreation;
+    }
+    public JPanel getpanelProfil(){
+        return panelProfil;
+    }
+    public JPanel getpanelCreationProfil(){
+        return panelCreationProfil;
+    }
+
+    public JTextField getID(){
+        return ID;
+    }
+    public JPasswordField getMDP(){
+        return MDP;
+    }
+    public JTextField getID2(){
+        return ID2;
+    }
+    public JPasswordField getMDP2(){
+        return MDP2;
+    }
+    public JTextField getPrenom(){
+        return Prenom;
+    }
+    public JTextField getNom(){
+        return Nom;
+    }
+    public JTextField getPrenomProfil(){
+        return PrenomProfil;
+    }
+
+    public void setMDP(String a){
+        MDP.setText(a);
+    }
+    public void setID(String a){
+        ID.setText(a);
+    }
+    public void setMDP2(String a){
+        MDP2.setText(a);
+    }
+    public void setID2(String a){
+        ID2.setText(a);
+    }
+    public void setNom(String a){
+        Nom.setText(a);
+    }
+    public void setPrenom(String a){
+        Prenom.setText(a);
+    }
+
+
+
+    public void InitAccueil(){
 
         panel.setBackground(Color.WHITE);
 
@@ -121,16 +226,14 @@ public class Mafenetre extends JFrame implements ActionListener{
         constraints.gridy = 0;
         constraints.gridx = 0;
 
-        BConnecte.addActionListener(this);
         BConnecte.setPreferredSize(new Dimension(100, 25));
         panel.add(BConnecte, constraints);
-        BCreation.addActionListener(this);
         BCreation.setPreferredSize(new Dimension(100, 25));
         constraints.gridx = 1;
         panel.add(BCreation, constraints);
     }
 
-    private void InitConnexionCreation(){
+    public void InitConnexionCreation(){
 
         panelConnexion.setBackground(Color.WHITE);
         panelCreation.setBackground(Color.WHITE);
@@ -176,17 +279,11 @@ public class Mafenetre extends JFrame implements ActionListener{
 
         panelCreation.add(Staff,constraints);
 
-        BCreer.addActionListener(this);
-        BCreer2.addActionListener(this);
-
         constraints.gridx = 1;
         constraints.gridy = 45;
 
         panelConnexion.add(BCreer, constraints);
         panelCreation.add(BCreer2, constraints);
-
-        BRetour.addActionListener(this);
-        BRetour2.addActionListener(this);
 
         constraints.gridx = 2;
 
@@ -198,7 +295,7 @@ public class Mafenetre extends JFrame implements ActionListener{
     }
 
 
-    private void InitProfilCreation(){
+    public void InitProfilCreation(){
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridy = 0;
@@ -233,23 +330,18 @@ public class Mafenetre extends JFrame implements ActionListener{
 
         panelCreationProfil.add(QualiteVideoHaute,constraints);
 
-        BProfilValider.addActionListener(this);
-
         constraints.gridx = 1;
         constraints.gridy = 60;
 
         panelCreationProfil.add(BProfilValider, constraints);
 
-        BRetour3.addActionListener(this);
-
         constraints.gridx = 2;
 
         panelCreationProfil.add(BRetour3, constraints);
 
-        compteDAO = new CompteDAO();
     }
 
-    private void AffichageConnexion(){
+    public void AffichageConnexion(){
 
         panel.setVisible(false);
         panelCreation.setVisible(false);
@@ -262,7 +354,7 @@ public class Mafenetre extends JFrame implements ActionListener{
         repaint();
     }
 
-    private void AffichageCreation(){
+    public void AffichageCreation(){
 
         panel.setVisible(false);
         panelCreation.setVisible(true);
@@ -276,7 +368,7 @@ public class Mafenetre extends JFrame implements ActionListener{
     }
 
 
-    private void InitProfil(Compte compte){
+    public void InitProfil(Compte compte){
 
         System.out.println(compte.getNbProfil());
 
@@ -292,13 +384,11 @@ public class Mafenetre extends JFrame implements ActionListener{
         System.out.println(compte.getNbProfil());
 
         if(compte.getNbProfil()>0){
-            BProfilCreer.addActionListener(this);
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
 
         if(compte.getNbProfil()==0){
-            BProfil1.addActionListener(this);
             BProfil1.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil1, constraints);
             constraints.gridy = 1;
@@ -308,7 +398,6 @@ public class Mafenetre extends JFrame implements ActionListener{
         if(compte.getNbProfil()==0){
             constraints.gridx = 1;
             constraints.gridy = 0;
-            BProfil2.addActionListener(this);
             BProfil2.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil2, constraints);
             constraints.gridy = 1;
@@ -318,7 +407,6 @@ public class Mafenetre extends JFrame implements ActionListener{
         if(compte.getNbProfil()==0){
             constraints.gridx = 2;
             constraints.gridy = 0;
-            BProfil3.addActionListener(this);
             BProfil3.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil3, constraints);
             constraints.gridy = 1;
@@ -328,7 +416,6 @@ public class Mafenetre extends JFrame implements ActionListener{
         if(compte.getNbProfil()>0){
             constraints.gridx = 3;
             constraints.gridy = 0;
-            BProfil4.addActionListener(this);
             BProfil4.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil4, constraints);
             constraints.gridy = 1;
@@ -338,7 +425,6 @@ public class Mafenetre extends JFrame implements ActionListener{
         if(compte.getNbProfil()==1){
             constraints.gridx = 1;
             constraints.gridy = 0;
-            BProfilCreer.addActionListener(this);
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
@@ -346,7 +432,6 @@ public class Mafenetre extends JFrame implements ActionListener{
         if(compte.getNbProfil()==2){
             constraints.gridx = 2;
             constraints.gridy = 0;
-            BProfilCreer.addActionListener(this);
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
@@ -354,7 +439,6 @@ public class Mafenetre extends JFrame implements ActionListener{
         if(compte.getNbProfil()==0){
             constraints.gridx = 3;
             constraints.gridy = 0;
-            BProfilCreer.addActionListener(this);
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
@@ -397,199 +481,6 @@ public class Mafenetre extends JFrame implements ActionListener{
         panelConnexion.add(Erreur,constraints);
     }
 
-    public void actionPerformed(ActionEvent e) {
-        // code à exécuter lorsqu'un événement est déclenché
 
-        if(e.getSource() == BConnecte){
-
-            AffichageConnexion();
-
-        }
-
-        else if(e.getSource() == BCreation){
-
-            AffichageCreation();
-
-        }
-
-        else if(e.getSource() == BRetour || e.getSource() == BRetour2){
-
-            panelCreation.setVisible(false);
-            panelConnexion.setVisible(false);
-            panelProfil.setVisible(false);
-            panelCreationProfil.setVisible(false);
-
-            ID.setText("");
-            MDP.setText("");
-            ID2.setText("");
-            MDP2.setText("");
-            Prenom.setText("");
-            Nom.setText("");
-
-            InitConnexionCreation();
-            getContentPane().add(panel, BorderLayout.CENTER);
-            revalidate();
-            repaint();
-
-            panel.setVisible(true);
-
-        }
-
-        //*Vérification de si l'utilisateur est dans la base de données*/
-        //*Accès aux différents profils*/
-        //*Accès à l'interface utilisateur de l'application*/
-
-        else if(e.getSource() == BCreer){
-            //*Récupération de la saisie clavier*/
-            ID_Connexion = ID.getText();
-            MDP_Connexion = MDP.getText();
-
-            boolean trouve = false;
-
-            trouve = compteDAO.verifierCompte(ID_Connexion, MDP_Connexion);
-            if(trouve==true) {
-                ID.setText("");
-                MDP.setText("");
-
-                ID_Connexion = "";
-                MDP_Connexion = "";
-                this.setCompte(compteDAO.chargerCompte(ID_Connexion, MDP_Connexion));
-                InitProfil(this.getCompte());
-                AffichageProfil();
-            }
-            else {
-                ID.setText("");
-                MDP.setText("");
-
-                ID_Connexion = "";
-                MDP_Connexion = "";
-                InitError();
-            }
-        }
-
-        //*Ajout de l'utilisateur dans la base de données si il n'existe pas déjà*/
-        else if(e.getSource() == BCreer2){
-            //*Récupération de la saisie clavier*/
-            ID_Creation = ID2.getText();
-            MDP_Creation = MDP2.getText();
-            Nom_Creation = Nom.getText();
-            Prenom_Creation = Prenom.getText();
-
-            if(Staff.isSelected()==true){
-                IsStaff = 1;
-            }
-            else {
-                IsStaff = 0;
-            }
-
-            compteDAO.creerCompte(Prenom_Creation, Nom_Creation, ID_Creation, MDP_Creation, IsStaff);
-
-            ID2.setText("");
-            MDP2.setText("");
-            Nom.setText("");
-            Prenom.setText("");
-
-            ID_Creation = "";
-            MDP_Creation = "";
-            Nom_Creation = "";
-            Prenom_Creation = "";
-
-            BRetour.doClick();
-
-        }
-
-        else if(e.getSource() == BProfilCreer) {
-
-
-            AffichageNouveauProfil();
-
-        }
-
-        else if(e.getSource() == BProfilValider){
-
-            Prenom_Profil = PrenomProfil.getText();
-
-            if(ResAge.isSelected()== true) {
-                IsResAge = 1;
-            }
-            else{
-                IsResAge = 0;
-            }
-
-            if(RepriseVideo.isSelected()== true) {
-                IsRepriseVideo = 1;
-            }
-            else{
-                IsRepriseVideo = 0;
-            }
-
-            if(QualiteVideoBasse.isSelected()== true) {
-                Quality = 0;
-            }
-            else if(QualiteVideoMoyenne.isSelected()== true){
-                Quality = 1;
-            }
-            else if(QualiteVideoHaute.isSelected()== true){
-                Quality = 2;
-            }
-
-            /// Ajout du nouveau profil dans la BDD
-            compteDAO.ajouterProfil(Prenom_Profil, compte.getEmailCompte(), IsResAge, IsRepriseVideo, Quality, "");
-
-            /// Ajout du nouveau profil dans le compte
-            boolean restrictionAge;
-            boolean repriseVideo;
-            if(IsResAge==0) {
-                restrictionAge = false;
-            }
-            else {
-                restrictionAge = true;
-            }
-            if(IsRepriseVideo==0) {
-                repriseVideo = false;
-            }
-            else {
-                repriseVideo = true;
-            }
-            this.getCompte().getListeProfil().add(new Profil(Prenom_Profil, compte.getEmailCompte(), restrictionAge, repriseVideo, Quality, ""));
-
-            InitProfil(this.getCompte());
-
-            panelCreation.setVisible(false);
-            panelConnexion.setVisible(false);
-            panelProfil.setVisible(true);
-            panel.setVisible(false);
-            panelCreationProfil.setVisible(false);
-        }
-
-        else if(e.getSource() == QualiteVideoBasse){
-            QualiteVideoMoyenne.setSelected(false);
-            QualiteVideoHaute.setSelected(false);
-        }
-        else if(e.getSource() == QualiteVideoMoyenne){
-            QualiteVideoBasse.setSelected(false);
-            QualiteVideoHaute.setSelected(false);
-        }
-        else if(e.getSource() == QualiteVideoHaute){
-            QualiteVideoBasse.setSelected(false);
-            QualiteVideoMoyenne.setSelected(false);
-        }
-        else if(e.getSource() == BProfil1){
-            this.dispose();
-         //   new InterfaceGraphique(compte, 1);
-        }
-        else if(e.getSource() == BProfil2){
-            this.dispose();
-        //    new InterfaceGraphique(compte, 2);
-        }
-        else if(e.getSource() == BProfil3){
-            this.dispose();
-         //   new InterfaceGraphique(compte, 3);
-        }
-        else if(e.getSource() == BProfil4){
-            this.dispose();
-         //   new InterfaceGraphique(compte, 4);
-        }
-    }
 }
 

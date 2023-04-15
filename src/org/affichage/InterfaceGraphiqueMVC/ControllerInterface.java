@@ -2,8 +2,8 @@ package org.affichage.InterfaceGraphiqueMVC;
 
 import org.affichage.SeriesMVC.*;
 import org.affichage.FilmsMVC.*;
+import org.affichage.ConnexionMVC.*;
 import org.affichage.InforamtionOeuvre;
-import org.affichage.Mafenetre;
 import org.affichage.SeriesMVC.ModelSeries;
 import org.compte.Compte;
 
@@ -110,7 +110,12 @@ public class ControllerInterface implements ActionListener {
         }
 
         if(e.getSource() == vueInterface.getBRetourConnexion()){
-            new Mafenetre();
+
+            ModelConnexion modelConnexion = new ModelConnexion();
+            VueConnexion vueConnexion = new VueConnexion();
+            ControllerConnexion controllerConnexion = new ControllerConnexion(vueConnexion, modelConnexion);
+            vueConnexion.Afficher();
+
             vueInterface.dispose();
         }
         else if(e.getSource() == vueInterface.getBFilm()){

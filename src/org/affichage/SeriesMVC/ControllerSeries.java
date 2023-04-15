@@ -1,9 +1,9 @@
 package org.affichage.SeriesMVC;
 
+import org.affichage.ConnexionMVC.*;
 import org.affichage.FilmsMVC.*;
 import org.affichage.InterfaceGraphiqueMVC.*;
 import org.affichage.InforamtionOeuvre;
-import org.affichage.Mafenetre;
 import org.compte.Compte;
 
 import java.awt.event.ActionEvent;
@@ -111,7 +111,12 @@ public class ControllerSeries implements ActionListener {
         }
 
         if(e.getSource() == vueSeries.getBRetourConnexion()){
-            new Mafenetre();
+
+            ModelConnexion modelConnexion = new ModelConnexion();
+            VueConnexion vueConnexion = new VueConnexion();
+            ControllerConnexion controllerConnexion = new ControllerConnexion(vueConnexion, modelConnexion);
+            vueConnexion.Afficher();
+
             vueSeries.dispose();
         }
         else if(e.getSource() == vueSeries.getBMenu()){

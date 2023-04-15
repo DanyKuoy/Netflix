@@ -1,0 +1,256 @@
+package org.affichage.ConnexionMVC;
+
+import org.affichage.FilmsMVC.ModelFilms;
+import org.affichage.FilmsMVC.VueFilms;
+import org.affichage.InterfaceGraphiqueMVC.ControllerInterface;
+import org.affichage.InterfaceGraphiqueMVC.ModelInterface;
+import org.affichage.InterfaceGraphiqueMVC.VueInterface;
+import org.compte.Profil;
+import org.compte.*;
+import org.dao.*;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ControllerConnexion implements ActionListener {
+
+
+    private VueConnexion vueConnexion;
+    private ModelConnexion modelConnexion;
+
+    public ControllerConnexion(VueConnexion vueConnexion, ModelConnexion modelConnexion){
+        this.vueConnexion = vueConnexion;
+        this.modelConnexion = modelConnexion;
+
+        this.vueConnexion.getBConnexion().addActionListener(this);
+        this.vueConnexion.getBConnecte().addActionListener(this);
+        this.vueConnexion.getBCreation().addActionListener(this);
+
+        this.vueConnexion.getBRetour().addActionListener(this);
+        this.vueConnexion.getBRetour2().addActionListener(this);
+        this.vueConnexion.getBRetour3().addActionListener(this);
+
+        this.vueConnexion.getBCreer().addActionListener(this);
+        this.vueConnexion.getBCreer2().addActionListener(this);
+
+        this.vueConnexion.getBProfil1().addActionListener(this);
+        this.vueConnexion.getBProfil2().addActionListener(this);
+        this.vueConnexion.getBProfil3().addActionListener(this);
+        this.vueConnexion.getBProfil4().addActionListener(this);
+
+        this.vueConnexion.getBProfilCreer().addActionListener(this);
+        this.vueConnexion.getBProfilValider().addActionListener(this);
+
+        this.vueConnexion.getStaff().addActionListener(this);
+        this.vueConnexion.getResAge().addActionListener(this);
+        this.vueConnexion.getRepriseVideo().addActionListener(this);
+        this.vueConnexion.getQualiteVideoBasse().addActionListener(this);
+        this.vueConnexion.getQualiteVideoMoyenne().addActionListener(this);
+        this.vueConnexion.getQualiteVideoHaute().addActionListener(this);
+
+    }
+
+
+    public void actionPerformed(ActionEvent e) {
+        // code à exécuter lorsqu'un événement est déclenché
+
+        if(e.getSource() == this.vueConnexion.getBConnecte()){
+
+            this.vueConnexion.AffichageConnexion();
+
+        }
+
+        else if(e.getSource() == this.vueConnexion.getBCreation()){
+
+            this.vueConnexion.AffichageCreation();
+
+        }
+
+        else if(e.getSource() == this.vueConnexion.getBRetour() || e.getSource() == this.vueConnexion.getBRetour2()){
+
+            this.vueConnexion.getpanelCreation().setVisible(false);
+            this.vueConnexion.getpanelConnexion().setVisible(false);
+            this.vueConnexion.getpanelProfil().setVisible(false);
+            this.vueConnexion.getpanelCreationProfil().setVisible(false);
+
+            this.vueConnexion.getID().setText("");
+            this.vueConnexion.getMDP().setText("");
+            this.vueConnexion.getID2().setText("");
+            this.vueConnexion.getMDP2().setText("");
+            this.vueConnexion.getPrenom().setText("");
+            this.vueConnexion.getNom().setText("");
+
+            this.vueConnexion.InitConnexionCreation();
+            this.vueConnexion.getContentPane().add(this.vueConnexion.getpanel(), BorderLayout.CENTER);
+            this.vueConnexion.revalidate();
+            this.vueConnexion.repaint();
+
+            this.vueConnexion.getpanel().setVisible(true);
+
+        }
+
+        //*Vérification de si l'utilisateur est dans la base de données*/
+        //*Accès aux différents profils*/
+        //*Accès à l'interface utilisateur de l'application*/
+
+        else if(e.getSource() == this.vueConnexion.getBCreer()){
+            //*Récupération de la saisie clavier*/
+            this.modelConnexion.setID_Connexion(this.vueConnexion.getID().getText());
+            this.modelConnexion.setMDP_Connexion(this.vueConnexion.getMDP().getText());
+
+            boolean trouve = false;
+
+            trouve = this.modelConnexion.getCompteDAO().verifierCompte(this.modelConnexion.getID_Connexion(), this.modelConnexion.getMDP_Connexion());
+            if(trouve==true) {
+
+                this.vueConnexion.setMDP("");
+                this.vueConnexion.setID("");
+
+                this.modelConnexion.setCompte(this.modelConnexion.getCompteDAO().chargerCompte(this.modelConnexion.getID_Connexion(), this.modelConnexion.getMDP_Connexion()));
+                this.vueConnexion.InitProfil(this.modelConnexion.getCompte());
+
+                this.modelConnexion.setID_Connexion("");
+                this.modelConnexion.setMDP_Connexion("");
+
+                this.vueConnexion.AffichageProfil();
+            }
+            else {
+
+                this.vueConnexion.setID("");
+                this.vueConnexion.setMDP("");
+
+                this.modelConnexion.setID_Connexion("");
+                this.modelConnexion.setMDP_Connexion("");
+                this.vueConnexion.InitError();
+            }
+        }
+
+        //*Ajout de l'utilisateur dans la base de données si il n'existe pas déjà*/
+        else if(e.getSource() == this.vueConnexion.getBCreer2()){
+            //*Récupération de la saisie clavier*/
+
+            this.modelConnexion.setID_Creation(this.vueConnexion.getID2().getText());
+            this.modelConnexion.setMDP_Creation(this.vueConnexion.getMDP2().getText());
+            this.modelConnexion.setNom_Creation(this.vueConnexion.getNom().getText());
+            this.modelConnexion.setPrenom_Creationn(this.vueConnexion.getPrenom().getText());
+
+            if(this.vueConnexion.getStaff().isSelected()==true){
+                this.modelConnexion.setIsStaff(1);
+            }
+            else {
+                this.modelConnexion.setIsStaff(0);
+            }
+
+            this.modelConnexion.getCompteDAO().creerCompte(this.modelConnexion.getPrenom_Creationn(), this.modelConnexion.getNom_Creation(), this.modelConnexion.getID_Creation(), this.modelConnexion.getMDP_Creation(), this.modelConnexion.getIsStaff());
+
+            this.vueConnexion.setID2("");
+            this.vueConnexion.setMDP2("");
+            this.vueConnexion.setNom("");
+            this.vueConnexion.setPrenom("");
+
+            this.modelConnexion.setID_Creation("");
+            this.modelConnexion.setMDP_Creation("");
+            this.modelConnexion.setNom_Creation("");
+            this.modelConnexion.setPrenom_Creationn("");
+
+            this.vueConnexion.getBRetour().doClick();
+
+        }
+
+        else if(e.getSource() == this.vueConnexion.getBProfilCreer()) {
+
+
+            this.vueConnexion.AffichageNouveauProfil();
+
+        }
+
+        else if(e.getSource() == this.vueConnexion.getBProfilValider()){
+
+            this.modelConnexion.setPrenom_Profil(this.vueConnexion.getPrenomProfil().getText());
+
+            if(this.vueConnexion.getResAge().isSelected()== true) {
+                this.modelConnexion.setIsResAge(1);
+            }
+            else{
+                this.modelConnexion.setIsResAge(0);
+            }
+
+            if(this.vueConnexion.getRepriseVideo().isSelected()== true) {
+                this.modelConnexion.setIsRepriseVideo(1);
+            }
+            else{
+                this.modelConnexion.setIsRepriseVideo(0);
+            }
+
+            if(this.vueConnexion.getQualiteVideoBasse().isSelected()== true) {
+                this.modelConnexion.setQuality(0);
+            }
+            else if(this.vueConnexion.getQualiteVideoMoyenne().isSelected()== true){
+                this.modelConnexion.setQuality(1);
+            }
+            else if(this.vueConnexion.getQualiteVideoHaute().isSelected()== true){
+                this.modelConnexion.setQuality(2);
+            }
+
+            /// Ajout du nouveau profil dans la BDD
+            this.modelConnexion.getCompteDAO().ajouterProfil(this.modelConnexion.getPrenom_Profil(), this.modelConnexion.getCompte().getEmailCompte(), this.modelConnexion.getIsResAge(), this.modelConnexion.getIsRepriseVideo(), this.modelConnexion.getQuality(), "");
+
+            /// Ajout du nouveau profil dans le compte
+            boolean restrictionAge;
+            boolean repriseVideo;
+            if(this.modelConnexion.getIsResAge()==0) {
+                restrictionAge = false;
+            }
+            else {
+                restrictionAge = true;
+            }
+            if(this.modelConnexion.getIsRepriseVideo()==0) {
+                repriseVideo = false;
+            }
+            else {
+                repriseVideo = true;
+            }
+            this.modelConnexion.getCompte().getListeProfil().add(new Profil(this.modelConnexion.getPrenom_Profil(), this.modelConnexion.getCompte().getEmailCompte(), restrictionAge, repriseVideo, this.modelConnexion.getQuality(), ""));
+
+            this.vueConnexion.InitProfil(this.modelConnexion.getCompte());
+
+            this.vueConnexion.getpanelCreation().setVisible(false);
+            this.vueConnexion.getpanelConnexion().setVisible(false);
+            this.vueConnexion.getpanelProfil().setVisible(true);
+            this.vueConnexion.getpanel().setVisible(false);
+            this.vueConnexion.getpanelCreationProfil().setVisible(false);
+        }
+
+        else if(e.getSource() == this.vueConnexion.getBProfil1()){
+            this.vueConnexion.dispose();
+            ModelInterface modelInterface = new ModelInterface();
+            VueInterface vueInterface = new VueInterface(new Compte(), 1);
+            ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
+            vueInterface.afficher();
+
+        }
+        else if(e.getSource() == this.vueConnexion.getBProfil2()){
+            this.vueConnexion.dispose();
+            ModelInterface modelInterface = new ModelInterface();
+            VueInterface vueInterface = new VueInterface(new Compte(), 2);
+            ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
+            vueInterface.afficher();
+        }
+        else if(e.getSource() == this.vueConnexion.getBProfil3()){
+            this.vueConnexion.dispose();
+            ModelInterface modelInterface = new ModelInterface();
+            VueInterface vueInterface = new VueInterface(new Compte(), 1);
+            ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
+            vueInterface.afficher();
+        }
+        else if(e.getSource() == this.vueConnexion.getBProfil4()){
+            this.vueConnexion.dispose();
+            ModelInterface modelInterface = new ModelInterface();
+            VueInterface vueInterface = new VueInterface(new Compte(), 1);
+            ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
+            vueInterface.afficher();
+        }
+    }
+}

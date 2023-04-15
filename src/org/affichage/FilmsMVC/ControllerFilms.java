@@ -2,8 +2,8 @@ package org.affichage.FilmsMVC;
 
 import org.affichage.InterfaceGraphiqueMVC.*;
 import org.affichage.SeriesMVC.*;
+import org.affichage.ConnexionMVC.*;
 import org.affichage.InforamtionOeuvre;
-import org.affichage.Mafenetre;
 import org.compte.Compte;
 
 import java.awt.event.ActionEvent;
@@ -111,7 +111,12 @@ public class ControllerFilms implements ActionListener {
         }
 
         if(e.getSource() == vueFilms.getBRetourConnexion()){
-            new Mafenetre();
+
+            ModelConnexion modelConnexion = new ModelConnexion();
+            VueConnexion vueConnexion = new VueConnexion();
+            ControllerConnexion controllerConnexion = new ControllerConnexion(vueConnexion, modelConnexion);
+            vueConnexion.Afficher();
+
             vueFilms.dispose();
         }
         else if(e.getSource() == vueFilms.getBMenu()){
