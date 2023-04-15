@@ -44,7 +44,7 @@ public class CompteDAO {
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
             Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO profil(prenomProfil, emailProfil, restrictionAge, repriseVideo, qualiteVideo, sousTitres) VALUES (?, ?, ?, ?, ?, ?)");                                                                                     // Ecriture de la requête SQL
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO profil(prenomProfil, emailCompte, restrictionAge, repriseVideo, qualiteVideo, sousTitres) VALUES (?, ?, ?, ?, ?, ?)");                                                                                     // Ecriture de la requête SQL
             statement.setString(1, prenom);
             statement.setString(2, email);
             statement.setInt(3, restrictionAge);
@@ -52,7 +52,7 @@ public class CompteDAO {
             statement.setInt(5, qualiteVideo);
             statement.setString(6, sousTitres);
             statement.executeUpdate();
-            PreparedStatement statement2 = connection.prepareStatement("UPDATE compte SET nbProfil = nbProfil+1 WHERE emailProfil = ?");
+            PreparedStatement statement2 = connection.prepareStatement("UPDATE compte SET nbProfil = nbProfil+1 WHERE emailCompte = ?");
             statement2.setString(1, email);
             statement2.executeUpdate();
             connection.close();
@@ -81,11 +81,11 @@ public class CompteDAO {
 
             /// Vérification si le profil existe et appartient au compte
             while(result.next()) {
-                if(result.getString("emailProfil").equals(email) && result.getString("prenomProfil").equals(prenom)) {    // Si un profil a été trouvé
-                    PreparedStatement statement3 = connection.prepareStatement("UPDATE compte SET nbProfil = nbProfil-1 WHERE emailProfil = ?");
+                if(result.getString("emailCompte").equals(email) && result.getString("prenomProfil").equals(prenom)) {    // Si un profil a été trouvé
+                    PreparedStatement statement3 = connection.prepareStatement("UPDATE compte SET nbProfil = nbProfil-1 WHERE emailCompte = ?");
                     statement3.setString(1, email);
                     statement3.executeUpdate();
-                    PreparedStatement statement2 = connection.prepareStatement("DELETE FROM profil WHERE emailProfil = ? AND prenomProfil = ? ");                                                                                        // Ecriture de la requête SQL
+                    PreparedStatement statement2 = connection.prepareStatement("DELETE FROM profil WHERE emailCompte = ? AND prenomProfil = ? ");                                                                                        // Ecriture de la requête SQL
                     statement2.setString(1, email);
                     statement2.setString(2, prenom);
                     statement2.executeUpdate();
@@ -116,18 +116,17 @@ public class CompteDAO {
 
             /// Vérification si le profil existe et appartient au compte
             while(result.next()) {
-                if(result.getString("emailProfil").equals(email)) {    // Si le compte a été trouvé
+                if(result.getString("emailCompte").equals(email)) {    // Si le compte a été trouvé
                     /// Création du profil
                     String prenom = result.getString("prenomProfil");
-                    String emailProfil = result.getString("emailProfil");
-                    int id = result.getInt("idProfil");
+                    String emailCompte = result.getString("emailCompte");
                     boolean restriction = result.getBoolean("restrictionAge");
                     boolean reprise = result.getBoolean("repriseVideo");
                     int qualite = result.getInt("qualiteVideo");
                     String sousTitres = result.getString("sousTitres");
 
                     /// Ajout du profil dans le compte
-                    Profil profil = new Profil(prenom, emailProfil, restriction, reprise, qualite, sousTitres);
+                    Profil profil = new Profil(prenom, emailCompte, restriction, reprise, qualite, sousTitres);
                     listeProfil.add(profil);
                 }
             }
@@ -202,6 +201,12 @@ public class CompteDAO {
                     compte.setEmailCompte(result.getString("emailCompte"));
                     compte.setMdpCompte(result.getString("mdpCompte"));
                     compte.setStaff(result.getBoolean("staff"));
+                    compte.setNbProfil(result.getInt("nbProfil"));
+
+                    /// Chargement des profils
+                    ArrayList<Profil> listeProfil = new ArrayList<>();
+                    listeProfil = this.chargerProfils(result.getString("emailCompte"));
+                    compte.setListeProfil(listeProfil);
                 }
             }
             connection.close();             // Fermeture de la connexion à la BDD
@@ -244,7 +249,7 @@ public class CompteDAO {
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
             Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
-            PreparedStatement statement3 = connection.prepareStatement("UPDATE compte SET prenomCompte = ?, nomCompte = ?, mdpCompte = ?, staff = ? WHERE emailProfil = ?");
+            PreparedStatement statement3 = connection.prepareStatement("UPDATE compte SET prenomCompte = ?, nomCompte = ?, mdpCompte = ?, staff = ? WHERE emailCompte = ?");
             statement3.setString(1, prenom);
             statement3.setString(2, nom);
             statement3.setString(3, mdp);

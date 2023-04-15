@@ -84,4 +84,7 @@ public class Compte {
         this.nbProfil = nbProfil;
     }
 
+    public void setListeProfil(ArrayList<Profil> listeProfil) {
+        this.listeProfil = listeProfil;
+    }
 }
