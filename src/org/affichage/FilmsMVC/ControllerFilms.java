@@ -1,12 +1,9 @@
 package org.affichage.FilmsMVC;
 
-import org.affichage.Films;
+import org.affichage.InterfaceGraphiqueMVC.*;
+import org.affichage.SeriesMVC.*;
 import org.affichage.InforamtionOeuvre;
-import org.affichage.InterfaceGraphiqueMVC.ControllerInterface;
-import org.affichage.InterfaceGraphiqueMVC.ModelInterface;
-import org.affichage.InterfaceGraphiqueMVC.VueInterface;
 import org.affichage.Mafenetre;
-import org.affichage.Series;
 import org.compte.Compte;
 
 import java.awt.event.ActionEvent;
@@ -128,7 +125,12 @@ public class ControllerFilms implements ActionListener {
 
         }
         if(e.getSource() == vueFilms.getBSerie()){
-            new Series(new Compte(), 1);
+
+            ModelSeries modelSeries = new ModelSeries();
+            VueSeries vueSeries = new VueSeries(new Compte(), 1);
+            ControllerSeries controllerSeries = new ControllerSeries(modelSeries, vueSeries);
+            vueSeries.Afficher();
+
             vueFilms.dispose();
         }
     }

@@ -4,7 +4,6 @@ import org.affichage.FilmsMVC.*;
 import org.affichage.InterfaceGraphiqueMVC.*;
 import org.affichage.InforamtionOeuvre;
 import org.affichage.Mafenetre;
-import org.affichage.Series;
 import org.compte.Compte;
 
 import java.awt.event.ActionEvent;

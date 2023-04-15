@@ -576,19 +576,19 @@ public class Mafenetre extends JFrame implements ActionListener{
         }
         else if(e.getSource() == BProfil1){
             this.dispose();
-            new InterfaceGraphique(compte, 1);
+         //   new InterfaceGraphique(compte, 1);
         }
         else if(e.getSource() == BProfil2){
             this.dispose();
-            new InterfaceGraphique(compte, 2);
+        //    new InterfaceGraphique(compte, 2);
         }
         else if(e.getSource() == BProfil3){
             this.dispose();
-            new InterfaceGraphique(compte, 3);
+         //   new InterfaceGraphique(compte, 3);
         }
         else if(e.getSource() == BProfil4){
             this.dispose();
-            new InterfaceGraphique(compte, 4);
+         //   new InterfaceGraphique(compte, 4);
         }
     }
 }

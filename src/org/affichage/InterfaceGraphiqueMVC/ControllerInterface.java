@@ -4,7 +4,6 @@ import org.affichage.SeriesMVC.*;
 import org.affichage.FilmsMVC.*;
 import org.affichage.InforamtionOeuvre;
 import org.affichage.Mafenetre;
-import org.affichage.Series;
 import org.affichage.SeriesMVC.ModelSeries;
 import org.compte.Compte;
 

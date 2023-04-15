@@ -65,7 +65,7 @@ public class InforamtionOeuvre extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == BFermerInfo){
             this.dispose();
-            new InterfaceGraphique(new Compte(),1);
+            //new InterfaceGraphique(new Compte(),1);
         }
     }
 }
