@@ -17,14 +17,13 @@ public class Oeuvre {
     protected float noteOeuvre;
 
     /** Constructeur **/
-    public Oeuvre(String nomOeuvre, int anneeOeuvre, String realisateurOeuvre, String distributionOeuvre, int classificationOeuvre, String synopsisOeuvre, Image imageOeuvre, String genreOeuvre, float noteOeuvre) {
+    public Oeuvre(String nomOeuvre, int anneeOeuvre, String realisateurOeuvre, String distributionOeuvre, int classificationOeuvre, String synopsisOeuvre, String genreOeuvre, float noteOeuvre) {
         this.nomOeuvre = nomOeuvre;
         this.anneeOeuvre = anneeOeuvre;
         this.realisateurOeuvre = realisateurOeuvre;
         this.distributionOeuvre = distributionOeuvre;
         this.classificationOeuvre = classificationOeuvre;
         this.synopsisOeuvre = synopsisOeuvre;
-        this.imageOeuvre = imageOeuvre;
         this.genreOeuvre = genreOeuvre;
         this.noteOeuvre = noteOeuvre;
     }
@@ -52,10 +51,6 @@ public class Oeuvre {
 
     public String getSynopsisOeuvre() {
         return synopsisOeuvre;
-    }
-
-    public Image getImageOeuvre() {
-        return imageOeuvre;
     }
 
     public String getGenreOeuvre() {
@@ -88,10 +83,6 @@ public class Oeuvre {
 
     public void setSynopsisOeuvre(String synopsisOeuvre) {
         this.synopsisOeuvre = synopsisOeuvre;
-    }
-
-    public void setImageOeuvre(Image imageOeuvre) {
-        this.imageOeuvre = imageOeuvre;
     }
 
     public void setGenreOeuvre(String genreOeuvre) {

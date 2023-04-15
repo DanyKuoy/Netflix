@@ -11,8 +11,8 @@ public class Serie extends Oeuvre{
     private ArrayList<ArrayList<Episode>> listeEpisodes;
 
     /** Constructeur **/
-    public Serie(String nomOeuvre, int anneeOeuvre, String realisateurOeuvre, String distributionOeuvre, int classificationOeuvre, String synopsisOeuvre, Image imageOeuvre, String genreOeuvre, float noteOeuvre, int nbSaisons, int idSerie) {
-        super(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, imageOeuvre, genreOeuvre, noteOeuvre);
+    public Serie(String nomOeuvre, int anneeOeuvre, String realisateurOeuvre, String distributionOeuvre, int classificationOeuvre, String synopsisOeuvre, String genreOeuvre, float noteOeuvre, int nbSaisons, int idSerie) {
+        super(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, genreOeuvre, noteOeuvre);
         this.nbSaisons = nbSaisons;
         this.idSerie = idSerie;
         this.listeEpisodes = new ArrayList<ArrayList<Episode>>();

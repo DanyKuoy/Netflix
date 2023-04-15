@@ -46,11 +46,11 @@ public class BibliothequeDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
             Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
             String sql = "SELECT * FROM film";                                                                                        // Ecriture de la requête SQL
-            Statement statement =  connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
 
             /// Récupération des données
-            while(result.next()) {
+            while (result.next()) {
                 int idFilm = result.getInt("idFilm");
                 int dureeFilm = result.getInt("dureeFilm");
                 String lienFilm = result.getString("lienFilm");
@@ -63,25 +63,15 @@ public class BibliothequeDAO {
                 String genreOeuvre = result.getString("genreOeuvre");
                 float noteOeuvre = result.getFloat("noteOeuvre");
 
-                /// Récupération et conversion de l'image
-                Blob blobFilm = result.getBlob("imageOeuvre");
-                byte[] imageBytes = blobFilm.getBytes(1, (int) blobFilm.length());
-                InputStream is = new ByteArrayInputStream(imageBytes);
-                Image imageOeuvre = ImageIO.read(is);
-
                 /// Création de l'objet et ajout dans la liste
-                Film newFilm = new Film(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, imageOeuvre, genreOeuvre, noteOeuvre, dureeFilm, idFilm, lienFilm);
+                Film newFilm = new Film(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, genreOeuvre, noteOeuvre, dureeFilm, idFilm, lienFilm);
                 liste.add(newFilm);
             }
             connection.close();             // Fermeture de la connexion à la BDD
-        }
-        catch(ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             System.out.println("Erreur: le pilote JDBC n'a pas ete trouve!");
-        }
-        catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Erreur: " + e.getMessage());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         return liste;
     }
@@ -113,12 +103,6 @@ public class BibliothequeDAO {
                 String genreOeuvre = result.getString("genreOeuvre");
                 float noteOeuvre = result.getFloat("noteOeuvre");
 
-                /// Récupération et conversion de l'image
-                Blob blobFilm = result.getBlob("imageOeuvre");
-                byte[] imageBytes = blobFilm.getBytes(1, (int) blobFilm.length());
-                InputStream is = new ByteArrayInputStream(imageBytes);
-                Image imageOeuvre = ImageIO.read(is);
-
                 /// Récupération des saisons et épisodes
                 ArrayList<ArrayList<Episode>> listeEpisodes = new ArrayList<ArrayList<Episode>>();
                 for(int i=0; i<nbSaisons; i++) {
@@ -147,7 +131,7 @@ public class BibliothequeDAO {
                 }
 
                 /// Création de l'objet et ajout dans la liste
-                Serie newSerie = new Serie(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, imageOeuvre, genreOeuvre, noteOeuvre, nbSaisons, idSerie);
+                Serie newSerie = new Serie(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, genreOeuvre, noteOeuvre, nbSaisons, idSerie);
                 liste.add(newSerie);
             }
             connection.close();             // Fermeture de la connexion à la BDD
@@ -157,8 +141,6 @@ public class BibliothequeDAO {
         }
         catch(SQLException e) {
             System.out.println("Erreur: " + e.getMessage());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         return liste;
     }
