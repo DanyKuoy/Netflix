@@ -13,12 +13,11 @@ public class Oeuvre {
     protected int classificationOeuvre;
     protected String synopsisOeuvre;
     protected Image imageOeuvre;
-    protected String typeOeuvre;                    // Film, Serie, Documentaire
     protected String genreOeuvre;
     protected float noteOeuvre;
 
     /** Constructeur **/
-    public Oeuvre(String nomOeuvre, int anneeOeuvre, String realisateurOeuvre, String distributionOeuvre, int classificationOeuvre, String synopsisOeuvre, Image imageOeuvre, String typeOeuvre, String genreOeuvre, float noteOeuvre) {
+    public Oeuvre(String nomOeuvre, int anneeOeuvre, String realisateurOeuvre, String distributionOeuvre, int classificationOeuvre, String synopsisOeuvre, Image imageOeuvre, String genreOeuvre, float noteOeuvre) {
         this.nomOeuvre = nomOeuvre;
         this.anneeOeuvre = anneeOeuvre;
         this.realisateurOeuvre = realisateurOeuvre;
@@ -26,7 +25,6 @@ public class Oeuvre {
         this.classificationOeuvre = classificationOeuvre;
         this.synopsisOeuvre = synopsisOeuvre;
         this.imageOeuvre = imageOeuvre;
-        this.typeOeuvre = typeOeuvre;
         this.genreOeuvre = genreOeuvre;
         this.noteOeuvre = noteOeuvre;
     }
@@ -58,10 +56,6 @@ public class Oeuvre {
 
     public Image getImageOeuvre() {
         return imageOeuvre;
-    }
-
-    public String getTypeOeuvre() {
-        return typeOeuvre;
     }
 
     public String getGenreOeuvre() {
@@ -102,10 +96,6 @@ public class Oeuvre {
 
     public void setGenreOeuvre(String genreOeuvre) {
         this.genreOeuvre = genreOeuvre;
-    }
-
-    public void setTypeOeuvre(String typeOeuvre) {
-        this.typeOeuvre = typeOeuvre;
     }
 
     public void setNoteOeuvre(float noteOeuvre) {

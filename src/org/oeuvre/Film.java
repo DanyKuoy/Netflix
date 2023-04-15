@@ -11,8 +11,8 @@ public class Film extends Oeuvre{
     private String lienFilm;
 
     /** Constructeur **/
-    public Film(String nomOeuvre, int anneeOeuvre, String realisateurOeuvre, String distributionOeuvre, int classificationOeuvre, String synopsisOeuvre, Image imageOeuvre, String typeOeuvre, String genreOeuvre, float noteOeuvre, int dureeFilm, int idFilm, String lienFilm) {
-        super(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, imageOeuvre, typeOeuvre, genreOeuvre, noteOeuvre);
+    public Film(String nomOeuvre, int anneeOeuvre, String realisateurOeuvre, String distributionOeuvre, int classificationOeuvre, String synopsisOeuvre, Image imageOeuvre, String genreOeuvre, float noteOeuvre, int dureeFilm, int idFilm, String lienFilm) {
+        super(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, imageOeuvre, genreOeuvre, noteOeuvre);
         this.dureeFilm = dureeFilm;
         this.idFilm = idFilm;
         this.lienFilm = lienFilm;

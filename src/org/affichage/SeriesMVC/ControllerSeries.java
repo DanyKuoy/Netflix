@@ -6,6 +6,7 @@ import org.affichage.InterfaceGraphiqueMVC.*;
 import org.affichage.InforamtionOeuvre;
 import org.compte.Compte;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,8 +23,16 @@ public class ControllerSeries implements ActionListener {
         this.vueSeries.getBFilms().addActionListener(this);
         this.vueSeries.getBRecherche().addActionListener(this);
 
+
         for(int i=0; i<30; i++) {
+
             this.vueSeries.getBFilm1()[i].addActionListener(this);
+            if(this.modelSeries.getBiblio().getTriSerie().get("Comédie").get(i).getImageOeuvre()!=null) {
+                this.vueSeries.getBFilm1()[i].setIcon((Icon) this.modelSeries.getBiblio().getTriSerie().get("Comédie").get(i).getImageOeuvre());
+            }
+            else{
+                this.vueSeries.remove(this.vueSeries.getBFilm1()[i]);
+            }
             this.vueSeries.getBFilm2()[i].addActionListener(this);
             this.vueSeries.getBFilm3()[i].addActionListener(this);
             this.vueSeries.getBFilm4()[i].addActionListener(this);

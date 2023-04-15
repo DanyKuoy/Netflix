@@ -1,9 +1,14 @@
 package org.affichage.SeriesMVC;
 
 import org.compte.Compte;
+import org.affichage.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.sql.Blob;
 
 public class VueSeries extends JFrame{
 
@@ -85,6 +90,8 @@ public class VueSeries extends JFrame{
     private JLabel genre15 = new JLabel("Jeunesse et Famille                                                                                                                                                  ");
     private JLabel genre16 = new JLabel("Mini-séries                                                                                                                                                  ");
 
+    private JLabel Serie = new JLabel("Séries                                                                                                                                                                            ");
+
 
     private JButton BMenu = new JButton("Menu");
     private JButton BFilms = new JButton("Films");
@@ -120,7 +127,6 @@ public class VueSeries extends JFrame{
     public VueSeries(Compte compte, int profil) {
         setSize(1440, 720);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
         InitInterface();
 
     }
@@ -149,7 +155,7 @@ public class VueSeries extends JFrame{
 
         panelBandeau.setPreferredSize(new Dimension(1350, 75));
         panelBandeau.setLayout(new GridBagLayout());
-        panel.setPreferredSize(new Dimension(140, 4150));
+        panel.setPreferredSize(new Dimension(140, 4250));
         GridBagConstraints constraints = new GridBagConstraints();
         JPanel espace = new JPanel();
         espace.setBackground(Color.DARK_GRAY);
@@ -288,7 +294,10 @@ public class VueSeries extends JFrame{
         scrollFilm15.setBorder(null);
         scrollFilm16.setBorder(null);
 
+
         for (int i = 0; i < 30; i++) {
+
+
             BFilm1[i] = new JButton("Film " + i);
             BFilm1[i].setPreferredSize(new Dimension(110,160));
             panelFilm1.add(BFilm1[i]);
@@ -368,6 +377,9 @@ public class VueSeries extends JFrame{
             BFilm16[i].setPreferredSize(new Dimension(110,160));
             panelFilm16.add(BFilm16[i]);
         }
+
+        Serie.setFont(new Font("Arial", Font.BOLD, 30));
+        panel.add(Serie);
 
         espaceFilm1.setPreferredSize(esp);
         panel.add(espaceFilm1);

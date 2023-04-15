@@ -60,7 +60,6 @@ public class BibliothequeDAO {
                 String distributionOeuvre = result.getString("distributionOeuvre");
                 int classificationOeuvre = result.getInt("classificationOeuvre");
                 String synopsisOeuvre = result.getString("synopsisOeuvre");
-                String typeOeuvre = result.getString("typeOeuvre");
                 String genreOeuvre = result.getString("genreOeuvre");
                 float noteOeuvre = result.getFloat("noteOeuvre");
 
@@ -71,7 +70,7 @@ public class BibliothequeDAO {
                 Image imageOeuvre = ImageIO.read(is);
 
                 /// Création de l'objet et ajout dans la liste
-                Film newFilm = new Film(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, imageOeuvre, typeOeuvre, genreOeuvre, noteOeuvre, dureeFilm, idFilm, lienFilm);
+                Film newFilm = new Film(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, imageOeuvre, genreOeuvre, noteOeuvre, dureeFilm, idFilm, lienFilm);
                 liste.add(newFilm);
             }
             connection.close();             // Fermeture de la connexion à la BDD
@@ -111,7 +110,6 @@ public class BibliothequeDAO {
                 String distributionOeuvre = result.getString("distributionOeuvre");
                 int classificationOeuvre = result.getInt("classificationOeuvre");
                 String synopsisOeuvre = result.getString("synopsisOeuvre");
-                String typeOeuvre = result.getString("typeOeuvre");
                 String genreOeuvre = result.getString("genreOeuvre");
                 float noteOeuvre = result.getFloat("noteOeuvre");
 
@@ -149,7 +147,7 @@ public class BibliothequeDAO {
                 }
 
                 /// Création de l'objet et ajout dans la liste
-                Serie newSerie = new Serie(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, imageOeuvre, typeOeuvre, genreOeuvre, noteOeuvre, nbSaisons, idSerie);
+                Serie newSerie = new Serie(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, imageOeuvre, genreOeuvre, noteOeuvre, nbSaisons, idSerie);
                 liste.add(newSerie);
             }
             connection.close();             // Fermeture de la connexion à la BDD

@@ -19,11 +19,12 @@ public class ModelConnexion {
     private int IsRepriseVideo;
     private int Quality;
 
-    private Compte compte = new Compte();
-    private CompteDAO compteDAO = new CompteDAO();
+    private Compte compte;
+    private CompteDAO compteDAO;
 
     public ModelConnexion(){
-
+        compte = new Compte();
+        compteDAO = new CompteDAO();
     }
 
     public String getID_Connexion(){
