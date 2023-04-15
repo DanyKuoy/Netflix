@@ -1,19 +1,22 @@
-import org.affichage.*;
-import org.bdd.*;
 import org.compte.*;
-import org.oeuvre.*;
-import org.dao.*;
+import org.affichage.InterfaceGraphiqueMVC.*;
 
-import java.awt.*;
 import java.lang.*;
-import java.net.*;
-import java.util.*;
-import java.sql.*;
 
 public class Main {
     public static void main(String[] args) {
         //new Mafenetre();
-        new InterfaceGraphique(new Compte(), 1);
+        //new InterfaceGraphique(new Compte(), 1);
+
+
+        Compte compte = new Compte();
+        int profil = 1;
+        ModelInterface modelInterface = new ModelInterface();
+        VueInterface vueInterface = new VueInterface(compte, profil);
+        ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
+        vueInterface.afficher();
+
+
         /*
         Bibliotheque b1 = new Bibliotheque();
         BibliothequeDAO b = new BibliothequeDAO();

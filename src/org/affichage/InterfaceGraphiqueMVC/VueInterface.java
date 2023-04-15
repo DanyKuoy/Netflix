@@ -1,17 +1,12 @@
-package org.affichage;
+package org.affichage.InterfaceGraphiqueMVC;
 
-import org.bdd.Bibliotheque;
-import org.compte.*;
-import org.oeuvre.*;
+import org.compte.Compte;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Map;
 
-public class InterfaceGraphique extends JFrame implements ActionListener {
+public class VueInterface extends JFrame{
+
     private JPanel panel = new JPanel();
     private JPanel panelBandeau = new JPanel();
     private JPanel panelInfoFilm = new JPanel();
@@ -85,7 +80,6 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
     private JButton[] BFilm10 = new JButton[45];
     private JButton[] BFilm11 = new JButton[45];
     private JButton[] BFilm12 = new JButton[45];
-    private JButton BFermerInfo = new JButton();
     private JButton BRetourConnexion = new JButton("DECONNEXION");
 
     private JTextField recherche = new JTextField(15);
@@ -93,43 +87,13 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
     private Dimension dim = new Dimension(200, 50);
     private Dimension esp = new Dimension(1440,10);
 
-    private Bibliotheque biblio = new Bibliotheque();
-
-    private Map<String, ArrayList<Film>> listeFilm;
-    private Map<String, ArrayList<Serie>> listeSerie;
-
-    private ArrayList<Film> Action;
-    private ArrayList<Film> Comedie;
-    private ArrayList<Film> SciFi;
-    private ArrayList<Film> Fantastique;
-    private ArrayList<Film> Francais;
-    private ArrayList<Film> Policier;
-    private ArrayList<Film> Horreur;
-
-    public InterfaceGraphique(Compte compte, int profil) {
-
-        listeFilm = biblio.getTriFilm();
-        listeSerie = biblio.getTriSerie();
-
-        Action = listeFilm.get("Action");
-        Comedie = listeFilm.get("Comedie");
-        SciFi = listeFilm.get("SF");
-        Fantastique = listeFilm.get("Fantastique");
-        Francais = listeFilm.get("Français");
-        Policier = listeFilm.get("Policier");
-        Horreur = listeFilm.get("Horreur");
-
+    public VueInterface(Compte compte, int profil) {
         setSize(1440, 720);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         InitInterface();
-
-        setContentPane(scrollPage);
-        setLocationRelativeTo(null);
-
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
 
     public void InitInterface() {
 
@@ -167,14 +131,13 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
         BRecherche.setPreferredSize(new Dimension(125, 25));
 
         constraints.gridx = 0;
-        BFilm.addActionListener(this);
         BFilm.setBackground(Color.DARK_GRAY);
         BFilm.setBorderPainted(false);
         BFilm.setFont(new Font("Arial", Font.BOLD, 15));
         BFilm.setForeground(Color.WHITE);
         panelBandeau.add(BFilm, constraints);
+
         constraints.gridx = 1;
-        BSerie.addActionListener(this);
         BSerie.setBackground(Color.DARK_GRAY);
         BSerie.setBorderPainted(false);
         BSerie.setFont(new Font("Arial", Font.BOLD, 15));
@@ -185,15 +148,15 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
 
         constraints.gridx = 3;
         panelBandeau.add(recherche, constraints);
+
         constraints.gridx = 4;
-        BRecherche.addActionListener(this);
         BRecherche.setBackground(Color.DARK_GRAY);
         BRecherche.setBorderPainted(false);
         BRecherche.setFont(new Font("Arial", Font.BOLD, 15));
         BRecherche.setForeground(Color.WHITE);
         panelBandeau.add(BRecherche, constraints);
+
         constraints.gridx = 5;
-        BRetourConnexion.addActionListener(this);
         BRetourConnexion.setBackground(Color.DARK_GRAY);
         BRetourConnexion.setBorderPainted(false);
         BRetourConnexion.setFont(new Font("Arial", Font.BOLD, 15));
@@ -273,73 +236,61 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
         for (int i = 0; i < 30; i++) {
             BFilm1[i] = new JButton("Film " + i);
             BFilm1[i].setPreferredSize(new Dimension(110,160));
-            BFilm1[i].addActionListener(this);
             panelFilm1.add(BFilm1[i]);
         }
         for (int i = 0; i < 30; i++) {
             BFilm2[i] = new JButton("Film " + i);
             BFilm2[i].setPreferredSize(new Dimension(110,160));
-            BFilm2[i].addActionListener(this);
             panelFilm2.add(BFilm2[i]);
         }
         for (int i = 0; i < 30; i++) {
             BFilm3[i] = new JButton("Film " + i);
             BFilm3[i].setPreferredSize(new Dimension(110,160));
-            BFilm3[i].addActionListener(this);
             panelFilm3.add(BFilm3[i]);
         }
         for (int i = 0; i < 30; i++) {
             BFilm4[i] = new JButton("Film " + i);
             BFilm4[i].setPreferredSize(new Dimension(110,160));
-            BFilm4[i].addActionListener(this);
             panelFilm4.add(BFilm4[i]);
         }
         for (int i = 0; i < 30; i++) {
             BFilm5[i] = new JButton("Film " + i);
             BFilm5[i].setPreferredSize(new Dimension(110,160));
-            BFilm5[i].addActionListener(this);
             panelFilm5.add(BFilm5[i]);
         }
         for (int i = 0; i < 30; i++) {
             BFilm6[i] = new JButton("Film " + i);
             BFilm6[i].setPreferredSize(new Dimension(110,160));
-            BFilm6[i].addActionListener(this);
             panelFilm6.add(BFilm6[i]);
         }
         for (int i = 0; i < 30; i++) {
             BFilm7[i] = new JButton("Film " + i);
             BFilm7[i].setPreferredSize(new Dimension(110,160));
-            BFilm7[i].addActionListener(this);
             panelFilm7.add(BFilm7[i]);
         }
         for (int i = 0; i < 30; i++) {
             BFilm8[i] = new JButton("Film " + i);
             BFilm8[i].setPreferredSize(new Dimension(110,160));
-            BFilm8[i].addActionListener(this);
             panelFilm8.add(BFilm8[i]);
         }
         for (int i = 0; i < 30; i++) {
             BFilm9[i] = new JButton("Film " + i);
             BFilm9[i].setPreferredSize(new Dimension(110,160));
-            BFilm9[i].addActionListener(this);
             panelFilm9.add(BFilm9[i]);
         }
         for (int i = 0; i < 30; i++) {
             BFilm10[i] = new JButton("Film " + i);
             BFilm10[i].setPreferredSize(new Dimension(110,160));
-            BFilm10[i].addActionListener(this);
             panelFilm10.add(BFilm10[i]);
         }
         for (int i = 0; i < 30; i++) {
             BFilm11[i] = new JButton("Film " + i);
             BFilm11[i].setPreferredSize(new Dimension(110,160));
-            BFilm11[i].addActionListener(this);
             panelFilm11.add(BFilm11[i]);
         }
         for (int i = 0; i < 30; i++) {
             BFilm12[i] = new JButton("Film " + i);
             BFilm12[i].setPreferredSize(new Dimension(110,160));
-            BFilm12[i].addActionListener(this);
             panelFilm12.add(BFilm12[i]);
         }
 
@@ -429,138 +380,65 @@ public class InterfaceGraphique extends JFrame implements ActionListener {
 
         scrollPage.setViewportView(panel);
         scrollPage.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
     }
 
-    private void InitInfoFilm(){
 
-        panelInfoFilm.setPreferredSize(new Dimension(1440,720));
-        panelInfoFilm.setBackground(Color.WHITE);
+    public void afficher() {
+        setContentPane(scrollPage);
+        setLocationRelativeTo(null);
 
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.NORTHWEST;
-        constraints.insets = new Insets(10, 10, 10, 10);
+        setVisible(true);
 
-        constraints.gridy = 0;
-        constraints.gridx = 0;
-
-        BFermerInfo.setPreferredSize(new Dimension(30,30));
-
-        panelInfoFilm.add(BFermerInfo,constraints);
-
-        constraints.gridy = 1;
-        image.setPreferredSize(new Dimension(1300,300));
-        image.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-        panelInfoFilm.add(image, constraints);
-
-        constraints.gridy = 2;
-        description.setPreferredSize(new Dimension(900,150));
-        description.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-        panelInfoFilm.add(description, constraints);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private void AffichageInfoFilm() {
-        panelInfoFilm.setVisible(true);
-        panel.setVisible(false);
-        this.getContentPane().add(panelInfoFilm);
-        revalidate();
-        repaint();
+    public JButton getBFilm() {
+            return BFilm;
+    }
+    public JButton getBSerie() {
+        return BSerie;
+    }
+    public JButton getBRecherche() {
+        return BRecherche;
+    }
+    public JButton[] getBFilm1() {
+        return BFilm1;
+    }
+    public JButton[] getBFilm2() {
+        return BFilm2;
+    }
+    public JButton[] getBFilm3() {
+        return BFilm3;
+    }
+    public JButton[] getBFilm4() {
+        return BFilm4;
+    }
+    public JButton[] getBFilm5() {
+        return BFilm5;
+    }
+    public JButton[] getBFilm6() {
+        return BFilm6;
+    }
+    public JButton[] getBFilm7() {
+        return BFilm7;
+    }
+    public JButton[] getBFilm8() {
+        return BFilm8;
+    }
+    public JButton[] getBFilm9() {
+        return BFilm9;
+    }
+    public JButton[] getBFilm10() {
+        return BFilm10;
+    }
+    public JButton[] getBFilm11() {
+        return BFilm11;
+    }
+    public JButton[] getBFilm12() {
+        return BFilm12;
+    }
+    public JButton getBRetourConnexion() {
+        return BRetourConnexion;
     }
 
-    public void actionPerformed(ActionEvent e) {
-
-        for (int i = 0; i < 40; i++) {
-            if (e.getSource() == BFilm1[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-
-            }
-            else if (e.getSource() == BFilm2[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-            }
-            else if (e.getSource() == BFilm3[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-            }
-            else if (e.getSource() == BFilm4[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-            }
-            else if (e.getSource() == BFilm5[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-            }
-            else if (e.getSource() == BFilm6[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-            }
-            else if (e.getSource() == BFilm7[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-             }
-            else if (e.getSource() == BFilm8[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-            }
-            else if (e.getSource() == BFilm9[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-            }
-            else if (e.getSource() == BFilm10[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-            }
-            else if (e.getSource() == BFilm11[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-            }
-            else if (e.getSource() == BFilm12[i]) {
-                System.out.println("Film : " + BFilm1[i].getText());
-
-                this.dispose();
-                new InforamtionOeuvre();
-            }
-
-        }
-        if (e.getSource() == BFermerInfo){
-        panelInfoFilm.setVisible(false);
-        panel.setVisible(true);
-        InitInterface();
-        }
-        if(e.getSource() == BRetourConnexion){
-            new Mafenetre();
-            this.dispose();
-        }
-        if(e.getSource() == BFilm){
-            new Films(new Compte(),1);
-            this.dispose();
-        }
-        if(e.getSource() == BSerie){
-            new Series(new Compte(), 1);
-            this.dispose();
-        }
-}
 }

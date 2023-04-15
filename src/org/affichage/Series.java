@@ -677,16 +677,16 @@ public class Series extends JFrame implements ActionListener {
             InitInterface();
         }
         if(e.getSource() == BRetourConnexion){
-            this.dispose();
             new Mafenetre();
+            this.dispose();
         }
         if(e.getSource() == BFilm){
-            this.dispose();
             new Films(new Compte(),1);
+            this.dispose();
         }
         if(e.getSource() == BMenu){
-            this.dispose();
             new InterfaceGraphique(new Compte(),1);
+            this.dispose();
         }
     }
 }
