@@ -26,13 +26,15 @@ public class ControllerSeries implements ActionListener {
 
         for(int i=0; i<30; i++) {
 
-            this.vueSeries.getBFilm1()[i].addActionListener(this);
-            if(this.modelSeries.getBiblio().getTriSerie().get("Comédie").get(i).getImageOeuvre()!=null) {
+
+            /*  if(this.modelSeries.getBiblio().getTriSerie().get("Comédie").get(i).getImageOeuvre()!=null) {
                 this.vueSeries.getBFilm1()[i].setIcon((Icon) this.modelSeries.getBiblio().getTriSerie().get("Comédie").get(i).getImageOeuvre());
             }
             else{
                 this.vueSeries.remove(this.vueSeries.getBFilm1()[i]);
-            }
+            }*/
+
+            this.vueSeries.getBFilm1()[i].addActionListener(this);
             this.vueSeries.getBFilm2()[i].addActionListener(this);
             this.vueSeries.getBFilm3()[i].addActionListener(this);
             this.vueSeries.getBFilm4()[i].addActionListener(this);

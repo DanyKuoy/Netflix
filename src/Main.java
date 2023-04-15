@@ -1,6 +1,5 @@
 import org.compte.*;
 import org.affichage.InterfaceGraphiqueMVC.*;
-import org.dao.CompteDAO;
 
 import java.lang.*;
 
@@ -17,18 +16,6 @@ public class Main {
         ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
         vueInterface.afficher();
 
-
-        /*
-        Compte compte = new Compte();
-        CompteDAO compteDAO = new CompteDAO();
-        compte = compteDAO.chargerCompte("dany.kuoy@edu.ece.fr", "123456");
-
-        System.out.println("Compte: " + compte.getEmailCompte());
-        System.out.println("nbProfil: " + compte.getNbProfil());
-        for(int i=0; i<compte.getNbProfil(); i++) {
-            System.out.println("Profil " + (i+1) + " " + compte.getListeProfil().get(i).getPrenomProfil());
-        }
-        */
 
         /*
         Bibliotheque b1 = new Bibliotheque();

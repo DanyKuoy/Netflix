@@ -4,6 +4,7 @@ import org.bdd.Bibliotheque;
 import org.dao.BibliothequeDAO;
 import org.oeuvre.Film;
 import org.oeuvre.Serie;
+import org.compte.*;
 
 import javax.print.Doc;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 public class ModelSeries {
 
+    private Compte compte;
     private Bibliotheque biblio = new Bibliotheque();
     private BibliothequeDAO biblioDAO = new BibliothequeDAO();
 
@@ -26,5 +28,12 @@ public class ModelSeries {
         return biblio;
     }
 
+    public Compte getCompte(){
+        return compte;
+    }
+
+    public void setCompte(Compte compte){
+        this.compte = compte;
+    }
 
 }

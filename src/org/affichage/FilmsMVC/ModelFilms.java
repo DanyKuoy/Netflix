@@ -1,12 +1,15 @@
 package org.affichage.FilmsMVC;
 
 import org.bdd.Bibliotheque;
+import org.compte.Compte;
 import org.oeuvre.Film;
 
 import java.util.ArrayList;
 import java.util.Map;
 
 public class ModelFilms {
+
+    private Compte compte;
 
     private Bibliotheque biblio = new Bibliotheque();
 
@@ -22,6 +25,14 @@ public class ModelFilms {
 
     public ModelFilms(){
 
+    }
+
+    public Compte getCompte(){
+        return compte;
+    }
+
+    public void setCompte(Compte compte){
+        this.compte = compte;
     }
 
 }

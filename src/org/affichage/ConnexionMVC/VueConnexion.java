@@ -197,6 +197,18 @@ public class VueConnexion extends JFrame {
     public JTextField getPrenomProfil(){
         return PrenomProfil;
     }
+    public JLabel getProfil1(){
+        return Profil1;
+    }
+    public JLabel getProfil2(){
+        return Profil2;
+    }
+    public JLabel getProfil3(){
+        return Profil3;
+    }
+    public JLabel getProfil4(){
+        return Profil4;
+    }
 
     public void setMDP(String a){
         MDP.setText(a);
@@ -232,6 +244,10 @@ public class VueConnexion extends JFrame {
         labelNom.setFont(new Font("Arial", Font.BOLD, 15));
         labelPrenomProfil.setFont(new Font("Arial", Font.BOLD, 15));
         labelSousTitres.setFont(new Font("Arial", Font.BOLD, 15));
+        Profil1.setFont(new Font("Arial", Font.BOLD, 15));
+        Profil2.setFont(new Font("Arial", Font.BOLD, 15));
+        Profil3.setFont(new Font("Arial", Font.BOLD, 15));
+        Profil4.setFont(new Font("Arial", Font.BOLD, 15));
 
         labelID.setForeground(Color.WHITE);
         labelPrenom.setForeground(Color.WHITE);
@@ -241,6 +257,10 @@ public class VueConnexion extends JFrame {
         labelNom.setForeground(Color.WHITE);
         labelPrenomProfil.setForeground(Color.WHITE);
         labelSousTitres.setForeground(Color.WHITE);
+        Profil1.setForeground(Color.WHITE);
+        Profil2.setForeground(Color.WHITE);
+        Profil3.setForeground(Color.WHITE);
+        Profil4.setForeground(Color.WHITE);
 
         BConnexion.setFont(new Font("Arial", Font.BOLD, 15));
         BConnecte.setFont(new Font("Arial", Font.BOLD, 15));
@@ -449,10 +469,8 @@ public class VueConnexion extends JFrame {
 
         System.out.println(compte.getNbProfil());
 
-        panelProfil.setBackground(Color.WHITE);
-
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.WEST;
+        constraints.anchor = GridBagConstraints.CENTER;
         constraints.insets = new Insets(10, 10, 10, 10);
 
         constraints.gridy = 0;
@@ -460,19 +478,19 @@ public class VueConnexion extends JFrame {
 
         System.out.println(compte.getNbProfil());
 
-        if(compte.getNbProfil()>0){
+        if(compte.getNbProfil()==0){
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
 
-        if(compte.getNbProfil()==0){
+        if(compte.getNbProfil()>0){
             BProfil1.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil1, constraints);
             constraints.gridy = 1;
             panelProfil.add(Profil1, constraints);
         }
 
-        if(compte.getNbProfil()==0){
+        if(compte.getNbProfil()>1){
             constraints.gridx = 1;
             constraints.gridy = 0;
             BProfil2.setPreferredSize(new Dimension(150, 150));
@@ -481,7 +499,7 @@ public class VueConnexion extends JFrame {
             panelProfil.add(Profil2, constraints);
         }
 
-        if(compte.getNbProfil()==0){
+        if(compte.getNbProfil()>2){
             constraints.gridx = 2;
             constraints.gridy = 0;
             BProfil3.setPreferredSize(new Dimension(150, 150));
@@ -490,7 +508,7 @@ public class VueConnexion extends JFrame {
             panelProfil.add(Profil3, constraints);
         }
 
-        if(compte.getNbProfil()>0){
+        if(compte.getNbProfil()>3){
             constraints.gridx = 3;
             constraints.gridy = 0;
             BProfil4.setPreferredSize(new Dimension(150, 150));
@@ -506,14 +524,14 @@ public class VueConnexion extends JFrame {
             panelProfil.add(BProfilCreer, constraints);
         }
 
-        if(compte.getNbProfil()==2){
+        else if(compte.getNbProfil()==2){
             constraints.gridx = 2;
             constraints.gridy = 0;
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
 
-        if(compte.getNbProfil()==0){
+        else if(compte.getNbProfil()==3){
             constraints.gridx = 3;
             constraints.gridy = 0;
             BProfilCreer.setPreferredSize(new Dimension(150, 150));

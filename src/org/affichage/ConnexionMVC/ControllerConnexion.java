@@ -48,6 +48,7 @@ public class ControllerConnexion implements ActionListener {
         this.vueConnexion.getRepriseVideo().addActionListener(this);
         this.vueConnexion.getComboBox().addActionListener(this);
         this.vueConnexion.getComboBoxSousTitres().addActionListener(this);
+
     }
 
 
@@ -107,6 +108,20 @@ public class ControllerConnexion implements ActionListener {
                 this.vueConnexion.setID("");
 
                 this.modelConnexion.setCompte(this.modelConnexion.getCompteDAO().chargerCompte(this.modelConnexion.getID_Connexion(), this.modelConnexion.getMDP_Connexion()));
+
+                if(this.modelConnexion.getCompte().getNbProfil()>0) {
+                    this.vueConnexion.getProfil1().setText(this.modelConnexion.getCompte().getListeProfil().get(0).getPrenomProfil());
+                }
+                if(this.modelConnexion.getCompte().getNbProfil()>1) {
+                    this.vueConnexion.getProfil2().setText(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+                }
+                if(this.modelConnexion.getCompte().getNbProfil()>2) {
+                    this.vueConnexion.getProfil3().setText(this.modelConnexion.getCompte().getListeProfil().get(2).getPrenomProfil());
+                }
+                if(this.modelConnexion.getCompte().getNbProfil()>3) {
+                    this.vueConnexion.getProfil4().setText(this.modelConnexion.getCompte().getListeProfil().get(3).getPrenomProfil());
+                }
+
                 this.vueConnexion.InitProfil(this.modelConnexion.getCompte());
 
                 this.modelConnexion.setID_Connexion("");
@@ -210,7 +225,24 @@ public class ControllerConnexion implements ActionListener {
             else {
                 repriseVideo = true;
             }
-            this.modelConnexion.getCompte().getListeProfil().add(new Profil(this.modelConnexion.getPrenom_Profil(), this.modelConnexion.getCompte().getEmailCompte(), restrictionAge, repriseVideo, this.modelConnexion.getQuality(), ""));
+            this.modelConnexion.getCompte().getListeProfil().add(new Profil(this.modelConnexion.getPrenom_Profil(), this.modelConnexion.getCompte().getEmailCompte(), restrictionAge, repriseVideo, this.modelConnexion.getQuality(), this.vueConnexion.getComboBoxSousTitreString()));
+
+            if(this.modelConnexion.getCompte().getNbProfil()>0) {
+                this.vueConnexion.getBProfil1().setText(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+                System.out.println(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>1) {
+                this.vueConnexion.getBProfil2().setText(this.modelConnexion.getCompte().getListeProfil().get(2).getPrenomProfil());
+                System.out.println(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>2) {
+                this.vueConnexion.getBProfil3().setText(this.modelConnexion.getCompte().getListeProfil().get(3).getPrenomProfil());
+                System.out.println(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>3) {
+                this.vueConnexion.getBProfil4().setText(this.modelConnexion.getCompte().getListeProfil().get(4).getPrenomProfil());
+                System.out.println(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+            }
 
             this.vueConnexion.InitProfil(this.modelConnexion.getCompte());
 
