@@ -220,6 +220,48 @@ public class CompteDAO {
         return compte;
     }
 
+    /* Méthode permettant de recharger le compte, apres avoir ajouté un profil */
+    public Compte rechargerCompte(String ID) {
+        /// Creation d'objets et de variables
+        Compte compte = new Compte();
+
+        try {
+            /// Communication avec la base de données
+            Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
+            Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
+            String sql = "SELECT * FROM compte";                                                                                        // Ecriture de la requête SQL
+            Statement statement =  connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            /// Recherche du compte
+            while(result.next()) {
+                if(result.getString("emailCompte").equals(ID)) {    // Si le compte a été trouvé
+
+                    /// Création du compte à retourner
+                    compte.setPrenomCompte(result.getString("prenomCompte"));
+                    compte.setNomCompte(result.getString("nomCompte"));
+                    compte.setEmailCompte(result.getString("emailCompte"));
+                    compte.setMdpCompte(result.getString("mdpCompte"));
+                    compte.setStaff(result.getBoolean("staff"));
+                    compte.setNbProfil(result.getInt("nbProfil"));
+
+                    /// Chargement des profils
+                    ArrayList<Profil> listeProfil = new ArrayList<>();
+                    listeProfil = this.chargerProfils(result.getString("emailCompte"));
+                    compte.setListeProfil(listeProfil);
+                }
+            }
+            connection.close();             // Fermeture de la connexion à la BDD
+        }
+        catch(ClassNotFoundException e) {
+            System.out.println("Erreur: le pilote JDBC n'a pas ete trouve!");
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+        return compte;
+    }
+
     /* Méthode permettant de créer un compte dans la base de données */
     public void creerCompte(String prenom, String nom, String email, String mdp, int isstaff) {
         try {
