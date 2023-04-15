@@ -46,10 +46,8 @@ public class ControllerConnexion implements ActionListener {
         this.vueConnexion.getStaff().addActionListener(this);
         this.vueConnexion.getResAge().addActionListener(this);
         this.vueConnexion.getRepriseVideo().addActionListener(this);
-        this.vueConnexion.getQualiteVideoBasse().addActionListener(this);
-        this.vueConnexion.getQualiteVideoMoyenne().addActionListener(this);
-        this.vueConnexion.getQualiteVideoHaute().addActionListener(this);
-
+        this.vueConnexion.getComboBox().addActionListener(this);
+        this.vueConnexion.getComboBoxSousTitres().addActionListener(this);
     }
 
 
@@ -184,18 +182,18 @@ public class ControllerConnexion implements ActionListener {
                 this.modelConnexion.setIsRepriseVideo(0);
             }
 
-            if(this.vueConnexion.getQualiteVideoBasse().isSelected()== true) {
+            if(this.vueConnexion.getComboBoxString()== "Qualité vidéo basse") {
                 this.modelConnexion.setQuality(0);
             }
-            else if(this.vueConnexion.getQualiteVideoMoyenne().isSelected()== true){
+            else if(this.vueConnexion.getComboBoxString()== "Qualité vidéo moyenne"){
                 this.modelConnexion.setQuality(1);
             }
-            else if(this.vueConnexion.getQualiteVideoHaute().isSelected()== true){
+            else if(this.vueConnexion.getComboBoxString()== "Qualité vidéo haute"){
                 this.modelConnexion.setQuality(2);
             }
 
             /// Ajout du nouveau profil dans la BDD
-            this.modelConnexion.getCompteDAO().ajouterProfil(this.modelConnexion.getPrenom_Profil(), this.modelConnexion.getCompte().getEmailCompte(), this.modelConnexion.getIsResAge(), this.modelConnexion.getIsRepriseVideo(), this.modelConnexion.getQuality(), "");
+            this.modelConnexion.getCompteDAO().ajouterProfil(this.modelConnexion.getPrenom_Profil(), this.modelConnexion.getCompte().getEmailCompte(), this.modelConnexion.getIsResAge(), this.modelConnexion.getIsRepriseVideo(), this.modelConnexion.getQuality(), this.vueConnexion.getComboBoxSousTitreString());
 
             /// Ajout du nouveau profil dans le compte
             boolean restrictionAge;
@@ -251,6 +249,14 @@ public class ControllerConnexion implements ActionListener {
             VueInterface vueInterface = new VueInterface(new Compte(), 1);
             ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
             vueInterface.afficher();
+        }
+        else if(e.getSource() == this.vueConnexion.getBRetour3()){
+            this.vueConnexion.getpanelCreation().setVisible(false);
+            this.vueConnexion.getpanelConnexion().setVisible(false);
+            this.vueConnexion.getpanelProfil().setVisible(true);
+            this.vueConnexion.getpanel().setVisible(false);
+            this.vueConnexion.getpanelCreationProfil().setVisible(false);
+            this.modelConnexion.setPrenom_Profil("");
         }
     }
 }

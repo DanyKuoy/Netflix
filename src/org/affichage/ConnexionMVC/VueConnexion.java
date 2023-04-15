@@ -33,9 +33,6 @@ public class VueConnexion extends JFrame {
     private JCheckBox Staff = new JCheckBox("Cocher si membre du staff");
     private JCheckBox ResAge = new JCheckBox("Cocher si le compte est soumis à une restriction d'âge");
     private JCheckBox RepriseVideo = new JCheckBox("Cocher si vous voulez activer la reprise automatique des vidéos");
-    private JCheckBox QualiteVideoBasse = new JCheckBox("Basse qualité");
-    private JCheckBox QualiteVideoMoyenne = new JCheckBox("Moyenne qualité");
-    private JCheckBox QualiteVideoHaute = new JCheckBox("Haute qualité");
 
     private JPanel panel = new JPanel(new GridBagLayout());
     private JPanel panelConnexion = new JPanel(new GridBagLayout());
@@ -56,6 +53,7 @@ public class VueConnexion extends JFrame {
     private JLabel Profil3 = new JLabel("                  Profil 3");
     private JLabel Profil4 = new JLabel("                  Profil 4");
     private JLabel Erreur = new JLabel("");
+    private JLabel labelSousTitres = new JLabel("Sous Titre");
 
     private JTextField ID =  new JTextField(15);
     private JPasswordField MDP = new JPasswordField(15);
@@ -65,7 +63,8 @@ public class VueConnexion extends JFrame {
     private JTextField Nom = new JTextField(15);
     private JTextField PrenomProfil = new JTextField(15);
 
-
+    private JComboBox<String> comboBox;
+    private JComboBox<String> comboBoxSousTitres;
 
     public VueConnexion() {
 
@@ -147,15 +146,6 @@ public class VueConnexion extends JFrame {
     public JCheckBox getRepriseVideo(){
         return RepriseVideo;
     }
-    public JCheckBox getQualiteVideoBasse(){
-        return QualiteVideoBasse;
-    }
-    public JCheckBox getQualiteVideoMoyenne(){
-        return QualiteVideoMoyenne;
-    }
-    public JCheckBox getQualiteVideoHaute(){
-        return QualiteVideoHaute;
-    }
 
     public JPanel getpanel(){
         return panel;
@@ -171,6 +161,19 @@ public class VueConnexion extends JFrame {
     }
     public JPanel getpanelCreationProfil(){
         return panelCreationProfil;
+    }
+
+    public String getComboBoxString(){
+        return comboBox.getSelectedItem().toString();
+    }
+    public String getComboBoxSousTitreString(){
+        return comboBoxSousTitres.getSelectedItem().toString();
+    }
+    public JComboBox<String> getComboBox(){
+        return comboBox;
+    }
+    public JComboBox<String> getComboBoxSousTitres(){
+        return comboBoxSousTitres;
     }
 
     public JTextField getID(){
@@ -216,9 +219,71 @@ public class VueConnexion extends JFrame {
 
 
 
+
     public void InitAccueil(){
 
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(Color.DARK_GRAY);
+
+        labelID.setFont(new Font("Arial", Font.BOLD, 15));
+        labelPrenom.setFont(new Font("Arial", Font.BOLD, 15));
+        labelMDP.setFont(new Font("Arial", Font.BOLD, 15));
+        labelID2.setFont(new Font("Arial", Font.BOLD, 15));
+        labelMDP2.setFont(new Font("Arial", Font.BOLD, 15));
+        labelNom.setFont(new Font("Arial", Font.BOLD, 15));
+        labelPrenomProfil.setFont(new Font("Arial", Font.BOLD, 15));
+        labelSousTitres.setFont(new Font("Arial", Font.BOLD, 15));
+
+        labelID.setForeground(Color.WHITE);
+        labelPrenom.setForeground(Color.WHITE);
+        labelMDP.setForeground(Color.WHITE);
+        labelID2.setForeground(Color.WHITE);
+        labelMDP2.setForeground(Color.WHITE);
+        labelNom.setForeground(Color.WHITE);
+        labelPrenomProfil.setForeground(Color.WHITE);
+        labelSousTitres.setForeground(Color.WHITE);
+
+        BConnexion.setFont(new Font("Arial", Font.BOLD, 15));
+        BConnecte.setFont(new Font("Arial", Font.BOLD, 15));
+        BCreation.setFont(new Font("Arial", Font.BOLD, 15));
+        BRetour.setFont(new Font("Arial", Font.BOLD, 15));
+        BRetour2.setFont(new Font("Arial", Font.BOLD, 15));
+        BRetour3.setFont(new Font("Arial", Font.BOLD, 15));
+        BCreer.setFont(new Font("Arial", Font.BOLD, 15));
+        BCreer2.setFont(new Font("Arial", Font.BOLD, 15));
+        BProfil1.setFont(new Font("Arial", Font.BOLD, 15));
+        BProfil2.setFont(new Font("Arial", Font.BOLD, 15));
+        BProfil3.setFont(new Font("Arial", Font.BOLD, 15));
+        BProfil4.setFont(new Font("Arial", Font.BOLD, 15));
+        BProfilCreer.setFont(new Font("Arial", Font.BOLD, 15));
+        BProfilValider.setFont(new Font("Arial", Font.BOLD, 15));
+        Staff.setFont(new Font("Arial", Font.BOLD, 15));
+        ResAge.setFont(new Font("Arial", Font.BOLD, 15));
+        RepriseVideo.setFont(new Font("Arial", Font.BOLD, 15));
+
+        BConnexion.setForeground(Color.BLACK);
+        BConnecte.setForeground(Color.BLACK);
+        BCreation.setForeground(Color.BLACK);
+        BRetour.setForeground(Color.BLACK);
+        BRetour2.setForeground(Color.BLACK);
+        BRetour3.setForeground(Color.BLACK);
+        BCreer.setForeground(Color.BLACK);
+        BCreer2.setForeground(Color.BLACK);
+        BProfil1.setForeground(Color.BLACK);
+        BProfil2.setForeground(Color.BLACK);
+        BProfil3.setForeground(Color.BLACK);
+        BProfil4.setForeground(Color.BLACK);
+        BProfilCreer.setForeground(Color.BLACK);
+        BProfilValider.setForeground(Color.BLACK);
+
+        Staff.setForeground(Color.WHITE);
+        ResAge.setForeground(Color.WHITE);
+        RepriseVideo.setForeground(Color.WHITE);
+
+        Staff.setBackground(Color.DARK_GRAY);
+        ResAge.setBackground(Color.DARK_GRAY);
+        RepriseVideo.setBackground(Color.DARK_GRAY);
+
+
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.WEST;
@@ -226,17 +291,17 @@ public class VueConnexion extends JFrame {
         constraints.gridy = 0;
         constraints.gridx = 0;
 
-        BConnecte.setPreferredSize(new Dimension(100, 25));
+        BConnecte.setPreferredSize(new Dimension(150, 50));
         panel.add(BConnecte, constraints);
-        BCreation.setPreferredSize(new Dimension(100, 25));
+        BCreation.setPreferredSize(new Dimension(150, 50));
         constraints.gridx = 1;
         panel.add(BCreation, constraints);
     }
 
     public void InitConnexionCreation(){
 
-        panelConnexion.setBackground(Color.WHITE);
-        panelCreation.setBackground(Color.WHITE);
+        panelConnexion.setBackground(Color.DARK_GRAY);
+        panelCreation.setBackground(Color.DARK_GRAY);
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridy = 0;
@@ -297,6 +362,8 @@ public class VueConnexion extends JFrame {
 
     public void InitProfilCreation(){
 
+        panelCreationProfil.setBackground(Color.DARK_GRAY);
+
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridy = 0;
         constraints.gridx = 0;
@@ -316,19 +383,27 @@ public class VueConnexion extends JFrame {
         constraints.gridy = 20;
         panelCreationProfil.add(RepriseVideo, constraints);
 
+        String[] elements = {"Qualité Vidéo Basse", "Qualité Vidéo Moyenne", "Qualité Vidéo Haute"};
+
+        // Créer un JComboBox
+        comboBox = new JComboBox<>(elements);
+
         constraints.gridx = 1;
         constraints.gridy = 30;
-        panelCreationProfil.add(QualiteVideoBasse, constraints);
+        panelCreationProfil.add(comboBox, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 40;
+        panelCreationProfil.add(labelSousTitres, constraints);
+
+        String[] elements1 = {"Aucun", "Français", "Anglais", "Espagnol", "Italien", "Allemand"};
+
+        comboBoxSousTitres = new JComboBox<>(elements1);
 
         constraints.gridx = 1;
         constraints.gridy = 40;
 
-        panelCreationProfil.add(QualiteVideoMoyenne,constraints);
-
-        constraints.gridx = 1;
-        constraints.gridy = 50;
-
-        panelCreationProfil.add(QualiteVideoHaute,constraints);
+        panelCreationProfil.add(comboBoxSousTitres,constraints);
 
         constraints.gridx = 1;
         constraints.gridy = 60;
@@ -369,6 +444,8 @@ public class VueConnexion extends JFrame {
 
 
     public void InitProfil(Compte compte){
+
+        panelProfil.setBackground(Color.DARK_GRAY);
 
         System.out.println(compte.getNbProfil());
 
