@@ -2,6 +2,9 @@ import org.affichage.ConnexionMVC.ControllerConnexion;
 import org.affichage.ConnexionMVC.ModelConnexion;
 import org.affichage.ConnexionMVC.VueConnexion;
 import org.affichage.InformationFilmsMVC.ModelInformationFilms;
+import org.affichage.RechercheMVC.ControllerRecherche;
+import org.affichage.RechercheMVC.ModelRecherche;
+import org.affichage.RechercheMVC.VueRecherche;
 import org.compte.*;
 import org.affichage.InterfaceGraphiqueMVC.*;
 import org.dao.*;
@@ -25,6 +28,7 @@ public class Main {
         VueInterface vueInterface = new VueInterface(new Compte(),1);
         ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
         vueInterface.afficher();
+/*
 
         /*
         Bibliotheque b1 = new Bibliotheque();
@@ -80,8 +84,13 @@ public class Main {
             }
         }
         */
+/*
+        ModelRecherche modelRecherche = new ModelRecherche(new Compte(),1);
+        VueRecherche vueRecherche = new VueRecherche(new Compte(),1, "Le");
+        ControllerRecherche controllerRecherche = new ControllerRecherche(modelRecherche, vueRecherche);
+        vueRecherche.Afficher();
 
-
+*/
 
         /*
         /// Renvoyer vers la page web de la vidéo de l'oeuvre

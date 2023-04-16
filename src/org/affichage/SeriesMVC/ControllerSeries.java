@@ -6,6 +6,9 @@ import org.affichage.InformationSeriesMVC.ControllerInformationSeries;
 import org.affichage.InformationSeriesMVC.ModelInformationSeries;
 import org.affichage.InformationSeriesMVC.VueInformationSeries;
 import org.affichage.InterfaceGraphiqueMVC.*;
+import org.affichage.RechercheMVC.ControllerRecherche;
+import org.affichage.RechercheMVC.ModelRecherche;
+import org.affichage.RechercheMVC.VueRecherche;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -165,6 +168,12 @@ public class ControllerSeries implements ActionListener {
             vueFilms.Afficher();
 
             vueSeries.dispose();
+        }
+        if(e.getSource() == vueSeries.getBRecherche()){
+            ModelRecherche modelRecherche = new ModelRecherche(this.modelSeries.getCompte(),this.modelSeries.getProfil());
+            VueRecherche vueRecherche = new VueRecherche(this.modelSeries.getCompte(),this.modelSeries.getProfil(),this.vueSeries.getRecherche());
+            ControllerRecherche controllerRecherche = new ControllerRecherche(modelRecherche, vueRecherche);
+            vueRecherche.Afficher();
         }
     }
 }

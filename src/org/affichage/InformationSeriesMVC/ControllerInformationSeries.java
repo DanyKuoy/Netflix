@@ -22,8 +22,11 @@ public class ControllerInformationSeries implements ActionListener {
         this.modelInformationSeries = modelInformationSeries;
 
         this.vueInformationSeries.getBFermerInfo().addActionListener(this);
-        this.vueInformationSeries.getBRegarder().addActionListener(this);
-
+        for(int i=0;i<this.vueInformationSeries.getSeries().getNbSaisons();i++) {
+            for(int j=0;j<this.vueInformationSeries.getSeries().getListeEpisodes().get(i).size();j++) {
+                this.vueInformationSeries.getBRegarder(i, j).addActionListener(this);
+            }
+        }
     }
 
 
@@ -33,7 +36,7 @@ public class ControllerInformationSeries implements ActionListener {
         }
         for(int i=0;i<6;i++) {
             for (int j = 0; j < 30; j++) {
-                if (e.getSource() == this.vueInformationSeries.getBRegarder()) {
+                if (e.getSource() == this.vueInformationSeries.getBRegarder(i,j)) {
                     String lienVideo1 = this.vueInformationSeries.getSeries().getListeEpisodes().get(i).get(j).getLienEpisode();
                     String path = lienVideo1.substring(0, lienVideo1.length() - 1);       // Si y'a un "?" dans le lien, mettre -3
                     URI lienVideo2 = null;

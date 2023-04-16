@@ -564,90 +564,6 @@ public class VueFilms extends JFrame{
     }
 
 
-    public void InitImageBouton(){
-        for (int i = 0; i < 30; i++) {
-            BFilm1[i] = new JButton("Film " + i);
-            BFilm1[i].setPreferredSize(new Dimension(110,160));
-            panelFilm1.add(BFilm1[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm2[i] = new JButton("Film " + i);
-            BFilm2[i].setPreferredSize(new Dimension(110,160));
-            panelFilm2.add(BFilm2[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm3[i] = new JButton("Film " + i);
-            BFilm3[i].setPreferredSize(new Dimension(110,160));
-            panelFilm3.add(BFilm3[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm4[i] = new JButton("Film " + i);
-            BFilm4[i].setPreferredSize(new Dimension(110,160));
-            panelFilm4.add(BFilm4[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm5[i] = new JButton("Film " + i);
-            BFilm5[i].setPreferredSize(new Dimension(110,160));
-            panelFilm5.add(BFilm5[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm6[i] = new JButton("Film " + i);
-            BFilm6[i].setPreferredSize(new Dimension(110,160));
-            panelFilm6.add(BFilm6[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm7[i] = new JButton("Film " + i);
-            BFilm7[i].setPreferredSize(new Dimension(110,160));
-            panelFilm7.add(BFilm7[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm8[i] = new JButton("Film " + i);
-            BFilm8[i].setPreferredSize(new Dimension(110,160));
-            panelFilm8.add(BFilm8[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm9[i] = new JButton("Film " + i);
-            BFilm9[i].setPreferredSize(new Dimension(110,160));
-            panelFilm9.add(BFilm9[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm10[i] = new JButton("Film " + i);
-            BFilm10[i].setPreferredSize(new Dimension(110,160));
-            panelFilm10.add(BFilm10[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm11[i] = new JButton("Film " + i);
-            BFilm11[i].setPreferredSize(new Dimension(110,160));
-            panelFilm11.add(BFilm11[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm12[i] = new JButton("Film " + i);
-            BFilm12[i].setPreferredSize(new Dimension(110,160));
-            panelFilm12.add(BFilm12[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm13[i] = new JButton("Film " + i);
-            BFilm13[i].setPreferredSize(new Dimension(110,160));
-            panelFilm13.add(BFilm13[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm14[i] = new JButton("Film " + i);
-            BFilm14[i].setPreferredSize(new Dimension(110,160));
-            panelFilm14.add(BFilm14[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm15[i] = new JButton("Film " + i);
-            BFilm15[i].setPreferredSize(new Dimension(110,160));
-            panelFilm15.add(BFilm15[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm16[i] = new JButton("Film " + i);
-            BFilm16[i].setPreferredSize(new Dimension(110,160));
-            panelFilm16.add(BFilm16[i]);
-        }
-    }
-
-
 
     public void Afficher(){
         setContentPane(scrollPage);
@@ -714,6 +630,7 @@ public class VueFilms extends JFrame{
     public JButton[] getBFilm16() {
         return BFilm16;
     }
+    public  String getRecherche(){return recherche.getText();}
     public void setBFilm1(JButton B, int i) {
         BFilm1[i] = B;
     }

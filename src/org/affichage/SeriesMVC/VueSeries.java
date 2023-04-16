@@ -459,5 +459,6 @@ public class VueSeries extends JFrame{
     public JButton getBRetourConnexion() {
         return BRetourConnexion;
     }
+    public String getRecherche(){return recherche.getText();}
 
 }

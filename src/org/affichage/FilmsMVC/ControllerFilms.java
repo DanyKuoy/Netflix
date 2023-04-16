@@ -4,6 +4,9 @@ import org.affichage.InformationFilmsMVC.ControllerInformationFilms;
 import org.affichage.InformationFilmsMVC.ModelInformationFilms;
 import org.affichage.InformationFilmsMVC.VueInformationFilms;
 import org.affichage.InterfaceGraphiqueMVC.*;
+import org.affichage.RechercheMVC.ControllerRecherche;
+import org.affichage.RechercheMVC.ModelRecherche;
+import org.affichage.RechercheMVC.VueRecherche;
 import org.affichage.SeriesMVC.*;
 import org.affichage.ConnexionMVC.*;
 
@@ -224,6 +227,12 @@ public class ControllerFilms implements ActionListener {
             vueSeries.Afficher();
 
             vueFilms.dispose();
+        }
+        if(e.getSource() == vueFilms.getBRecherche()){
+            ModelRecherche modelRecherche = new ModelRecherche(this.modelFilms.getCompte(),this.modelFilms.getProfil());
+            VueRecherche vueRecherche = new VueRecherche(this.modelFilms.getCompte(),this.modelFilms.getProfil(),this.vueFilms.getRecherche());
+            ControllerRecherche controllerRecherche = new ControllerRecherche(modelRecherche, vueRecherche);
+            vueRecherche.Afficher();
         }
     }
 }

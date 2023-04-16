@@ -485,5 +485,6 @@ public class VueInterface extends JFrame{
     public JButton getBRetourConnexion() {
         return BRetourConnexion;
     }
+    public String getRecherche(){return recherche.getText();}
 
 }

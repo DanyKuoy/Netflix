@@ -27,7 +27,8 @@ public class VueInformationSeries extends JFrame{
     private String acteur;
 
     private JButton BFermerInfo = new JButton();
-    private JButton BRegarder = new JButton("Regarder");
+    private JButton[][] BRegarder = new JButton[4][30];
+    private JLabel[] Saison = new JLabel[4];
 
     public VueInformationSeries(Serie serie){
 
@@ -37,7 +38,7 @@ public class VueInformationSeries extends JFrame{
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         InitInfoFilm();
         setLocationRelativeTo(null);
-        getContentPane().add(panelInfoSeries, BorderLayout.CENTER);
+        getContentPane().add(scrollPage, BorderLayout.CENTER);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         System.out.println("Fin classe");
@@ -130,20 +131,29 @@ public class VueInformationSeries extends JFrame{
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.insets = new Insets(10, 10, 10, 10);
 
-        BRegarder.setBackground(Color.DARK_GRAY);
-        BRegarder.setFont(new Font("Arial", Font.BOLD, 30));
-        BRegarder.setForeground(Color.white);
+        System.out.println("Nb Saison : " + serie.getNbSaisons());
+        System.out.println("Nb Episodes : " + serie.getListeEpisodes().isEmpty());
 
-        BRegarder.setPreferredSize(new Dimension(200,100));
-        panelInfoSeries.add(BRegarder,constraints);
-
+        for(int i=0;i<serie.getNbSaisons();i++) {
+            Saison[i] = new JLabel("Saison " + i);
+            Saison[i].setFont(new Font("Arial", Font.BOLD, 25));
+            Saison[i].setForeground(Color.WHITE);
+            for(int j=0;j<serie.getListeEpisodes().get(i).size();j++)
+                {
+                BRegarder[i][j] = new JButton("Episode " + i + ": " + serie.getListeEpisodes().get(i).get(j).getTitreEpisode());
+                BRegarder[i][j].setBackground(Color.DARK_GRAY);
+                BRegarder[i][j].setFont(new Font("Arial", Font.BOLD, 15));
+                BRegarder[i][j].setForeground(Color.white);
+                BRegarder[i][j].setPreferredSize(new Dimension(1000, 50));
+                panelInfoSeries.add(BRegarder[i][j]);
+            }
+        }
         scrollPage.setViewportView(panelInfoSeries);
         scrollPage.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
 
     public void Afficher() {
-        panelInfoSeries.setVisible(true);
-        this.getContentPane().add(panelInfoSeries);
+        setVisible(true);
         revalidate();
         repaint();
     }
@@ -152,7 +162,7 @@ public class VueInformationSeries extends JFrame{
         return BFermerInfo;
     }
 
-    public JButton getBRegarder(){return BRegarder;}
+    public JButton getBRegarder(int i, int j){return BRegarder[i][j];}
     public Serie getSeries(){return serie;}
 
 }
