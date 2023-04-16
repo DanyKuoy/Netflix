@@ -3,9 +3,8 @@ package org.affichage.InterfaceGraphiqueMVC;
 import org.affichage.SeriesMVC.*;
 import org.affichage.FilmsMVC.*;
 import org.affichage.ConnexionMVC.*;
-import org.affichage.InforamtionOeuvre;
+import org.affichage.InformationFilmsMVC.InforamtionOeuvre;
 import org.affichage.SeriesMVC.ModelSeries;
-import org.compte.Compte;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -120,8 +119,8 @@ public class ControllerInterface implements ActionListener {
         }
         else if(e.getSource() == vueInterface.getBFilm()){
 
-            ModelFilms modelFilms = new ModelFilms();
-            VueFilms vueFilms = new VueFilms(new Compte(), 1);
+            ModelFilms modelFilms = new ModelFilms(this.modelInterface.getCompte(),this.modelInterface.getProfil());
+            VueFilms vueFilms = new VueFilms(this.modelInterface.getCompte(),this.modelInterface.getProfil());
             ControllerFilms controllerFilms = new ControllerFilms(modelFilms, vueFilms);
             vueFilms.Afficher();
 
@@ -129,8 +128,8 @@ public class ControllerInterface implements ActionListener {
         }
         if(e.getSource() == vueInterface.getBSerie()){
 
-            ModelSeries modelSeries = new ModelSeries();
-            VueSeries vueSeries = new VueSeries(new Compte(), 1);
+            ModelSeries modelSeries = new ModelSeries(this.modelInterface.getCompte(),this.modelInterface.getProfil());
+            VueSeries vueSeries = new VueSeries(this.modelInterface.getCompte(),this.modelInterface.getProfil());
             ControllerSeries controllerSeries = new ControllerSeries(modelSeries, vueSeries);
             vueSeries.Afficher();
 

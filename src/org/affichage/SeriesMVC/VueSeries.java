@@ -1,7 +1,7 @@
 package org.affichage.SeriesMVC;
 
 import org.compte.Compte;
-import org.affichage.*;
+import org.affichage.SeriesMVC.ModelSeries;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -122,11 +122,15 @@ public class VueSeries extends JFrame{
     private Dimension dim = new Dimension(200, 50);
     private Dimension esp = new Dimension(1440,10);
 
-
+    private Compte compte;
+    private int profil;
 
     public VueSeries(Compte compte, int profil) {
         setSize(1440, 720);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.compte = compte;
+        this.profil = profil;
+
         InitInterface();
 
     }

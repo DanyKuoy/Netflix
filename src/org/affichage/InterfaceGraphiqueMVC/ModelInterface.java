@@ -17,16 +17,11 @@ public class ModelInterface {
 
     private Compte compte;
 
-    private ArrayList<Film> Action;
-    private ArrayList<Film> Comedie;
-    private ArrayList<Film> SciFi;
-    private ArrayList<Film> Fantastique;
-    private ArrayList<Film> Francais;
-    private ArrayList<Film> Policier;
-    private ArrayList<Film> Horreur;
+    private int profil;
 
-    public ModelInterface(){
-
+    public ModelInterface(Compte compte, int profil){
+        this.compte = compte;
+        this.profil = profil;
     }
 
     public Compte getCompte(){
@@ -37,4 +32,7 @@ public class ModelInterface {
         this.compte = compte;
     }
 
+    public int getProfil(){
+        return profil;
+    }
 }

@@ -564,6 +564,9 @@ public class VueConnexion extends JFrame {
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
+        constraints.gridx = 2;
+        constraints.gridy = 3;
+        panelProfil.add(BRetour, constraints);
     }
 
     public void AffichageProfil(){

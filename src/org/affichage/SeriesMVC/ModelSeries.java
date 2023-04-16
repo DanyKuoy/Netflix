@@ -14,14 +14,17 @@ import java.util.Map;
 public class ModelSeries {
 
     private Compte compte;
+    private int profil;
     private Bibliotheque biblio = new Bibliotheque();
     private BibliothequeDAO biblioDAO = new BibliothequeDAO();
 
-    public ModelSeries(){
+    public ModelSeries(Compte compte, int profil){
         biblio.setListeSerie(biblioDAO.chargerSeries());
         Map<String, ArrayList<Serie>> map = new HashMap<>();
         map = biblio.trierSeries();
         biblio.setTriSerie(map);
+        this.compte = compte;
+        this.profil = profil;
     }
 
     public Bibliotheque getBiblio(){
@@ -34,6 +37,10 @@ public class ModelSeries {
 
     public void setCompte(Compte compte){
         this.compte = compte;
+    }
+
+    public int getProfil(){
+        return profil;
     }
 
 }

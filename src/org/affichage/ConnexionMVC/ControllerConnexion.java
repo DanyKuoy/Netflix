@@ -278,30 +278,30 @@ public class ControllerConnexion implements ActionListener {
 
         else if(e.getSource() == this.vueConnexion.getBProfil1()){
             this.vueConnexion.dispose();
-            ModelInterface modelInterface = new ModelInterface();
-            VueInterface vueInterface = new VueInterface(new Compte(), 1);
+            ModelInterface modelInterface = new ModelInterface(this.modelConnexion.getCompte(),1);
+            VueInterface vueInterface = new VueInterface(this.modelConnexion.getCompte(),1);
             ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
             vueInterface.afficher();
 
         }
         else if(e.getSource() == this.vueConnexion.getBProfil2()){
             this.vueConnexion.dispose();
-            ModelInterface modelInterface = new ModelInterface();
-            VueInterface vueInterface = new VueInterface(new Compte(), 2);
+            ModelInterface modelInterface = new ModelInterface(this.modelConnexion.getCompte(),2);
+            VueInterface vueInterface = new VueInterface(this.modelConnexion.getCompte(),3);
             ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
             vueInterface.afficher();
         }
         else if(e.getSource() == this.vueConnexion.getBProfil3()){
             this.vueConnexion.dispose();
-            ModelInterface modelInterface = new ModelInterface();
-            VueInterface vueInterface = new VueInterface(new Compte(), 1);
+            ModelInterface modelInterface = new ModelInterface(this.modelConnexion.getCompte(),3);
+            VueInterface vueInterface = new VueInterface(this.modelConnexion.getCompte(),3);
             ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
             vueInterface.afficher();
         }
         else if(e.getSource() == this.vueConnexion.getBProfil4()){
             this.vueConnexion.dispose();
-            ModelInterface modelInterface = new ModelInterface();
-            VueInterface vueInterface = new VueInterface(new Compte(), 1);
+            ModelInterface modelInterface = new ModelInterface(this.modelConnexion.getCompte(),4);
+            VueInterface vueInterface = new VueInterface(this.modelConnexion.getCompte(),4);
             ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
             vueInterface.afficher();
         }
