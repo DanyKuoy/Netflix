@@ -20,7 +20,7 @@ public class Main {
         vueInterface.afficher();
 
 
-/*
+    /*
         Bibliotheque b1 = new Bibliotheque();
         BibliothequeDAO b = new BibliothequeDAO();
         b1.setListeFilm(b.chargerFilms());
@@ -41,7 +41,7 @@ public class Main {
             }
             System.out.println("------------------------------------------");
         }
-*/
+
         /*
         ArrayList<Oeuvre> recherche = b1.rechercheTitre("le");
         if(recherche.size()==0) {
