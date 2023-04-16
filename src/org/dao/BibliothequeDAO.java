@@ -8,6 +8,9 @@ import java.io.*;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * La classe BibliothequeDAO permet de gérer l'accès à la base de données de la récupération des films et séries
+ */
 public class BibliothequeDAO {
     /** Attributs **/
     private String urlBDD;
@@ -36,7 +39,11 @@ public class BibliothequeDAO {
 
     /** Méthodes **/
 
-    /* Méthode permettant de récupérer l'ensemble de la table film et qui retourne une ArrayList de films */
+    /**
+     *  Méthode permettant de récupérer l'ensemble de la table film et qui retourne une ArrayList de films
+     *
+     *  @return L'ArrayList de films récupérée depuis la table film de la BDD
+     *  */
     public ArrayList<Film> chargerFilms() {
         /// Déclaration de variables
         ArrayList<Film> liste = new ArrayList<>();
@@ -76,7 +83,11 @@ public class BibliothequeDAO {
         return liste;
     }
 
-    /* Méthode permettant de récupérer l'ensemble de la table serie et qui retourne une ArrayList de séries */
+    /**
+     *  Méthode permettant de récupérer l'ensemble de la table serie et qui retourne une ArrayList de séries
+     *
+     *  @return L'ArrayList de films récupérée depuis la table serie de la BDD
+     *  */
     public ArrayList<Serie> chargerSeries() {
         /// Déclaration de variables
         ArrayList<Serie> liste = new ArrayList<>();
@@ -145,6 +156,50 @@ public class BibliothequeDAO {
             System.out.println("Erreur: " + e.getMessage());
         }
         return liste;
+    }
+
+    /**
+     * Méthode permettant de supprimer un film
+     * @param nom Le titre exact du film
+     */
+    public void supprimerFilm(String nom) {
+        try {
+            /// Communication avec la base de données
+            Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
+            Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
+            PreparedStatement statement3 = connection.prepareStatement("DELETE FROM film WHERE nomOeuvre = ?");
+            statement3.setString(1, nom);
+            statement3.executeUpdate();
+            connection.close();             // Fermeture de la connexion à la BDD
+        }
+        catch(ClassNotFoundException e) {
+            System.out.println("Erreur: le pilote JDBC n'a pas ete trouve!");
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Méthode permettant de supprimer une série
+     * @param nom Le titre exact de la série
+     */
+    public void supprimerSerie(String nom) {
+        try {
+            /// Communication avec la base de données
+            Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
+            Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
+            PreparedStatement statement3 = connection.prepareStatement("DELETE FROM serie WHERE nomOeuvre = ?");
+            statement3.setString(1, nom);
+            statement3.executeUpdate();
+            connection.close();             // Fermeture de la connexion à la BDD
+        }
+        catch(ClassNotFoundException e) {
+            System.out.println("Erreur: le pilote JDBC n'a pas ete trouve!");
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
     }
 
 }

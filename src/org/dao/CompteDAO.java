@@ -9,6 +9,9 @@ import java.io.*;
 import java.sql.*;
 import java.util.*;
 
+/**
+ *  Cette classe permet la gestion des comptes et des profils rattachés dans la BDD
+ */
 public class CompteDAO {
     /** Attributs **/
     private String urlBDD;
@@ -37,7 +40,9 @@ public class CompteDAO {
 
     /** Méthodes **/
 
-    /* Méthode permettant d'ajouter un profil dans un compte */
+    /**
+     *  Méthode permettant d'ajouter un profil dans un compte
+     */
     public void ajouterProfil(String prenom, String email, int restrictionAge, int repriseVideo, int qualiteVideo, String sousTitres) {
         try {
 
@@ -65,7 +70,9 @@ public class CompteDAO {
         }
     }
 
-    /* Méthode permettant de supprimer un profil */
+    /**
+     *  Méthode permettant de supprimer un profil
+     */
     public void supprimerProfil(String email, String prenom) {
         /// Saisie de l'utilisateur
 
@@ -101,7 +108,11 @@ public class CompteDAO {
         }
     }
 
-    /* Méthode permettant de charger les profils d'un compte */
+    /**
+     *  Méthode permettant de charger les profils d'un compte
+     *
+     * @return L'ArrayList de profil rattaché au compte
+     *  */
     public ArrayList<Profil> chargerProfils(String email) {
         ///Déclaration de variables
         ArrayList<Profil> listeProfil = new ArrayList<>();
@@ -141,8 +152,12 @@ public class CompteDAO {
         return listeProfil;
     }
 
-    /* Méthode permettant de verifier si un compte est dans la BDD.
-    La méthode passe en paramètre l'email et le mot de passe. Elle retourne un booléen */
+    /**
+     *  Méthode permettant de verifier si un compte est dans la BDD.
+     *  @param ID l'adresse mail
+     *  @param MDP le mot de passe
+     *  @return un booléen
+     */
     public boolean verifierCompte(String ID, String MDP) {
         /// Creation d'objets et de variables
         boolean trouve = false;
@@ -178,7 +193,11 @@ public class CompteDAO {
         return false;
     }
 
-    /* Méthode permettant de verifier si l'email existe déjà dans la BDD */
+    /**
+     *  Méthode permettant de verifier si l'email existe déjà dans la BDD
+     *  @param ID l'adresse mail
+     *  @return un booléen
+     */
     public boolean verifierCreerCompte(String ID) {
         try {
             /// Communication avec la base de données
@@ -207,6 +226,12 @@ public class CompteDAO {
         return false;
     }
 
+    /**
+     *  Méthode permettant de charger un compte selon le mail et le mot de passe renseigné
+     *  @param ID l'adresse mail
+     *  @param MDP le mot de passe
+     *  @return un booléen
+     */
     public Compte chargerCompte(String ID, String MDP) {
         /// Creation d'objets et de variables
         Compte compte = new Compte();
@@ -249,7 +274,11 @@ public class CompteDAO {
         return compte;
     }
 
-    /* Méthode permettant de recharger le compte, apres avoir ajouté un profil */
+    /**
+     *  Méthode permettant de recharger le compte, apres avoir ajouté un profil
+     *  @param ID l'adresse mail
+     *  @return un booléen
+     */
     public Compte rechargerCompte(String ID) {
         /// Creation d'objets et de variables
         Compte compte = new Compte();
@@ -291,7 +320,14 @@ public class CompteDAO {
         return compte;
     }
 
-    /* Méthode permettant de créer un compte dans la base de données */
+    /**
+     *  Méthode permettant de créer un compte dans la base de données
+     *  @param prenom le prenom
+     *  @param nom le nom
+     *  @param email l'email
+     *  @param mdp le mot de passe
+     *  @param isstaff un booléen qui dit si on est un membre du staff ou pas
+     */
     public void creerCompte(String prenom, String nom, String email, String mdp, int isstaff) {
         try {
             /// Communication avec la base de données
@@ -315,6 +351,13 @@ public class CompteDAO {
     }
 
     /* Méthode permettant de modifier un compte */
+    /**
+     *  Méthode permettant de modifier un compte
+     *  @param prenom le prenom
+     *  @param nom le nom
+     *  @param mdp le mot de passe
+     *  @param staff un booléen qui dit si on est un membre du staff ou pas
+     */
     public void modifierCompte(String prenom, String nom, String mdp, boolean staff) {
         try {
             /// Communication avec la base de données
