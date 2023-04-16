@@ -18,10 +18,11 @@ public class ModelInterface {
 
     private Map<String, ArrayList<Film>> listeFilm;
     private Film[][] ListeTrideFilms = new Film[30][20];
-    private Map<String, ArrayList<Film>> listeSerie;
-    private Film[][] ListeTrideSerie = new Film[30][15];
+    private Map<String, ArrayList<Serie>> listeSerie;
+    private Serie[][] ListeTrideSerie = new Serie[30][15];
 
     private String[][] liens = new String[30][30];
+    private String[][] liensSerie = new String[30][30];
 
     private BibliothequeDAO biblioDAO = new BibliothequeDAO();
 
@@ -30,9 +31,6 @@ public class ModelInterface {
     public ModelInterface(Compte compte, int profil){
 
         biblio.setListeFilm(biblioDAO.chargerFilms());
-        //b1.setListeSerie(b.chargerSeries());
-
-        Map<String, ArrayList<Film>> listeTrie = new HashMap<>();
 
         /// Tri des films
         biblio.setTriFilm(biblio.trierFilms());
@@ -52,6 +50,19 @@ public class ModelInterface {
             System.out.println("---------------------------------");
         }
 
+        biblio.setListeSerie(biblioDAO.chargerSeries());
+        biblio.setTriSerie(biblio.trierSeries());
+        j=0;
+        for(String cle: biblio.getTriSerie().keySet()) {
+            ArrayList<Serie> listeserie = biblio.getTriSerie().get(cle);
+            System.out.println("GENRE: " + cle + j);
+            for(int i=0; i<listeserie.size(); i++) {
+                liensSerie[i][j] = listeserie.get(i).getNomOeuvre();
+                ListeTrideSerie[i][j] = listeserie.get(i);
+            }
+            j++;
+        }
+
         this.compte = compte;
         this.profil = profil;
 
@@ -61,8 +72,12 @@ public class ModelInterface {
     public Film getOeuvre(int i, int j){
         return ListeTrideFilms[i][j];
     }
+    public Serie getSerie(int i, int j){return ListeTrideSerie[i][j];}
     public Map<String, ArrayList<Film>> getlisteFilm(){
         return listeFilm;
+    }
+    public Map<String, ArrayList<Serie>> getlisteSerie(){
+        return listeSerie;
     }
     public Compte getCompte(){
         return compte;
@@ -74,6 +89,9 @@ public class ModelInterface {
 
     public String[][] getLiens(){
         return liens;
+    }
+    public String[][] getLiensSerie(){
+        return liensSerie;
     }
 
     public int getProfil(){

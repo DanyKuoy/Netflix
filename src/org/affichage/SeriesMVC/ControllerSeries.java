@@ -2,9 +2,9 @@ package org.affichage.SeriesMVC;
 
 import org.affichage.ConnexionMVC.*;
 import org.affichage.FilmsMVC.*;
-import org.affichage.InformationFilmsMVC.ControllerInformationFilms;
-import org.affichage.InformationFilmsMVC.ModelInformationFilms;
-import org.affichage.InformationFilmsMVC.VueInformationFilms;
+import org.affichage.InformationSeriesMVC.ControllerInformationSeries;
+import org.affichage.InformationSeriesMVC.ModelInformationSeries;
+import org.affichage.InformationSeriesMVC.VueInformationSeries;
 import org.affichage.InterfaceGraphiqueMVC.*;
 
 import java.awt.event.ActionEvent;
@@ -24,33 +24,39 @@ public class ControllerSeries implements ActionListener {
         this.vueSeries.getBRecherche().addActionListener(this);
 
 
-        for(int i=0; i<30; i++) {
 
-
-            /*  if(this.modelSeries.getBiblio().getTriSerie().get("Comédie").get(i).getImageOeuvre()!=null) {
-                this.vueSeries.getBFilm1()[i].setIcon((Icon) this.modelSeries.getBiblio().getTriSerie().get("Comédie").get(i).getImageOeuvre());
-            }
-            else{
-                this.vueSeries.remove(this.vueSeries.getBFilm1()[i]);
-            }*/
-
+        for(int i=0; i<11; i++) {
             this.vueSeries.getBFilm1()[i].addActionListener(this);
-            this.vueSeries.getBFilm2()[i].addActionListener(this);
-            this.vueSeries.getBFilm3()[i].addActionListener(this);
-            this.vueSeries.getBFilm4()[i].addActionListener(this);
-            this.vueSeries.getBFilm5()[i].addActionListener(this);
-            this.vueSeries.getBFilm6()[i].addActionListener(this);
-            this.vueSeries.getBFilm7()[i].addActionListener(this);
-            this.vueSeries.getBFilm8()[i].addActionListener(this);
-            this.vueSeries.getBFilm9()[i].addActionListener(this);
-            this.vueSeries.getBFilm10()[i].addActionListener(this);
-            this.vueSeries.getBFilm11()[i].addActionListener(this);
-            this.vueSeries.getBFilm12()[i].addActionListener(this);
-            this.vueSeries.getBFilm13()[i].addActionListener(this);
-            this.vueSeries.getBFilm14()[i].addActionListener(this);
-            this.vueSeries.getBFilm15()[i].addActionListener(this);
-            this.vueSeries.getBFilm16()[i].addActionListener(this);
         }
+        for(int i=0; i<0; i++) {
+            this.vueSeries.getBFilm2()[i].addActionListener(this);
+        }
+        for(int i=0; i<18; i++) {
+            this.vueSeries.getBFilm3()[i].addActionListener(this);
+        }
+        for(int i=0; i<10; i++) {
+            this.vueSeries.getBFilm4()[i].addActionListener(this);
+        }
+        for(int i=0; i<14; i++) {
+            this.vueSeries.getBFilm5()[i].addActionListener(this);
+        }
+        for(int i=0; i<21; i++) {
+            this.vueSeries.getBFilm6()[i].addActionListener(this);
+        }
+        for(int i=0; i<13; i++) {
+            this.vueSeries.getBFilm7()[i].addActionListener(this);
+        }
+        for(int i=0; i<3; i++) {
+            this.vueSeries.getBFilm8()[i].addActionListener(this);
+        }
+        for(int i=0; i<10; i++) {
+            this.vueSeries.getBFilm9()[i].addActionListener(this);
+        }
+        for(int i=0; i<11; i++) {
+            this.vueSeries.getBFilm10()[i].addActionListener(this);
+        }
+
+
 
         this.vueSeries.getBRetourConnexion().addActionListener(this);
 
@@ -59,102 +65,77 @@ public class ControllerSeries implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         for (int i = 0; i < 40; i++) {
-/*
+
             if (e.getSource() == vueSeries.getBFilm1()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationSerie(this.modelSeries.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelSeries.getOeuvre(i,5));
+                ControllerInformationSeries controllerInformationFilms = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueSeries.getBFilm2()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelSerie.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelSeries.getOeuvre(i,1));
+                ControllerInformationSeries controllerInformationFilms = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueSeries.getBFilm3()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelSeries.getOeuvre(i,9));
+                ControllerInformationSeries controllerInformationFilms = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueSeries.getBFilm4()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelSeries.getOeuvre(i,3));
+                ControllerInformationSeries controllerInformationFilms = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueSeries.getBFilm5()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelSeries.getOeuvre(i,6));
+                ControllerInformationSeries controllerInformationFilms = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueSeries.getBFilm6()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelSeries.getOeuvre(i,7));
+                ControllerInformationSeries controllerInformationFilms = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueSeries.getBFilm7()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelSeries.getOeuvre(i,0));
+                ControllerInformationSeries controllerInformationFilms = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueSeries.getBFilm8()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelSeries.getOeuvre(i,1));
+                ControllerInformationSeries controllerInformationFilms = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueSeries.getBFilm9()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelSeries.getOeuvre(i,4));
+                ControllerInformationSeries controllerInformationFilms = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueSeries.getBFilm10()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelSeries.getOeuvre(i,2));
+                ControllerInformationSeries controllerInformationFilms = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
-            else if (e.getSource() == vueSeries.getBFilm11()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
-            }
-
-            else if (e.getSource() == vueSeries.getBFilm12()[i]) {
-                vueSeries.dispose();
-                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
-                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
-                vueInformationFilms.Afficher();
-            }*/
         }
 
         if(e.getSource() == vueSeries.getBRetourConnexion()){

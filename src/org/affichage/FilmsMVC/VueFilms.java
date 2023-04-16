@@ -365,7 +365,7 @@ public class VueFilms extends JFrame{
             panelFilm16.add(BFilm16[i]);
         }
 
-        for(int i=0; i<1; i++) {
+        for(int i=0; i<11; i++) {
             ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][6]+".png");
             Image image = photoIcon.getImage(); // transform it
             Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -405,21 +405,21 @@ public class VueFilms extends JFrame{
             BFilm10[i].setPreferredSize(new Dimension(110,160));
             panelFilm10.add(BFilm10[i]);
         }
-        for(int i=0; i<17; i++) {
+        for(int i=0; i<10; i++) {
             ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][11]+".png");
-            Image image = photoIcon.getImage(); // transform it
-            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-            BFilm13[i] = new JButton (new ImageIcon(newimg));
-            BFilm13[i].setPreferredSize(new Dimension(110,160));
-            panelFilm13.add(BFilm13[i]);
-        }
-        for(int i=0; i<5; i++) {
-            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][12]+".png");
             Image image = photoIcon.getImage(); // transform it
             Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
             BFilm12[i] = new JButton (new ImageIcon(newimg));
             BFilm12[i].setPreferredSize(new Dimension(110,160));
             panelFilm12.add(BFilm12[i]);
+        }
+        for(int i=0; i<17; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][12]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm13[i] = new JButton (new ImageIcon(newimg));
+            BFilm13[i].setPreferredSize(new Dimension(110,160));
+            panelFilm13.add(BFilm13[i]);
         }
         for(int i=0; i<12; i++) {
             ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][13]+".png");

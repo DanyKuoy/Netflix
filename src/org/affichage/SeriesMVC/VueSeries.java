@@ -1,5 +1,6 @@
 package org.affichage.SeriesMVC;
 
+import org.affichage.FilmsMVC.ModelFilms;
 import org.compte.Compte;
 import org.affichage.SeriesMVC.ModelSeries;
 
@@ -26,12 +27,7 @@ public class VueSeries extends JFrame{
     private JPanel panelFilm8 = new JPanel();
     private JPanel panelFilm9 = new JPanel();
     private JPanel panelFilm10 = new JPanel();
-    private JPanel panelFilm11 = new JPanel();
-    private JPanel panelFilm12 = new JPanel();
-    private JPanel panelFilm13 = new JPanel();
-    private JPanel panelFilm14 = new JPanel();
-    private JPanel panelFilm15 = new JPanel();
-    private JPanel panelFilm16 = new JPanel();
+
 
     private JPanel espaceFilm1 = new JPanel();
     private JPanel espaceFilm2 = new JPanel();
@@ -43,12 +39,6 @@ public class VueSeries extends JFrame{
     private JPanel espaceFilm8 = new JPanel();
     private JPanel espaceFilm9 = new JPanel();
     private JPanel espaceFilm10 = new JPanel();
-    private JPanel espaceFilm11 = new JPanel();
-    private JPanel espaceFilm12 = new JPanel();
-    private JPanel espaceFilm13 = new JPanel();
-    private JPanel espaceFilm14 = new JPanel();
-    private JPanel espaceFilm15 = new JPanel();
-    private JPanel espaceFilm16 = new JPanel();
 
     private JPanel image = new JPanel();
     private JPanel description = new JPanel();
@@ -65,31 +55,18 @@ public class VueSeries extends JFrame{
     private JScrollPane scrollFilm8 = new JScrollPane(panelFilm8);
     private JScrollPane scrollFilm9 = new JScrollPane(panelFilm9);
     private JScrollPane scrollFilm10 = new JScrollPane(panelFilm10);
-    private JScrollPane scrollFilm11 = new JScrollPane(panelFilm11);
-    private JScrollPane scrollFilm12 = new JScrollPane(panelFilm12);
-    private JScrollPane scrollFilm13 = new JScrollPane(panelFilm13);
-    private JScrollPane scrollFilm14 = new JScrollPane(panelFilm14);
-    private JScrollPane scrollFilm15 = new JScrollPane(panelFilm15);
-    private JScrollPane scrollFilm16 = new JScrollPane(panelFilm16);
 
 
     private JLabel genre1 = new JLabel("Drame                                                                                                                                                                        ");
     private JLabel genre2 = new JLabel("Reprendre la lecture                                                                                                                                                  ");
-    private JLabel genre3 = new JLabel("Fantasique                                                                                                                                                                 ");
-    private JLabel genre4 = new JLabel("Comédies                                                                                                                                                                   ");
-    private JLabel genre5 = new JLabel("Science-Fiction                                                                                                                                                         ");
-    private JLabel genre6 = new JLabel("Action et Aventure                                                                                                                                                    ");
-    private JLabel genre7 = new JLabel("Horreur                                                                                                                                                                       ");
-    private JLabel genre8 = new JLabel("Romances                                                                                                                                                                  ");
-    private JLabel genre9 = new JLabel("Animés                                                                                                                                                                      ");
-    private JLabel genre10 = new JLabel("Documentaires                                                                                                                                                           ");
-    private JLabel genre11 = new JLabel("Séries Internationales                                                                                                                                                 ");
-    private JLabel genre12 = new JLabel("Séries pour Ados                                                                                                                                                 ");
-    private JLabel genre13 = new JLabel("Télé-réalité                                                                                                                                                                ");
-    private JLabel genre14 = new JLabel("Thriller                                                                                                                                                                      ");
-    private JLabel genre15 = new JLabel("Jeunesse et Famille                                                                                                                                                  ");
-    private JLabel genre16 = new JLabel("Mini-séries                                                                                                                                                  ");
-
+    private JLabel genre3 = new JLabel("Comédies                                                                                                                                                                   ");
+    private JLabel genre4 = new JLabel("Action et Aventure                                                                                                                                                    ");
+    private JLabel genre5 = new JLabel("Romances                                                                                                                                                                  ");
+    private JLabel genre6 = new JLabel("Séries Internationales                                                                                                                                                 ");
+    private JLabel genre7 = new JLabel("Séries pour Ados                                                                                                                                                 ");
+    private JLabel genre8 = new JLabel("Télé-réalité                                                                                                                                                                ");
+    private JLabel genre9 = new JLabel("Thriller                                                                                                                                                                      ");
+    private JLabel genre10 = new JLabel("Jeunesse et Famille                                                                                                                                                  ");
     private JLabel Serie = new JLabel("Séries                                                                                                                                                                            ");
 
 
@@ -107,12 +84,6 @@ public class VueSeries extends JFrame{
     private JButton[] BFilm8 = new JButton[45];
     private JButton[] BFilm9 = new JButton[45];
     private JButton[] BFilm10 = new JButton[45];
-    private JButton[] BFilm11 = new JButton[45];
-    private JButton[] BFilm12 = new JButton[45];
-    private JButton[] BFilm13 = new JButton[45];
-    private JButton[] BFilm14 = new JButton[45];
-    private JButton[] BFilm15 = new JButton[45];
-    private JButton[] BFilm16 = new JButton[45];
 
     private JButton BFermerInfo = new JButton();
     private JButton BRetourConnexion = new JButton("DECONNEXION");
@@ -150,16 +121,10 @@ public class VueSeries extends JFrame{
         espaceFilm8.setBackground(Color.DARK_GRAY);
         espaceFilm9.setBackground(Color.DARK_GRAY);
         espaceFilm10.setBackground(Color.DARK_GRAY);
-        espaceFilm11.setBackground(Color.DARK_GRAY);
-        espaceFilm12.setBackground(Color.DARK_GRAY);
-        espaceFilm13.setBackground(Color.DARK_GRAY);
-        espaceFilm14.setBackground(Color.DARK_GRAY);
-        espaceFilm15.setBackground(Color.DARK_GRAY);
-        espaceFilm16.setBackground(Color.DARK_GRAY);
 
         panelBandeau.setPreferredSize(new Dimension(1350, 75));
         panelBandeau.setLayout(new GridBagLayout());
-        panel.setPreferredSize(new Dimension(140, 4250));
+        panel.setPreferredSize(new Dimension(140, 2800));
         GridBagConstraints constraints = new GridBagConstraints();
         JPanel espace = new JPanel();
         espace.setBackground(Color.DARK_GRAY);
@@ -224,12 +189,6 @@ public class VueSeries extends JFrame{
         scrollFilm8.setPreferredSize(new Dimension(1300, 200));
         scrollFilm9.setPreferredSize(new Dimension(1300, 200));
         scrollFilm10.setPreferredSize(new Dimension(1300, 200));
-        scrollFilm11.setPreferredSize(new Dimension(1300, 200));
-        scrollFilm12.setPreferredSize(new Dimension(1300, 200));
-        scrollFilm13.setPreferredSize(new Dimension(1300, 200));
-        scrollFilm14.setPreferredSize(new Dimension(1300, 200));
-        scrollFilm15.setPreferredSize(new Dimension(1300, 200));
-        scrollFilm16.setPreferredSize(new Dimension(1300, 200));
 
         scrollFilm1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollFilm2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -241,12 +200,6 @@ public class VueSeries extends JFrame{
         scrollFilm8.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollFilm9.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollFilm10.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollFilm11.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollFilm12.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollFilm13.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollFilm14.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollFilm15.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollFilm16.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         BoxLayout boxLayout = new BoxLayout(panelFilm1, BoxLayout.Y_AXIS); // BoxLayout avec un alignement vertical
         panelFilm1.setLayout(boxLayout);
@@ -261,12 +214,6 @@ public class VueSeries extends JFrame{
         panelFilm8.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
         panelFilm9.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
         panelFilm10.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
-        panelFilm11.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
-        panelFilm12.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
-        panelFilm13.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
-        panelFilm14.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
-        panelFilm15.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
-        panelFilm16.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 10));
 
         panelFilm1.setBackground(Color.darkGray);
         panelFilm2.setBackground(Color.darkGray);
@@ -278,12 +225,6 @@ public class VueSeries extends JFrame{
         panelFilm8.setBackground(Color.darkGray);
         panelFilm9.setBackground(Color.darkGray);
         panelFilm10.setBackground(Color.darkGray);
-        panelFilm11.setBackground(Color.darkGray);
-        panelFilm12.setBackground(Color.darkGray);
-        panelFilm13.setBackground(Color.darkGray);
-        panelFilm14.setBackground(Color.darkGray);
-        panelFilm15.setBackground(Color.darkGray);
-        panelFilm16.setBackground(Color.darkGray);
 
         scrollFilm1.setBorder(null);
         scrollFilm2.setBorder(null);
@@ -295,96 +236,98 @@ public class VueSeries extends JFrame{
         scrollFilm8.setBorder(null);
         scrollFilm9.setBorder(null);
         scrollFilm10.setBorder(null);
-        scrollFilm11.setBorder(null);
-        scrollFilm12.setBorder(null);
-        scrollFilm13.setBorder(null);
-        scrollFilm14.setBorder(null);
-        scrollFilm15.setBorder(null);
-        scrollFilm16.setBorder(null);
 
 
-        for (int i = 0; i < 30; i++) {
+        ModelSeries modelFilms = new ModelSeries(compte,profil);
 
-
-            BFilm1[i] = new JButton("Film " + i);
+        for(int i=0; i<11; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Serie/"+modelFilms.getLiens()[i][5]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm1[i] = new JButton (new ImageIcon(newimg));
             BFilm1[i].setPreferredSize(new Dimension(110,160));
             panelFilm1.add(BFilm1[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm2[i] = new JButton("Film " + i);
-            BFilm2[i].setPreferredSize(new Dimension(110,160));
-            panelFilm2.add(BFilm2[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm3[i] = new JButton("Film " + i);
-            BFilm3[i].setPreferredSize(new Dimension(110,160));
-            panelFilm3.add(BFilm3[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm4[i] = new JButton("Film " + i);
-            BFilm4[i].setPreferredSize(new Dimension(110,160));
-            panelFilm4.add(BFilm4[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm5[i] = new JButton("Film " + i);
-            BFilm5[i].setPreferredSize(new Dimension(110,160));
-            panelFilm5.add(BFilm5[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm6[i] = new JButton("Film " + i);
-            BFilm6[i].setPreferredSize(new Dimension(110,160));
-            panelFilm6.add(BFilm6[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm7[i] = new JButton("Film " + i);
-            BFilm7[i].setPreferredSize(new Dimension(110,160));
-            panelFilm7.add(BFilm7[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm8[i] = new JButton("Film " + i);
+
+        for(int i=0; i<2; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Serie/"+modelFilms.getLiens()[i][8]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm8[i] = new JButton (new ImageIcon(newimg));
             BFilm8[i].setPreferredSize(new Dimension(110,160));
             panelFilm8.add(BFilm8[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm9[i] = new JButton("Film " + i);
+
+        for(int i=0; i<18; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Serie/"+modelFilms.getLiens()[i][9]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm3[i] = new JButton (new ImageIcon(newimg));
+            BFilm3[i].setPreferredSize(new Dimension(110,160));
+            panelFilm3.add(BFilm3[i]);
+        }
+
+        for(int i=0; i<10; i++) {
+            System.out.println(modelFilms.getLiens()[i][1]+".png");
+            ImageIcon photoIcon = new ImageIcon("image/Serie/"+modelFilms.getLiens()[i][3]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm4[i] = new JButton (new ImageIcon(newimg));
+            BFilm4[i].setPreferredSize(new Dimension(110,160));
+            panelFilm4.add(BFilm4[i]);
+        }
+
+        for(int i=0; i<14; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Serie/"+modelFilms.getLiens()[i][6]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm5[i] = new JButton (new ImageIcon(newimg));
+            BFilm5[i].setPreferredSize(new Dimension(110,160));
+            panelFilm5.add(BFilm5[i]);
+        }
+
+        for(int i=0; i<21; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Serie/"+modelFilms.getLiens()[i][7]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm6[i] = new JButton (new ImageIcon(newimg));
+            BFilm6[i].setPreferredSize(new Dimension(110,160));
+            panelFilm6.add(BFilm6[i]);
+        }
+
+        for(int i=0; i<13; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Serie/"+modelFilms.getLiens()[i][0]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm7[i] = new JButton (new ImageIcon(newimg));
+            BFilm7[i].setPreferredSize(new Dimension(110,160));
+            panelFilm7.add(BFilm7[i]);
+        }
+        for(int i=0; i<3; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Serie/"+modelFilms.getLiens()[i][1]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm8[i+2] = new JButton (new ImageIcon(newimg));
+            BFilm8[i+2].setPreferredSize(new Dimension(110,160));
+            panelFilm8.add(BFilm8[i+2]);
+        }
+        for(int i=0; i<10; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Serie/"+modelFilms.getLiens()[i][4]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm9[i] = new JButton (new ImageIcon(newimg));
             BFilm9[i].setPreferredSize(new Dimension(110,160));
             panelFilm9.add(BFilm9[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm10[i] = new JButton("Film " + i);
+        for(int i=0; i<11; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Serie/"+modelFilms.getLiens()[i][2]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm10[i] = new JButton (new ImageIcon(newimg));
             BFilm10[i].setPreferredSize(new Dimension(110,160));
             panelFilm10.add(BFilm10[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm11[i] = new JButton("Film " + i);
-            BFilm11[i].setPreferredSize(new Dimension(110,160));
-            panelFilm11.add(BFilm11[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm12[i] = new JButton("Film " + i);
-            BFilm12[i].setPreferredSize(new Dimension(110,160));
-            panelFilm12.add(BFilm12[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm13[i] = new JButton("Film " + i);
-            BFilm13[i].setPreferredSize(new Dimension(110,160));
-            panelFilm13.add(BFilm13[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm14[i] = new JButton("Film " + i);
-            BFilm14[i].setPreferredSize(new Dimension(110,160));
-            panelFilm14.add(BFilm14[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm15[i] = new JButton("Film " + i);
-            BFilm15[i].setPreferredSize(new Dimension(110,160));
-            panelFilm15.add(BFilm15[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm16[i] = new JButton("Film " + i);
-            BFilm16[i].setPreferredSize(new Dimension(110,160));
-            panelFilm16.add(BFilm16[i]);
-        }
+
 
         Serie.setFont(new Font("Arial", Font.BOLD, 50));
         Serie.setForeground(Color.white);
@@ -460,47 +403,6 @@ public class VueSeries extends JFrame{
         panel.add(genre10);
         panel.add(scrollFilm10);
 
-        espaceFilm11.setPreferredSize(esp);
-        panel.add(espaceFilm11);
-        genre11.setFont(new Font("Arial", Font.BOLD, 24));
-        genre11.setForeground(Color.WHITE);
-        panel.add(genre11);
-        panel.add(scrollFilm11);
-
-        espaceFilm12.setPreferredSize(esp);
-        panel.add(espaceFilm12);
-        genre12.setFont(new Font("Arial", Font.BOLD, 24));
-        genre12.setForeground(Color.WHITE);
-        panel.add(genre12);
-        panel.add(scrollFilm12);
-
-        espaceFilm13.setPreferredSize(esp);
-        panel.add(espaceFilm13);
-        genre13.setFont(new Font("Arial", Font.BOLD, 24));
-        genre13.setForeground(Color.WHITE);
-        panel.add(genre13);
-        panel.add(scrollFilm13);
-
-        espaceFilm14.setPreferredSize(esp);
-        panel.add(espaceFilm14);
-        genre14.setFont(new Font("Arial", Font.BOLD, 24));
-        genre14.setForeground(Color.WHITE);
-        panel.add(genre14);
-        panel.add(scrollFilm14);
-
-        espaceFilm15.setPreferredSize(esp);
-        panel.add(espaceFilm15);
-        genre15.setFont(new Font("Arial", Font.BOLD, 24));
-        genre15.setForeground(Color.WHITE);
-        panel.add(genre15);
-        panel.add(scrollFilm15);
-
-        espaceFilm16.setPreferredSize(esp);
-        panel.add(espaceFilm16);
-        genre16.setFont(new Font("Arial", Font.BOLD, 24));
-        genre16.setForeground(Color.WHITE);
-        panel.add(genre16);
-        panel.add(scrollFilm16);
 
         scrollPage.setViewportView(panel);
         scrollPage.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -553,24 +455,6 @@ public class VueSeries extends JFrame{
     }
     public JButton[] getBFilm10() {
         return BFilm10;
-    }
-    public JButton[] getBFilm11() {
-        return BFilm11;
-    }
-    public JButton[] getBFilm12() {
-        return BFilm12;
-    }
-    public JButton[] getBFilm13() {
-        return BFilm13;
-    }
-    public JButton[] getBFilm14() {
-        return BFilm14;
-    }
-    public JButton[] getBFilm15() {
-        return BFilm15;
-    }
-    public JButton[] getBFilm16() {
-        return BFilm16;
     }
     public JButton getBRetourConnexion() {
         return BRetourConnexion;

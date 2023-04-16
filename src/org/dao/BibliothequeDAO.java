@@ -85,7 +85,7 @@ public class BibliothequeDAO {
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
             Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
-            String sql = "SELECT * FROM film";                                                                                        // Ecriture de la requête SQL
+            String sql = "SELECT * FROM serie";                                                                                        // Ecriture de la requête SQL
             Statement statement =  connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
 
@@ -93,7 +93,6 @@ public class BibliothequeDAO {
             while(result.next()) {
                 int nbSaisons = result.getInt("nbSaisons");
                 int idSerie = result.getInt("idSerie");
-                String lienSerie = result.getString("lienSerie");
                 String nomOeuvre = result.getString("nomOeuvre");
                 int anneeOeuvre = result.getInt("anneeOeuvre");
                 String realisateurOeuvre = result.getString("realisateurOeuvre");

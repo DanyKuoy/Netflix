@@ -3,6 +3,9 @@ package org.affichage.InterfaceGraphiqueMVC;
 import org.affichage.InformationFilmsMVC.ControllerInformationFilms;
 import org.affichage.InformationFilmsMVC.ModelInformationFilms;
 import org.affichage.InformationFilmsMVC.VueInformationFilms;
+import org.affichage.InformationSeriesMVC.ControllerInformationSeries;
+import org.affichage.InformationSeriesMVC.ModelInformationSeries;
+import org.affichage.InformationSeriesMVC.VueInformationSeries;
 import org.affichage.SeriesMVC.*;
 import org.affichage.FilmsMVC.*;
 import org.affichage.ConnexionMVC.*;
@@ -33,28 +36,28 @@ public class ControllerInterface implements ActionListener {
         for(int i=0; i<17; i++) {
             this.vueInterface.getBFilm3()[i].addActionListener(this);
         }
-        for(int i=0; i<30; i++) {
+        for(int i=0; i<13; i++) {
             this.vueInterface.getBFilm4()[i].addActionListener(this);
         }
         for(int i=0; i<18; i++) {
             this.vueInterface.getBFilm5()[i].addActionListener(this);
         }
-        for(int i=0; i<30; i++) {
+        for(int i=0; i<11; i++) {
             this.vueInterface.getBFilm6()[i].addActionListener(this);
         }
         for(int i=0; i<12; i++) {
             this.vueInterface.getBFilm7()[i].addActionListener(this);
         }
-        for(int i=0; i<30; i++) {
+        for(int i=0; i<18; i++) {
             this.vueInterface.getBFilm8()[i].addActionListener(this);
         }
         for(int i=0; i<12; i++) {
             this.vueInterface.getBFilm9()[i].addActionListener(this);
         }
-        for(int i=0; i<30; i++) {
+        for(int i=0; i<21; i++) {
             this.vueInterface.getBFilm10()[i].addActionListener(this);
         }
-        for(int i=0; i<30; i++) {
+        for(int i=0; i<14; i++) {
             this.vueInterface.getBFilm11()[i].addActionListener(this);
         }
         for(int i=0; i<1; i++) {
@@ -87,12 +90,16 @@ public class ControllerInterface implements ActionListener {
 
             else if (e.getSource() == vueInterface.getBFilm3()[i]) {
                 ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
-                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
+                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,12));
                 ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
                 vueInformationFilms.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm4()[i]) {
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelInterface.getSerie(i,0));
+                ControllerInformationSeries controllerInformationSeries = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm5()[i]) {
@@ -103,6 +110,10 @@ public class ControllerInterface implements ActionListener {
             }
 
             else if (e.getSource() == vueInterface.getBFilm6()[i]) {
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelInterface.getSerie(i,5));
+                ControllerInformationSeries controllerInformationSeries = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm7()[i]) {
@@ -113,6 +124,10 @@ public class ControllerInterface implements ActionListener {
             }
 
             else if (e.getSource() == vueInterface.getBFilm8()[i]) {
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelInterface.getSerie(i,9));
+                ControllerInformationSeries controllerInformationSeries = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm9()[i]) {
@@ -123,9 +138,17 @@ public class ControllerInterface implements ActionListener {
             }
 
             else if (e.getSource() == vueInterface.getBFilm10()[i]) {
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelInterface.getSerie(i,7));
+                ControllerInformationSeries controllerInformationSeries = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm11()[i]) {
+                ModelInformationSeries modelInformationSeries = new ModelInformationSeries();
+                VueInformationSeries vueInformationSeries = new VueInformationSeries(this.modelInterface.getSerie(i,6));
+                ControllerInformationSeries controllerInformationSeries = new ControllerInformationSeries(modelInformationSeries, vueInformationSeries);
+                vueInformationSeries.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm12()[i]) {

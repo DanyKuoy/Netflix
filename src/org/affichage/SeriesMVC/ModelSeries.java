@@ -33,7 +33,6 @@ public class ModelSeries {
 
         Map<String, ArrayList<Serie>> listeTrie = new HashMap<>();
 
-        /// Tri des films
         biblio.setTriSerie(biblio.trierSeries());
 
         int j=0;
@@ -60,7 +59,7 @@ public class ModelSeries {
     public Serie getOeuvre(int i, int j){
         return ListeTrideSerie[i][j];
     }
-    public Map<String, ArrayList<Serie>> getlisteFilm(){
+    public Map<String, ArrayList<Serie>> getListeSerie(){
         return listeSerie;
     }
     public Compte getCompte(){

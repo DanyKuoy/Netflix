@@ -1,15 +1,16 @@
-package org.affichage.InformationFilmsMVC;
+package org.affichage.InformationSeriesMVC;
 
-import org.oeuvre.Film;
+import org.oeuvre.Serie;
 import org.compte.*;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class VueInformationFilms extends JFrame{
+public class VueInformationSeries extends JFrame{
 
 
-    private JPanel panelInfoFilm = new JPanel();
+    private JPanel panelInfoSeries = new JPanel();
+    private JScrollPane scrollPage = new JScrollPane(panelInfoSeries);
     private JPanel image = new JPanel();
     private JPanel description = new JPanel();
     private JLabel descriptionFilm = new JLabel();
@@ -21,22 +22,22 @@ public class VueInformationFilms extends JFrame{
     private JLabel espace1 = new JLabel();
     private JLabel espace2 = new JLabel();
     private JLabel espace3 = new JLabel();
-    private Film film;
+    private Serie serie;
     private String descri;
     private String acteur;
 
     private JButton BFermerInfo = new JButton();
     private JButton BRegarder = new JButton("Regarder");
 
-    public VueInformationFilms(Film film){
+    public VueInformationSeries(Serie serie){
 
-        this.film = film;
+        this.serie = serie;
 
         setSize(720,1440);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         InitInfoFilm();
         setLocationRelativeTo(null);
-        getContentPane().add(panelInfoFilm, BorderLayout.CENTER);
+        getContentPane().add(panelInfoSeries, BorderLayout.CENTER);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         System.out.println("Fin classe");
@@ -44,8 +45,8 @@ public class VueInformationFilms extends JFrame{
 
     private void InitInfoFilm(){
 
-        panelInfoFilm.setPreferredSize(new Dimension(1440,720));
-        panelInfoFilm.setBackground(Color.DARK_GRAY);
+        panelInfoSeries.setPreferredSize(new Dimension(1440,2500));
+        panelInfoSeries.setBackground(Color.DARK_GRAY);
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.NORTHWEST;
@@ -60,12 +61,12 @@ public class VueInformationFilms extends JFrame{
         BFermerInfo = new JButton (new ImageIcon(newimg));
         BFermerInfo.setPreferredSize(new Dimension(30,30));
 
-        panelInfoFilm.add(BFermerInfo,constraints);
+        panelInfoSeries.add(BFermerInfo,constraints);
 
         constraints.gridy = 1;
         image.setPreferredSize(new Dimension(1440,300));
 
-        panelInfoFilm.add(image, constraints);
+        panelInfoSeries.add(image, constraints);
 
         description.setBackground(Color.DARK_GRAY);
         description.setLayout(new BoxLayout(description, BoxLayout.Y_AXIS));
@@ -78,11 +79,10 @@ public class VueInformationFilms extends JFrame{
         constraints.gridy = 0;
         constraints.gridx = 0;
 
-        descriptionFilm.setText(this.film.getSynopsisOeuvre());
-        duree.setText("Durée : " + this.film.getDureeFilm() + " minutes            ");
-        acteurs.setText("Acteurs : " + this.film.getDistributionOeuvre());
-        real.setText("Réalisateur : " + this.film.getRealisateurOeuvre());
-        titre.setText(this.film.getNomOeuvre());
+        descriptionFilm.setText(this.serie.getSynopsisOeuvre());
+        acteurs.setText("Acteurs : " + this.serie.getDistributionOeuvre());
+        real.setText("Réalisateur : " + this.serie.getRealisateurOeuvre());
+        titre.setText(this.serie.getNomOeuvre());
 
         descriptionFilm.setFont(new Font("Arial", Font.BOLD, 15));
         descriptionFilm.setForeground(Color.WHITE);
@@ -99,10 +99,9 @@ public class VueInformationFilms extends JFrame{
         espace1.setFont(new Font("Arial", Font.BOLD, 10));
         espace2.setFont(new Font("Arial", Font.BOLD, 10));
         espace3.setFont(new Font("Arial", Font.BOLD, 10));
-        espace.setText(" ");
-        espace1.setText(" ");
-        espace2.setText(" ");
-        espace3.setText(" ");
+
+
+
 
         description.add(titre,constraints);
         constraints.gridy = 1;
@@ -126,7 +125,7 @@ public class VueInformationFilms extends JFrame{
         constraints.gridy = 8;
         description.add(acteurs,constraints);
 
-        panelInfoFilm.add(description, constraints);
+        panelInfoSeries.add(description, constraints);
 
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.insets = new Insets(10, 10, 10, 10);
@@ -136,12 +135,15 @@ public class VueInformationFilms extends JFrame{
         BRegarder.setForeground(Color.white);
 
         BRegarder.setPreferredSize(new Dimension(200,100));
-        panelInfoFilm.add(BRegarder,constraints);
+        panelInfoSeries.add(BRegarder,constraints);
+
+        scrollPage.setViewportView(panelInfoSeries);
+        scrollPage.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
 
     public void Afficher() {
-        panelInfoFilm.setVisible(true);
-        this.getContentPane().add(panelInfoFilm);
+        panelInfoSeries.setVisible(true);
+        this.getContentPane().add(panelInfoSeries);
         revalidate();
         repaint();
     }
@@ -151,6 +153,6 @@ public class VueInformationFilms extends JFrame{
     }
 
     public JButton getBRegarder(){return BRegarder;}
-    public Film getFilm(){return film;}
+    public Serie getSeries(){return serie;}
 
 }
