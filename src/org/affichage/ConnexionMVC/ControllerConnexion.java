@@ -40,6 +40,11 @@ public class ControllerConnexion implements ActionListener {
         this.vueConnexion.getBProfil3().addActionListener(this);
         this.vueConnexion.getBProfil4().addActionListener(this);
 
+        this.vueConnexion.getBSupProfil1().addActionListener(this);
+        this.vueConnexion.getBSupProfil2().addActionListener(this);
+        this.vueConnexion.getBSupProfil3().addActionListener(this);
+        this.vueConnexion.getBSupProfil4().addActionListener(this);
+
         this.vueConnexion.getBProfilCreer().addActionListener(this);
         this.vueConnexion.getBProfilValider().addActionListener(this);
 
@@ -207,9 +212,12 @@ public class ControllerConnexion implements ActionListener {
                 this.modelConnexion.setQuality(2);
             }
 
-            /// Ajout du nouveau profil dans la BDD
-            this.modelConnexion.getCompteDAO().ajouterProfil(this.modelConnexion.getPrenom_Profil(), this.modelConnexion.getCompte().getEmailCompte(), this.modelConnexion.getIsResAge(), this.modelConnexion.getIsRepriseVideo(), this.modelConnexion.getQuality(), this.vueConnexion.getComboBoxSousTitreString());
-
+            this.modelConnexion.setCompte(this.modelConnexion.getCompteDAO().chargerCompte(this.modelConnexion.getCompte().getEmailCompte(),this.modelConnexion.getCompte().getMdpCompte()));
+            if(this.modelConnexion.getCompte().getNbProfil() < 4)
+            {
+                /// Ajout du nouveau profil dans la BDD
+                this.modelConnexion.getCompteDAO().ajouterProfil(this.modelConnexion.getPrenom_Profil(), this.modelConnexion.getCompte().getEmailCompte(), this.modelConnexion.getIsResAge(), this.modelConnexion.getIsRepriseVideo(), this.modelConnexion.getQuality(), this.vueConnexion.getComboBoxSousTitreString());
+            }
             /// Ajout du nouveau profil dans le compte
             boolean restrictionAge;
             boolean repriseVideo;
@@ -228,23 +236,22 @@ public class ControllerConnexion implements ActionListener {
             this.modelConnexion.getCompte().getListeProfil().add(new Profil(this.modelConnexion.getPrenom_Profil(), this.modelConnexion.getCompte().getEmailCompte(), restrictionAge, repriseVideo, this.modelConnexion.getQuality(), this.vueConnexion.getComboBoxSousTitreString()));
 
             if(this.modelConnexion.getCompte().getNbProfil()>0) {
-                this.vueConnexion.getBProfil1().setText(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
-                System.out.println(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+                this.vueConnexion.getProfil1().setText(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
             }
             if(this.modelConnexion.getCompte().getNbProfil()>1) {
-                this.vueConnexion.getBProfil2().setText(this.modelConnexion.getCompte().getListeProfil().get(2).getPrenomProfil());
-                System.out.println(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+                this.vueConnexion.getProfil2().setText(this.modelConnexion.getCompte().getListeProfil().get(2).getPrenomProfil());
             }
             if(this.modelConnexion.getCompte().getNbProfil()>2) {
-                this.vueConnexion.getBProfil3().setText(this.modelConnexion.getCompte().getListeProfil().get(3).getPrenomProfil());
-                System.out.println(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+                this.vueConnexion.getProfil3().setText(this.modelConnexion.getCompte().getListeProfil().get(3).getPrenomProfil());
             }
             if(this.modelConnexion.getCompte().getNbProfil()>3) {
-                this.vueConnexion.getBProfil4().setText(this.modelConnexion.getCompte().getListeProfil().get(4).getPrenomProfil());
-                System.out.println(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+                this.vueConnexion.getProfil4().setText(this.modelConnexion.getCompte().getListeProfil().get(4).getPrenomProfil());
             }
 
+            this.modelConnexion.setCompte(this.modelConnexion.getCompteDAO().chargerCompte(this.modelConnexion.getID_Connexion(), this.modelConnexion.getMDP_Connexion()));
+
             this.vueConnexion.InitProfil(this.modelConnexion.getCompte());
+            this.vueConnexion.AffichageProfil();
 
             this.vueConnexion.getpanelCreation().setVisible(false);
             this.vueConnexion.getpanelConnexion().setVisible(false);
@@ -289,6 +296,152 @@ public class ControllerConnexion implements ActionListener {
             this.vueConnexion.getpanel().setVisible(false);
             this.vueConnexion.getpanelCreationProfil().setVisible(false);
             this.modelConnexion.setPrenom_Profil("");
+        }
+        else if(e.getSource() == this.vueConnexion.getBSupProfil1()){
+
+            this.modelConnexion.getCompteDAO().supprimerProfil(this.modelConnexion.getID_Connexion(),this.vueConnexion.getProfil1().getText());
+
+            this.modelConnexion.setCompte(this.modelConnexion.getCompteDAO().chargerCompte(this.modelConnexion.getID_Connexion(), this.modelConnexion.getMDP_Connexion()));
+
+            if(this.modelConnexion.getCompte().getNbProfil()>0) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil1());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil1());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil1());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>1) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil2());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil2());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil2());
+                this.vueConnexion.getProfil1().setText(this.modelConnexion.getCompte().getListeProfil().get(0).getPrenomProfil());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>2) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil3());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil3());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil3());
+                this.vueConnexion.getProfil2().setText(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>3) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil4());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil4());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil4());
+                this.vueConnexion.getProfil3().setText(this.modelConnexion.getCompte().getListeProfil().get(2).getPrenomProfil());
+            }
+
+            this.vueConnexion.InitProfil(this.modelConnexion.getCompte());
+
+            this.vueConnexion.AffichageProfil();
+        }
+        else if(e.getSource() == this.vueConnexion.getBSupProfil2()){
+
+            this.modelConnexion.getCompteDAO().supprimerProfil(this.modelConnexion.getCompte().getEmailCompte(),this.vueConnexion.getProfil2().getText());
+
+            this.modelConnexion.setCompte(this.modelConnexion.getCompteDAO().chargerCompte(this.modelConnexion.getID_Connexion(), this.modelConnexion.getMDP_Connexion()));
+
+            if(this.modelConnexion.getCompte().getNbProfil()>0) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil1());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil1());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil1());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>1) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil2());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil2());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil2());
+                this.vueConnexion.getProfil1().setText(this.modelConnexion.getCompte().getListeProfil().get(0).getPrenomProfil());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>2) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil3());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil3());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil3());
+                this.vueConnexion.getProfil2().setText(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>3) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil4());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil4());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil4());
+                this.vueConnexion.getProfil3().setText(this.modelConnexion.getCompte().getListeProfil().get(2).getPrenomProfil());
+            }
+
+            this.vueConnexion.InitProfil(this.modelConnexion.getCompte());
+            this.vueConnexion.AffichageProfil();
+        }
+
+        else if(e.getSource() == this.vueConnexion.getBSupProfil3()){
+
+            this.modelConnexion.getCompteDAO().supprimerProfil(this.modelConnexion.getCompteDAO().getUsernameBDD(), this.vueConnexion.getProfil3().getText());
+
+            this.modelConnexion.setCompte(this.modelConnexion.getCompteDAO().chargerCompte(this.modelConnexion.getID_Connexion(), this.modelConnexion.getMDP_Connexion()));
+
+            if(this.modelConnexion.getCompte().getNbProfil()>0) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil1());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil1());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil1());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>1) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil2());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil2());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil2());
+                this.vueConnexion.getProfil1().setText(this.modelConnexion.getCompte().getListeProfil().get(0).getPrenomProfil());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>2) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil3());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil3());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil3());
+                this.vueConnexion.getProfil2().setText(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>3) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil4());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil4());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil4());
+                this.vueConnexion.getProfil3().setText(this.modelConnexion.getCompte().getListeProfil().get(2).getPrenomProfil());
+            }
+
+            this.vueConnexion.InitProfil(this.modelConnexion.getCompte());
+            this.vueConnexion.AffichageProfil();
+        }
+        else if(e.getSource() == this.vueConnexion.getBSupProfil4()){
+
+            this.modelConnexion.getCompteDAO().supprimerProfil(this.modelConnexion.getID_Connexion(),this.vueConnexion.getProfil4().getText());
+
+            this.modelConnexion.setCompte(this.modelConnexion.getCompteDAO().chargerCompte(this.modelConnexion.getID_Connexion(), this.modelConnexion.getMDP_Connexion()));
+
+            if(this.modelConnexion.getCompte().getNbProfil()>0) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil1());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil1());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil1());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>1) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil2());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil2());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil2());
+                this.vueConnexion.getProfil1().setText(this.modelConnexion.getCompte().getListeProfil().get(0).getPrenomProfil());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>2) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil3());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil3());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil3());
+                this.vueConnexion.getProfil2().setText(this.modelConnexion.getCompte().getListeProfil().get(1).getPrenomProfil());
+
+            }
+            if(this.modelConnexion.getCompte().getNbProfil()>3) {
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBProfil4());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getProfil4());
+                this.vueConnexion.getpanelProfil().remove(this.vueConnexion.getBSupProfil4());
+                this.vueConnexion.getProfil3().setText(this.modelConnexion.getCompte().getListeProfil().get(2).getPrenomProfil());
+            }
+
+            this.vueConnexion.InitProfil(this.modelConnexion.getCompte());
+            this.vueConnexion.AffichageProfil();
         }
     }
 }

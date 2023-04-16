@@ -1,9 +1,11 @@
 package org.affichage.FilmsMVC;
 
 import org.compte.Compte;
+import org.affichage.FilmsMVC.ModelFilms;
 
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.AbstractButton;
 
 public class VueFilms extends JFrame{
 
@@ -287,85 +289,70 @@ public class VueFilms extends JFrame{
         scrollFilm15.setBorder(null);
         scrollFilm16.setBorder(null);
 
-        for (int i = 0; i < 30; i++) {
-            BFilm1[i] = new JButton("Film " + i);
-            BFilm1[i].setPreferredSize(new Dimension(110,160));
-            panelFilm1.add(BFilm1[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm2[i] = new JButton("Film " + i);
-            BFilm2[i].setPreferredSize(new Dimension(110,160));
-            panelFilm2.add(BFilm2[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm3[i] = new JButton("Film " + i);
-            BFilm3[i].setPreferredSize(new Dimension(110,160));
-            panelFilm3.add(BFilm3[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm4[i] = new JButton("Film " + i);
-            BFilm4[i].setPreferredSize(new Dimension(110,160));
-            panelFilm4.add(BFilm4[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm5[i] = new JButton("Film " + i);
-            BFilm5[i].setPreferredSize(new Dimension(110,160));
-            panelFilm5.add(BFilm5[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm6[i] = new JButton("Film " + i);
-            BFilm6[i].setPreferredSize(new Dimension(110,160));
-            panelFilm6.add(BFilm6[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm7[i] = new JButton("Film " + i);
+        ModelFilms modelFilms = new ModelFilms();
+
+        for(int i=0; i<6; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][0]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm7[i] = new JButton (new ImageIcon(newimg));
             BFilm7[i].setPreferredSize(new Dimension(110,160));
             panelFilm7.add(BFilm7[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm8[i] = new JButton("Film " + i);
-            BFilm8[i].setPreferredSize(new Dimension(110,160));
-            panelFilm8.add(BFilm8[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm9[i] = new JButton("Film " + i);
-            BFilm9[i].setPreferredSize(new Dimension(110,160));
-            panelFilm9.add(BFilm9[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm10[i] = new JButton("Film " + i);
-            BFilm10[i].setPreferredSize(new Dimension(110,160));
-            panelFilm10.add(BFilm10[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm11[i] = new JButton("Film " + i);
+
+        for(int i=0; i<8; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][1]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm11[i] = new JButton (new ImageIcon(newimg));
             BFilm11[i].setPreferredSize(new Dimension(110,160));
             panelFilm11.add(BFilm11[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm12[i] = new JButton("Film " + i);
-            BFilm12[i].setPreferredSize(new Dimension(110,160));
-            panelFilm12.add(BFilm12[i]);
+
+        for(int i=0; i<6; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][2]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm3[i] = new JButton (new ImageIcon(newimg));
+            BFilm3[i].setPreferredSize(new Dimension(110,160));
+            panelFilm3.add(BFilm3[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm13[i] = new JButton("Film " + i);
-            BFilm13[i].setPreferredSize(new Dimension(110,160));
-            panelFilm13.add(BFilm13[i]);
+
+        for(int i=0; i<13; i++) {
+            System.out.println(modelFilms.getLiens()[i][1]+".png");
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][3]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm6[i] = new JButton (new ImageIcon(newimg));
+            BFilm6[i].setPreferredSize(new Dimension(110,160));
+            panelFilm6.add(BFilm6[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm14[i] = new JButton("Film " + i);
-            BFilm14[i].setPreferredSize(new Dimension(110,160));
-            panelFilm14.add(BFilm14[i]);
-        }
-        for (int i = 0; i < 30; i++) {
-            BFilm15[i] = new JButton("Film " + i);
+
+        for(int i=0; i<8; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][4]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm15[i] = new JButton (new ImageIcon(newimg));
             BFilm15[i].setPreferredSize(new Dimension(110,160));
             panelFilm15.add(BFilm15[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm16[i] = new JButton("Film " + i);
-            BFilm16[i].setPreferredSize(new Dimension(110,160));
-            panelFilm16.add(BFilm16[i]);
+
+        for(int i=0; i<4; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][5]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm5[i] = new JButton (new ImageIcon(newimg));
+            BFilm5[i].setPreferredSize(new Dimension(110,160));
+            panelFilm5.add(BFilm5[i]);
+        }
+
+        for(int i=0; i<17; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][6]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm1[i] = new JButton (new ImageIcon(newimg));
+            BFilm1[i].setPreferredSize(new Dimension(110,160));
+            panelFilm1.add(BFilm1[i]);
         }
 
         espaceFilm1.setPreferredSize(esp);
@@ -485,6 +472,92 @@ public class VueFilms extends JFrame{
 
     }
 
+
+    public void InitImageBouton(){
+        for (int i = 0; i < 30; i++) {
+            BFilm1[i] = new JButton("Film " + i);
+            BFilm1[i].setPreferredSize(new Dimension(110,160));
+            panelFilm1.add(BFilm1[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm2[i] = new JButton("Film " + i);
+            BFilm2[i].setPreferredSize(new Dimension(110,160));
+            panelFilm2.add(BFilm2[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm3[i] = new JButton("Film " + i);
+            BFilm3[i].setPreferredSize(new Dimension(110,160));
+            panelFilm3.add(BFilm3[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm4[i] = new JButton("Film " + i);
+            BFilm4[i].setPreferredSize(new Dimension(110,160));
+            panelFilm4.add(BFilm4[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm5[i] = new JButton("Film " + i);
+            BFilm5[i].setPreferredSize(new Dimension(110,160));
+            panelFilm5.add(BFilm5[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm6[i] = new JButton("Film " + i);
+            BFilm6[i].setPreferredSize(new Dimension(110,160));
+            panelFilm6.add(BFilm6[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm7[i] = new JButton("Film " + i);
+            BFilm7[i].setPreferredSize(new Dimension(110,160));
+            panelFilm7.add(BFilm7[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm8[i] = new JButton("Film " + i);
+            BFilm8[i].setPreferredSize(new Dimension(110,160));
+            panelFilm8.add(BFilm8[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm9[i] = new JButton("Film " + i);
+            BFilm9[i].setPreferredSize(new Dimension(110,160));
+            panelFilm9.add(BFilm9[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm10[i] = new JButton("Film " + i);
+            BFilm10[i].setPreferredSize(new Dimension(110,160));
+            panelFilm10.add(BFilm10[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm11[i] = new JButton("Film " + i);
+            BFilm11[i].setPreferredSize(new Dimension(110,160));
+            panelFilm11.add(BFilm11[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm12[i] = new JButton("Film " + i);
+            BFilm12[i].setPreferredSize(new Dimension(110,160));
+            panelFilm12.add(BFilm12[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm13[i] = new JButton("Film " + i);
+            BFilm13[i].setPreferredSize(new Dimension(110,160));
+            panelFilm13.add(BFilm13[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm14[i] = new JButton("Film " + i);
+            BFilm14[i].setPreferredSize(new Dimension(110,160));
+            panelFilm14.add(BFilm14[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm15[i] = new JButton("Film " + i);
+            BFilm15[i].setPreferredSize(new Dimension(110,160));
+            panelFilm15.add(BFilm15[i]);
+        }
+        for (int i = 0; i < 30; i++) {
+            BFilm16[i] = new JButton("Film " + i);
+            BFilm16[i].setPreferredSize(new Dimension(110,160));
+            panelFilm16.add(BFilm16[i]);
+        }
+    }
+
+
+
     public void Afficher(){
         setContentPane(scrollPage);
         setLocationRelativeTo(null);
@@ -550,6 +623,55 @@ public class VueFilms extends JFrame{
     public JButton[] getBFilm16() {
         return BFilm16;
     }
+    public void setBFilm1(JButton B, int i) {
+        BFilm1[i] = B;
+    }
+    public void setBFilm2(JButton B, int i) {
+        BFilm2[i] = B;
+    }
+    public void setBFilm3(JButton B, int i) {
+        BFilm3[i] = B;
+    }
+    public void setBFilm4(JButton B, int i) {
+        BFilm4[i] = B;
+    }
+    public void setBFilm5(JButton B, int i) {
+        BFilm5[i] = B;
+    }
+    public void setBFilm6(JButton B, int i) {
+        BFilm6[i] = B;
+    }
+    public void setBFilm7(JButton B, int i) {
+        BFilm7[i] = B;
+    }
+    public void setBFilm8(JButton B, int i) {
+        BFilm8[i] = B;
+    }
+    public void setBFilm9(JButton B, int i) {
+        BFilm9[i] = B;
+    }
+    public void setBFilm10(JButton B, int i) {
+        BFilm10[i] = B;
+    }
+    public void setBFilm11(JButton B, int i) {
+        BFilm11[i] = B;
+    }
+    public void setBFilm12(JButton B, int i) {
+        BFilm12[i] = B;
+    }
+    public void setBFilm13(JButton B, int i) {
+        BFilm13[i] = B;
+    }
+    public void setBFilm14(JButton B, int i) {
+        BFilm14[i] = B;
+    }
+    public void setBFilm15(JButton B, int i) {
+        BFilm15[i] = B;
+    }
+    public void setBFilm16(JButton B, int i) {
+        BFilm16[i] = B;
+    }
+
     public JButton getBRetourConnexion() {
         return BRetourConnexion;
     }

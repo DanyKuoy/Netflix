@@ -24,6 +24,11 @@ public class VueConnexion extends JFrame {
     private JButton BProfil2 = new JButton("Profil 2");
     private JButton BProfil3 = new JButton("Profil 3");
     private JButton BProfil4 = new JButton("Profil 4");
+    private JButton BSupProfil1 = new JButton("Supprimer");
+    private JButton BSupProfil2 = new JButton("Supprimer");
+    private JButton BSupProfil3 = new JButton("Supprimer");
+    private JButton BSupProfil4 = new JButton("Supprimer");
+
 
     //private Image icon = new ImageIcon(getClass().getResource("/BackgroundNetflix.png")).getImage();
 
@@ -130,6 +135,18 @@ public class VueConnexion extends JFrame {
     }
     public JButton getBProfil4(){
         return BProfil4;
+    }
+    public JButton getBSupProfil1(){
+        return BSupProfil1;
+    }
+    public JButton getBSupProfil2(){
+        return BSupProfil2;
+    }
+    public JButton getBSupProfil3(){
+        return BSupProfil3;
+    }
+    public JButton getBSupProfil4(){
+        return BSupProfil4;
     }
     public JButton getBProfilCreer(){
         return BProfilCreer;
@@ -476,8 +493,6 @@ public class VueConnexion extends JFrame {
         constraints.gridy = 0;
         constraints.gridx = 0;
 
-        System.out.println(compte.getNbProfil());
-
         if(compte.getNbProfil()==0){
             BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
@@ -488,6 +503,9 @@ public class VueConnexion extends JFrame {
             panelProfil.add(BProfil1, constraints);
             constraints.gridy = 1;
             panelProfil.add(Profil1, constraints);
+            constraints.gridy = 2;
+            BSupProfil1.setPreferredSize(new Dimension(150, 50));
+            panelProfil.add(BSupProfil1, constraints);
         }
 
         if(compte.getNbProfil()>1){
@@ -497,6 +515,9 @@ public class VueConnexion extends JFrame {
             panelProfil.add(BProfil2, constraints);
             constraints.gridy = 1;
             panelProfil.add(Profil2, constraints);
+            constraints.gridy = 2;
+            BSupProfil2.setPreferredSize(new Dimension(150, 50));
+            panelProfil.add(BSupProfil2, constraints);
         }
 
         if(compte.getNbProfil()>2){
@@ -506,6 +527,9 @@ public class VueConnexion extends JFrame {
             panelProfil.add(BProfil3, constraints);
             constraints.gridy = 1;
             panelProfil.add(Profil3, constraints);
+            constraints.gridy = 2;
+            BSupProfil3.setPreferredSize(new Dimension(150, 50));
+            panelProfil.add(BSupProfil3, constraints);
         }
 
         if(compte.getNbProfil()>3){
@@ -515,6 +539,9 @@ public class VueConnexion extends JFrame {
             panelProfil.add(BProfil4, constraints);
             constraints.gridy = 1;
             panelProfil.add(Profil4, constraints);
+            constraints.gridy = 2;
+            BSupProfil4.setPreferredSize(new Dimension(150, 50));
+            panelProfil.add(BSupProfil4, constraints);
         }
 
         if(compte.getNbProfil()==1){

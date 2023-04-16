@@ -66,10 +66,8 @@ public class CompteDAO {
     }
 
     /* Méthode permettant de supprimer un profil */
-    public void supprimerProfil(Scanner clavier, String email) {
+    public void supprimerProfil(String email, String prenom) {
         /// Saisie de l'utilisateur
-        System.out.print("Quel compte voulez-vous supprimer (taper le prenom)? ");
-        String prenom = clavier.nextLine();
 
         /// Communication avec la base de données
         try {
@@ -78,10 +76,12 @@ public class CompteDAO {
             String sql = "SELECT * FROM profil";                                                                                        // Ecriture de la requête SQL
             Statement statement =  connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
-
+            System.out.println("Boucle");
+            System.out.println(email + " " + prenom);
             /// Vérification si le profil existe et appartient au compte
             while(result.next()) {
                 if(result.getString("emailCompte").equals(email) && result.getString("prenomProfil").equals(prenom)) {    // Si un profil a été trouvé
+                    System.out.println("Profil trouvé");
                     PreparedStatement statement3 = connection.prepareStatement("UPDATE compte SET nbProfil = nbProfil-1 WHERE emailCompte = ?");
                     statement3.setString(1, email);
                     statement3.executeUpdate();

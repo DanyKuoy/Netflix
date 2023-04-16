@@ -22,8 +22,16 @@ public class ControllerFilms implements ActionListener {
         this.vueFilms.getBSerie().addActionListener(this);
         this.vueFilms.getBRecherche().addActionListener(this);
 
-        for(int i=0; i<30; i++) {
+        for(int i=0; i<17; i++) {
             this.vueFilms.getBFilm1()[i].addActionListener(this);
+        }
+        for(int i=0; i<6; i++) {
+            this.vueFilms.getBFilm3()[i].addActionListener(this);
+        }
+
+
+/*
+
             this.vueFilms.getBFilm2()[i].addActionListener(this);
             this.vueFilms.getBFilm3()[i].addActionListener(this);
             this.vueFilms.getBFilm4()[i].addActionListener(this);
@@ -39,7 +47,7 @@ public class ControllerFilms implements ActionListener {
             this.vueFilms.getBFilm14()[i].addActionListener(this);
             this.vueFilms.getBFilm15()[i].addActionListener(this);
             this.vueFilms.getBFilm16()[i].addActionListener(this);
-        }
+        }*/
 
         this.vueFilms.getBRetourConnexion().addActionListener(this);
 

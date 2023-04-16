@@ -10,19 +10,17 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        //new Mafenetre();
-        //new InterfaceGraphique(new Compte(), 1);
 
-        /*
+
         Compte compte = new Compte();
         int profil = 1;
         ModelInterface modelInterface = new ModelInterface();
         VueInterface vueInterface = new VueInterface(compte, profil);
         ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
         vueInterface.afficher();
-        */
 
 
+/*
         Bibliotheque b1 = new Bibliotheque();
         BibliothequeDAO b = new BibliothequeDAO();
         b1.setListeFilm(b.chargerFilms());
@@ -37,11 +35,13 @@ public class Main {
         for(String cle: b1.getTriFilm().keySet()) {
             ArrayList<Film> listefilm = b1.getTriFilm().get(cle);
             System.out.println("GENRE: " + cle);
-                System.out.println("nbOeuvre: " + b1.getTriFilm().get(cle).size());
+            for(int i=0; i<listefilm.size(); i++) {
+                System.out.println(listefilm.get(i).getNomOeuvre());
                 System.out.println("");
+            }
             System.out.println("------------------------------------------");
         }
-
+*/
         /*
         ArrayList<Oeuvre> recherche = b1.rechercheTitre("le");
         if(recherche.size()==0) {
