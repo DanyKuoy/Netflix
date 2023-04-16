@@ -1,5 +1,6 @@
 package org.affichage.InterfaceGraphiqueMVC;
 
+import org.affichage.FilmsMVC.ModelFilms;
 import org.compte.Compte;
 
 import javax.swing.*;
@@ -237,18 +238,31 @@ public class VueInterface extends JFrame{
         scrollFilm11.setBorder(null);
         scrollFilm12.setBorder(null);
 
-        for (int i = 0; i < 30; i++) {
-            BFilm1[i] = new JButton("Film " + i);
+        ModelFilms modelFilms = new ModelFilms(compte,profil);
+
+        for(int i=0; i<19; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][8]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm1[i] = new JButton (new ImageIcon(newimg));
             BFilm1[i].setPreferredSize(new Dimension(110,160));
             panelFilm1.add(BFilm1[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm2[i] = new JButton("Film " + i);
+
+        for(int i=0; i<21; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][3]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm2[i] = new JButton (new ImageIcon(newimg));
             BFilm2[i].setPreferredSize(new Dimension(110,160));
             panelFilm2.add(BFilm2[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm3[i] = new JButton("Film " + i);
+
+        for(int i=0; i<17; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][11]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm3[i] = new JButton (new ImageIcon(newimg));
             BFilm3[i].setPreferredSize(new Dimension(110,160));
             panelFilm3.add(BFilm3[i]);
         }
@@ -257,8 +271,11 @@ public class VueInterface extends JFrame{
             BFilm4[i].setPreferredSize(new Dimension(110,160));
             panelFilm4.add(BFilm4[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm5[i] = new JButton("Film " + i);
+        for(int i=0; i<18; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][2]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm5[i] = new JButton (new ImageIcon(newimg));
             BFilm5[i].setPreferredSize(new Dimension(110,160));
             panelFilm5.add(BFilm5[i]);
         }
@@ -267,8 +284,11 @@ public class VueInterface extends JFrame{
             BFilm6[i].setPreferredSize(new Dimension(110,160));
             panelFilm6.add(BFilm6[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm7[i] = new JButton("Film " + i);
+        for(int i=0; i<12; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][0]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm7[i] = new JButton (new ImageIcon(newimg));
             BFilm7[i].setPreferredSize(new Dimension(110,160));
             panelFilm7.add(BFilm7[i]);
         }
@@ -277,8 +297,11 @@ public class VueInterface extends JFrame{
             BFilm8[i].setPreferredSize(new Dimension(110,160));
             panelFilm8.add(BFilm8[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm9[i] = new JButton("Film " + i);
+        for(int i=0; i<12; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][14]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm9[i] = new JButton (new ImageIcon(newimg));
             BFilm9[i].setPreferredSize(new Dimension(110,160));
             panelFilm9.add(BFilm9[i]);
         }
@@ -292,8 +315,11 @@ public class VueInterface extends JFrame{
             BFilm11[i].setPreferredSize(new Dimension(110,160));
             panelFilm11.add(BFilm11[i]);
         }
-        for (int i = 0; i < 30; i++) {
-            BFilm12[i] = new JButton("Film " + i);
+        for(int i=0; i<1; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][6]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm12[i] = new JButton (new ImageIcon(newimg));
             BFilm12[i].setPreferredSize(new Dimension(110,160));
             panelFilm12.add(BFilm12[i]);
         }

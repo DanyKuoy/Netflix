@@ -22,20 +22,42 @@ public class ControllerInterface implements ActionListener {
     this.vueInterface.getBSerie().addActionListener(this);
     this.vueInterface.getBRecherche().addActionListener(this);
 
-    for(int i=0; i<30; i++) {
-        this.vueInterface.getBFilm1()[i].addActionListener(this);
-        this.vueInterface.getBFilm2()[i].addActionListener(this);
-        this.vueInterface.getBFilm3()[i].addActionListener(this);
-        this.vueInterface.getBFilm4()[i].addActionListener(this);
-        this.vueInterface.getBFilm5()[i].addActionListener(this);
-        this.vueInterface.getBFilm6()[i].addActionListener(this);
-        this.vueInterface.getBFilm7()[i].addActionListener(this);
-        this.vueInterface.getBFilm8()[i].addActionListener(this);
-        this.vueInterface.getBFilm9()[i].addActionListener(this);
-        this.vueInterface.getBFilm10()[i].addActionListener(this);
-        this.vueInterface.getBFilm11()[i].addActionListener(this);
-        this.vueInterface.getBFilm12()[i].addActionListener(this);
-    }
+        for(int i=0; i<19; i++) {
+            this.vueInterface.getBFilm1()[i].addActionListener(this);
+        }
+        for(int i=0; i<21; i++) {
+            this.vueInterface.getBFilm2()[i].addActionListener(this);
+        }
+        for(int i=0; i<17; i++) {
+            this.vueInterface.getBFilm3()[i].addActionListener(this);
+        }
+        for(int i=0; i<30; i++) {
+            this.vueInterface.getBFilm4()[i].addActionListener(this);
+        }
+        for(int i=0; i<18; i++) {
+            this.vueInterface.getBFilm5()[i].addActionListener(this);
+        }
+        for(int i=0; i<30; i++) {
+            this.vueInterface.getBFilm6()[i].addActionListener(this);
+        }
+        for(int i=0; i<12; i++) {
+            this.vueInterface.getBFilm7()[i].addActionListener(this);
+        }
+        for(int i=0; i<30; i++) {
+            this.vueInterface.getBFilm8()[i].addActionListener(this);
+        }
+        for(int i=0; i<12; i++) {
+            this.vueInterface.getBFilm9()[i].addActionListener(this);
+        }
+        for(int i=0; i<30; i++) {
+            this.vueInterface.getBFilm10()[i].addActionListener(this);
+        }
+        for(int i=0; i<30; i++) {
+            this.vueInterface.getBFilm11()[i].addActionListener(this);
+        }
+        for(int i=0; i<1; i++) {
+            this.vueInterface.getBFilm12()[i].addActionListener(this);
+        }
 
         this.vueInterface.getBRetourConnexion().addActionListener(this);
 
