@@ -1,0 +1,12 @@
+unnamed package
+org.affichage.ConnexionMVC
+org.affichage.FilmsMVC
+org.affichage.InformationFilmsMVC
+org.affichage.InformationSeriesMVC
+org.affichage.InterfaceGraphiqueMVC
+org.affichage.RechercheMVC
+org.affichage.SeriesMVC
+org.bdd
+org.compte
+org.dao
+org.oeuvre
