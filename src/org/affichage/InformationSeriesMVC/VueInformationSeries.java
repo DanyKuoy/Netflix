@@ -46,7 +46,7 @@ public class VueInformationSeries extends JFrame{
 
     private void InitInfoFilm(){
 
-        panelInfoSeries.setPreferredSize(new Dimension(1440,2500));
+        panelInfoSeries.setPreferredSize(new Dimension(1440,4000));
         panelInfoSeries.setBackground(Color.DARK_GRAY);
 
         GridBagConstraints constraints = new GridBagConstraints();
@@ -63,9 +63,23 @@ public class VueInformationSeries extends JFrame{
         BFermerInfo.setPreferredSize(new Dimension(30,30));
 
         panelInfoSeries.add(BFermerInfo,constraints);
+        JPanel lab = new JPanel();
+        lab.setPreferredSize(new Dimension(1440,20));
+        lab.setBackground(Color.DARK_GRAY);
+        panelInfoSeries.add(lab,constraints);
 
         constraints.gridy = 1;
-        image.setPreferredSize(new Dimension(1440,300));
+
+
+        ImageIcon photoIcon1 = new ImageIcon("image/DescriptionSerie/"+ serie.getNomOeuvre() +"1.png");
+        Image image2 = photoIcon1.getImage(); // transform it
+        Image newimg1 = image2.getScaledInstance(900, 300,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        JLabel temp = new JLabel(new ImageIcon(newimg1));
+        temp.setPreferredSize(new Dimension(900,300));
+
+        image.add(temp,constraints);
+
+        image.setPreferredSize(new Dimension(900,300));
 
         panelInfoSeries.add(image, constraints);
 
@@ -96,13 +110,19 @@ public class VueInformationSeries extends JFrame{
         titre.setFont(new Font("Arial", Font.BOLD, 30));
         titre.setForeground(Color.WHITE);
 
-        espace.setFont(new Font("Arial", Font.BOLD, 10));
-        espace1.setFont(new Font("Arial", Font.BOLD, 10));
+        espace.setFont(new Font("Arial", Font.BOLD, 30));
+        espace1.setFont(new Font("Arial", Font.BOLD, 5));
         espace2.setFont(new Font("Arial", Font.BOLD, 10));
         espace3.setFont(new Font("Arial", Font.BOLD, 10));
+        espace.setText(" ");
+        espace1.setText(" ");
+        espace2.setText(" ");
+        espace3.setText(" ");
 
-
-
+        JPanel lab1 = new JPanel();
+        lab1.setPreferredSize(new Dimension(1440,20));
+        lab1.setBackground(Color.DARK_GRAY);
+        panelInfoSeries.add(lab1,constraints);
 
         description.add(titre,constraints);
         constraints.gridy = 1;
@@ -135,12 +155,21 @@ public class VueInformationSeries extends JFrame{
         System.out.println("Nb Episodes : " + serie.getListeEpisodes().isEmpty());
 
         for(int i=0;i<serie.getNbSaisons();i++) {
-            Saison[i] = new JLabel("Saison " + i);
+            JPanel espace2 = new JPanel();
+            espace2.setPreferredSize(new Dimension(1440,25));
+            espace2.setBackground(Color.DARK_GRAY);
+            JPanel espace = new JPanel();
+            espace.setPreferredSize(new Dimension(1440,25));
+            espace.setBackground(Color.DARK_GRAY);
+            Saison[i] = new JLabel("                            "+ "Saison " + (i+1) +"                            ");
             Saison[i].setFont(new Font("Arial", Font.BOLD, 25));
             Saison[i].setForeground(Color.WHITE);
+            panelInfoSeries.add(espace2);
+            panelInfoSeries.add(Saison[i]);
+            panelInfoSeries.add(espace);
             for(int j=0;j<serie.getListeEpisodes().get(i).size();j++)
                 {
-                BRegarder[i][j] = new JButton("Episode " + i + ": " + serie.getListeEpisodes().get(i).get(j).getTitreEpisode());
+                BRegarder[i][j] = new JButton("Episode " + (j+1) + ": " + serie.getListeEpisodes().get(i).get(j).getTitreEpisode());
                 BRegarder[i][j].setBackground(Color.DARK_GRAY);
                 BRegarder[i][j].setFont(new Font("Arial", Font.BOLD, 15));
                 BRegarder[i][j].setForeground(Color.white);
@@ -148,6 +177,10 @@ public class VueInformationSeries extends JFrame{
                 panelInfoSeries.add(BRegarder[i][j]);
             }
         }
+        JPanel espace1 = new JPanel();
+        espace1.setPreferredSize(new Dimension(1440,25));
+        espace1.setBackground(Color.DARK_GRAY);
+        panelInfoSeries.add(espace1);
         scrollPage.setViewportView(panelInfoSeries);
         scrollPage.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     }
