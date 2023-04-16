@@ -54,6 +54,10 @@ public class VueInformationFilms extends JFrame{
         constraints.gridy = 0;
         constraints.gridx = 0;
 
+        ImageIcon photoIcon = new ImageIcon("image/logoCroixRouge.png");
+        Image image1 = photoIcon.getImage(); // transform it
+        Image newimg = image1.getScaledInstance(30, 30,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        BFermerInfo = new JButton (new ImageIcon(newimg));
         BFermerInfo.setPreferredSize(new Dimension(30,30));
 
         panelInfoFilm.add(BFermerInfo,constraints);
