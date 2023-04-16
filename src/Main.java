@@ -18,12 +18,12 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        /*
+
         ModelConnexion modelConnexion = new ModelConnexion();
         VueConnexion vueConnexion = new VueConnexion();
         ControllerConnexion controllerConnexion = new ControllerConnexion(vueConnexion, modelConnexion);
-        vueConnexion.Afficher();*/
-
+        vueConnexion.Afficher();
+/*
         ModelInterface modelInterface = new ModelInterface(new Compte(),1);
         VueInterface vueInterface = new VueInterface(new Compte(),1);
         ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);

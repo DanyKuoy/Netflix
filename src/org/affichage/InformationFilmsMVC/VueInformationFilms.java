@@ -62,8 +62,24 @@ public class VueInformationFilms extends JFrame{
 
         panelInfoFilm.add(BFermerInfo,constraints);
 
+        JPanel lab = new JPanel();
+        lab.setPreferredSize(new Dimension(1440,20));
+        lab.setBackground(Color.DARK_GRAY);
+        panelInfoFilm.add(lab,constraints);
+
+
+
         constraints.gridy = 1;
-        image.setPreferredSize(new Dimension(1440,300));
+
+        ImageIcon photoIcon1 = new ImageIcon("image/DescriptionFilm/"+ film.getNomOeuvre() +"1.png");
+        Image image2 = photoIcon1.getImage(); // transform it
+        Image newimg1 = image2.getScaledInstance(900, 300,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        JLabel temp = new JLabel(new ImageIcon(newimg1));
+        temp.setPreferredSize(new Dimension(900,300));
+
+        image.add(temp,constraints);
+
+        image.setPreferredSize(new Dimension(900,300));
 
         panelInfoFilm.add(image, constraints);
 
@@ -103,6 +119,11 @@ public class VueInformationFilms extends JFrame{
         espace1.setText(" ");
         espace2.setText(" ");
         espace3.setText(" ");
+
+        JPanel lab1 = new JPanel();
+        lab1.setPreferredSize(new Dimension(1440,20));
+        lab1.setBackground(Color.DARK_GRAY);
+        panelInfoFilm.add(lab1,constraints);
 
         description.add(titre,constraints);
         constraints.gridy = 1;

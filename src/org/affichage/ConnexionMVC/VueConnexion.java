@@ -333,6 +333,37 @@ public class VueConnexion extends JFrame {
         BCreation.setPreferredSize(new Dimension(150, 50));
         constraints.gridx = 1;
         panel.add(BCreation, constraints);
+
+        ImageIcon photoIcon = new ImageIcon("image/Profil1.png");
+        Image image = photoIcon.getImage(); // transform it
+        Image newimg = image.getScaledInstance(150, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        BProfil1 = new JButton (new ImageIcon(newimg));
+        BProfil1.setPreferredSize(new Dimension(150, 150));
+
+        ImageIcon photoIcon1 = new ImageIcon("image/Profil2.png");
+        Image image1 = photoIcon1.getImage(); // transform it
+        Image newimg1 = image1.getScaledInstance(150, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        BProfil2 = new JButton (new ImageIcon(newimg1));
+        BProfil2.setPreferredSize(new Dimension(150, 150));
+
+        ImageIcon photoIcon2 = new ImageIcon("image/Profil3.png");
+        Image image2 = photoIcon2.getImage(); // transform it
+        Image newimg2 = image2.getScaledInstance(150, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        BProfil3 = new JButton (new ImageIcon(newimg2));
+        BProfil3.setPreferredSize(new Dimension(150, 150));
+
+        ImageIcon photoIcon3 = new ImageIcon("image/Profil4.png");
+        Image image3 = photoIcon3.getImage(); // transform it
+        Image newimg3 = image3.getScaledInstance(150, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        BProfil4 = new JButton (new ImageIcon(newimg3));
+        BProfil4.setPreferredSize(new Dimension(150, 150));
+
+        ImageIcon photoIcon4 = new ImageIcon("image/AjouterProfil.png");
+        Image image4 = photoIcon4.getImage(); // transform it
+        Image newimg4 = image4.getScaledInstance(150, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        BProfilCreer = new JButton (new ImageIcon(newimg4));
+        BProfilCreer.setPreferredSize(new Dimension(150, 150));
+
     }
 
     public void InitConnexionCreation(){
@@ -499,7 +530,6 @@ public class VueConnexion extends JFrame {
         }
 
         if(compte.getNbProfil()>0){
-            BProfil1.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil1, constraints);
             constraints.gridy = 1;
             panelProfil.add(Profil1, constraints);
@@ -511,7 +541,6 @@ public class VueConnexion extends JFrame {
         if(compte.getNbProfil()>1){
             constraints.gridx = 1;
             constraints.gridy = 0;
-            BProfil2.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil2, constraints);
             constraints.gridy = 1;
             panelProfil.add(Profil2, constraints);
@@ -523,7 +552,6 @@ public class VueConnexion extends JFrame {
         if(compte.getNbProfil()>2){
             constraints.gridx = 2;
             constraints.gridy = 0;
-            BProfil3.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil3, constraints);
             constraints.gridy = 1;
             panelProfil.add(Profil3, constraints);
@@ -535,7 +563,6 @@ public class VueConnexion extends JFrame {
         if(compte.getNbProfil()>3){
             constraints.gridx = 3;
             constraints.gridy = 0;
-            BProfil4.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfil4, constraints);
             constraints.gridy = 1;
             panelProfil.add(Profil4, constraints);
@@ -547,21 +574,18 @@ public class VueConnexion extends JFrame {
         if(compte.getNbProfil()==1){
             constraints.gridx = 1;
             constraints.gridy = 0;
-            BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
 
         else if(compte.getNbProfil()==2){
             constraints.gridx = 2;
             constraints.gridy = 0;
-            BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
 
         else if(compte.getNbProfil()==3){
             constraints.gridx = 3;
             constraints.gridy = 0;
-            BProfilCreer.setPreferredSize(new Dimension(150, 150));
             panelProfil.add(BProfilCreer, constraints);
         }
         constraints.gridx = 2;
