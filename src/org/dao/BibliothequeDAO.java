@@ -112,9 +112,10 @@ public class BibliothequeDAO {
 
                     /// Recherche du compte
                     while(result2.next()) {
-                        if(result2.getString("idSerie").equals(idSerie) && result2.getString("numeroSaison").equals(i+1)) {    // Si le compte a été trouvé
+                        if(result2.getInt("idSerie")==idSerie && result2.getInt("numeroSaison")==(i+1)) {    // Si le compte a été trouvé
+
                             /// Création de l'episode
-                            String idSerie2 = result2.getString("idSerie2");
+                            int idSerie2 = result2.getInt("idSerie");
                             int numeroSaison = result2.getInt("numeroSaison");
                             int numeroEpisode = result2.getInt("numeroEpisode");
                             int dureeEpisode = result2.getInt("dureeEpisode");
@@ -123,6 +124,7 @@ public class BibliothequeDAO {
 
                             /// Ajout de l'épisode dans la saison
                             Episode episode = new Episode(idSerie2, numeroSaison, numeroEpisode, dureeEpisode, lienEpisode, titreEpisode);
+                            //System.out.println(episode.getTitreEpisode());
                             saison.add(episode);
                         }
                     }
@@ -131,6 +133,7 @@ public class BibliothequeDAO {
 
                 /// Création de l'objet et ajout dans la liste
                 Serie newSerie = new Serie(nomOeuvre, anneeOeuvre, realisateurOeuvre, distributionOeuvre, classificationOeuvre, synopsisOeuvre, genreOeuvre, noteOeuvre, nbSaisons, idSerie);
+                newSerie.setListeEpisodes(listeEpisodes);
                 liste.add(newSerie);
             }
             connection.close();             // Fermeture de la connexion à la BDD

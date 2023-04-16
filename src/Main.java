@@ -21,25 +21,25 @@ public class Main {
         ControllerConnexion controllerConnexion = new ControllerConnexion(vueConnexion, modelConnexion);
         vueConnexion.Afficher();*/
 
-
         ModelInterface modelInterface = new ModelInterface(new Compte(),1);
         VueInterface vueInterface = new VueInterface(new Compte(),1);
         ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
         vueInterface.afficher();
 
-
-/*
+        /*
         Bibliotheque b1 = new Bibliotheque();
         BibliothequeDAO b = new BibliothequeDAO();
-        b1.setListeFilm(b.chargerFilms());
-        //b1.setListeSerie(b.chargerSeries());
+        //b1.setListeFilm(b.chargerFilms());
+        b1.setListeSerie(b.chargerSeries());
+        */
 
+        /*
         Map<String, ArrayList<Film>> listeTrie = new HashMap<>();
 
         /// Tri des films
         b1.setTriFilm(b1.trierFilms());
 
-        /// Affichage
+        /// Affichage des films
         for(String cle: b1.getTriFilm().keySet()) {
             ArrayList<Film> listefilm = b1.getTriFilm().get(cle);
             System.out.println("GENRE: " + cle);
@@ -49,7 +49,25 @@ public class Main {
             }
             System.out.println("------------------------------------------");
         }
-*/
+        */
+
+        /*
+        /// Affichage des séries
+        for(int j=0; j<b1.getListeSerie().size(); j++) {
+            System.out.println("SERIE: " + b1.getListeSerie().get(j).getNomOeuvre());
+            Serie serie = b1.getListeSerie().get(j);
+            for(int i=0; i<serie.getNbSaisons(); i++) {
+                System.out.println("SAISON " + (i+1) + " :");
+                System.out.println("");
+                ArrayList<Episode> saison = serie.getListeEpisodes().get(i);
+                for(int l=0; l<saison.size(); l++) {
+                    System.out.println(saison.get(l).getTitreEpisode());
+                }
+            }
+            System.out.println("------------------------------------------");
+        }
+        */
+
         /*
         ArrayList<Oeuvre> recherche = b1.rechercheTitre("le");
         if(recherche.size()==0) {

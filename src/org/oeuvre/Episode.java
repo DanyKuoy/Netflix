@@ -6,7 +6,7 @@ import java.lang.*;
 
 public class Episode {
     /** Attributs **/
-    private String idSerie;
+    private int idSerie;
     private int numeroSaison;
     private int numeroEpisode;
     private int dureeEpisode;
@@ -14,7 +14,7 @@ public class Episode {
     private String titreEpisode;
 
     /** Constructeur **/
-    public Episode(String idSerie, int numeroSaison, int numeroEpisode, int dureeEpisode, String lienEpisode, String titreEpisode) {
+    public Episode(int idSerie, int numeroSaison, int numeroEpisode, int dureeEpisode, String lienEpisode, String titreEpisode) {
         this.idSerie = idSerie;
         this.numeroSaison = numeroSaison;
         this.numeroEpisode = numeroEpisode;
@@ -24,7 +24,7 @@ public class Episode {
     }
 
     /** Getters et setters **/
-    public String getIdSerie() {
+    public int getIdSerie() {
         return idSerie;
     }
 
@@ -48,7 +48,7 @@ public class Episode {
         return titreEpisode;
     }
 
-    public void setIdSerie(String idSerie) {
+    public void setIdSerie(int idSerie) {
         this.idSerie = idSerie;
     }
 
