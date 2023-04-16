@@ -171,7 +171,11 @@ public class VueSeries extends JFrame{
         constraints.gridy = 0;
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
-        BMenu.setPreferredSize(dim);
+        ImageIcon photoIcon1 = new ImageIcon("image/logoECENETFLIX.png");
+        Image image1 = photoIcon1.getImage(); // transform it
+        Image newimg1 = image1.getScaledInstance(150, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        BMenu= new JButton (new ImageIcon(newimg1));
+        BMenu.setPreferredSize(new Dimension(150,50));
         BFilms.setPreferredSize(dim);
         BRecherche.setPreferredSize(new Dimension(125, 25));
 

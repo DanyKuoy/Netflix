@@ -6,7 +6,6 @@ import org.affichage.InformationFilmsMVC.VueInformationFilms;
 import org.affichage.InterfaceGraphiqueMVC.*;
 import org.affichage.SeriesMVC.*;
 import org.affichage.ConnexionMVC.*;
-import org.affichage.InformationFilmsMVC.InforamtionOeuvre;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

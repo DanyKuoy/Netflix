@@ -1,9 +1,11 @@
 package org.affichage.InterfaceGraphiqueMVC;
 
+import org.affichage.InformationFilmsMVC.ControllerInformationFilms;
+import org.affichage.InformationFilmsMVC.ModelInformationFilms;
+import org.affichage.InformationFilmsMVC.VueInformationFilms;
 import org.affichage.SeriesMVC.*;
 import org.affichage.FilmsMVC.*;
 import org.affichage.ConnexionMVC.*;
-import org.affichage.InformationFilmsMVC.InforamtionOeuvre;
 import org.affichage.SeriesMVC.ModelSeries;
 
 import java.awt.event.ActionEvent;
@@ -70,63 +72,67 @@ public class ControllerInterface implements ActionListener {
         for (int i = 0; i < 40; i++) {
 
             if (e.getSource() == vueInterface.getBFilm1()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
+                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
+                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,8));
+                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
+                vueInformationFilms.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm2()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
+                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
+                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,3));
+                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
+                vueInformationFilms.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm3()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
+                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
+                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,11));
+                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
+                vueInformationFilms.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm4()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
             }
 
             else if (e.getSource() == vueInterface.getBFilm5()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
+                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
+                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,2));
+                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
+                vueInformationFilms.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm6()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
             }
 
             else if (e.getSource() == vueInterface.getBFilm7()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
+                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
+                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,0));
+                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
+                vueInformationFilms.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm8()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
             }
 
             else if (e.getSource() == vueInterface.getBFilm9()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
+                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
+                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,14));
+                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
+                vueInformationFilms.Afficher();
             }
 
             else if (e.getSource() == vueInterface.getBFilm10()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
             }
 
             else if (e.getSource() == vueInterface.getBFilm11()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
             }
 
             else if (e.getSource() == vueInterface.getBFilm12()[i]) {
-                vueInterface.dispose();
-                new InforamtionOeuvre();
+                ModelInformationFilms modelInformationFilms = new ModelInformationFilms();
+                VueInformationFilms vueInformationFilms = new VueInformationFilms(this.modelInterface.getOeuvre(i,6));
+                ControllerInformationFilms controllerInformationFilms = new ControllerInformationFilms(modelInformationFilms, vueInformationFilms);
+                vueInformationFilms.Afficher();
             }
         }
 
