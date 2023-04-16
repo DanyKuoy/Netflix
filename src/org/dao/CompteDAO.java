@@ -357,19 +357,33 @@ public class CompteDAO {
      *  @param nom le nom
      *  @param mdp le mot de passe
      *  @param staff un booléen qui dit si on est un membre du staff ou pas
+     * @return un booléen
      */
-    public void modifierCompte(String prenom, String nom, String mdp, boolean staff, String emailCompte) {
+    public boolean modifierCompte(String prenom, String nom, String mdp, boolean staff, String emailCompte) {
+        /// Déclaration de variable
+        boolean trouve = false;
+
         try {
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
             Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
-            PreparedStatement statement3 = connection.prepareStatement("UPDATE compte SET prenomCompte = ?, nomCompte = ?, mdpCompte = ?, staff = ? WHERE emailCompte = ?");
-            statement3.setString(1, prenom);
-            statement3.setString(2, nom);
-            statement3.setString(3, mdp);
-            statement3.setBoolean(4, staff);
-            statement3.setString(5, emailCompte);
-            statement3.executeUpdate();
+            String sql2 = "SELECT * FROM compte";                                                                                        // Ecriture de la requête SQL
+            Statement statement2 =  connection.createStatement();
+            ResultSet result2 = statement2.executeQuery(sql2);
+
+            /// Recherche du compte
+            while(result2.next()) {
+                if(result2.getString("emailCompte").equals(emailCompte)) {    // Si le compte a été trouvé
+                    PreparedStatement statement3 = connection.prepareStatement("UPDATE compte SET prenomCompte = ?, nomCompte = ?, mdpCompte = ?, staff = ? WHERE emailCompte = ?");
+                    statement3.setString(1, prenom);
+                    statement3.setString(2, nom);
+                    statement3.setString(3, mdp);
+                    statement3.setBoolean(4, staff);
+                    statement3.setString(5, emailCompte);
+                    statement3.executeUpdate();
+                    trouve = true;
+                }
+            }
             connection.close();
         }
         catch(ClassNotFoundException e) {
@@ -378,6 +392,7 @@ public class CompteDAO {
         catch(SQLException e) {
             System.out.println("Erreur: " + e.getMessage());
         }
+        return trouve;
     }
 
     /**
