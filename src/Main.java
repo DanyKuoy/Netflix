@@ -21,13 +21,14 @@ public class Main {
         ControllerConnexion controllerConnexion = new ControllerConnexion(vueConnexion, modelConnexion);
         vueConnexion.Afficher();*/
 
+        /*
         ModelInterface modelInterface = new ModelInterface(new Compte(),1);
         VueInterface vueInterface = new VueInterface(new Compte(),1);
         ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
         vueInterface.afficher();
+        */
 
 
-    /*
         Bibliotheque b1 = new Bibliotheque();
         BibliothequeDAO b = new BibliothequeDAO();
         b1.setListeFilm(b.chargerFilms());
