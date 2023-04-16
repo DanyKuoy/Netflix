@@ -381,17 +381,31 @@ public class CompteDAO {
     }
 
     /**
-     * Méthode permettant de supprimer un compte selon l'email
-     * @param email L'email du compte à supprimer
+     * Méthode permettant de supprimer un compte
+     * @param email l'email rattaché au compte
+     * @return Un booléen disant que le compte est trouvé ou non
      */
-    public void supprimerCompte(String email) {
+    public boolean supprimerCompte(String email) {
+        /// Déclaration de variable
+        boolean trouve = false;
+
         try {
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
             Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
-            PreparedStatement statement3 = connection.prepareStatement("DELETE FROM compte WHERE emailCompte = ?");
-            statement3.setString(1, email);
-            statement3.executeUpdate();
+            String sql2 = "SELECT * FROM compte";                                                                                        // Ecriture de la requête SQL
+            Statement statement2 =  connection.createStatement();
+            ResultSet result2 = statement2.executeQuery(sql2);
+
+            /// Recherche du compte
+            while(result2.next()) {
+                if(result2.getString("emailCompte").equals(email)) {    // Si le compte a été trouvé
+                    PreparedStatement statement3 = connection.prepareStatement("DELETE FROM compte WHERE emailCompte = ?");
+                    statement3.setString(1, email);
+                    statement3.executeUpdate();
+                    trouve = true;
+                }
+            }
             connection.close();             // Fermeture de la connexion à la BDD
         }
         catch(ClassNotFoundException e) {
@@ -400,5 +414,6 @@ public class CompteDAO {
         catch(SQLException e) {
             System.out.println("Erreur: " + e.getMessage());
         }
+        return trouve;
     }
 }

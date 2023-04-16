@@ -161,15 +161,29 @@ public class BibliothequeDAO {
     /**
      * Méthode permettant de supprimer un film
      * @param nom Le titre exact du film
+     * @return Un booléen disant que le film est trouvé ou non
      */
-    public void supprimerFilm(String nom) {
+    public boolean supprimerFilm(String nom) {
+        /// Déclaration de variable
+        boolean trouve = false;
+
         try {
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
             Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
-            PreparedStatement statement3 = connection.prepareStatement("DELETE FROM film WHERE nomOeuvre = ?");
-            statement3.setString(1, nom);
-            statement3.executeUpdate();
+            String sql2 = "SELECT * FROM film";                                                                                        // Ecriture de la requête SQL
+            Statement statement2 =  connection.createStatement();
+            ResultSet result2 = statement2.executeQuery(sql2);
+
+            /// Recherche du compte
+            while(result2.next()) {
+                if(result2.getString("nomOeuvre").equals(nom)) {    // Si le compte a été trouvé
+                    PreparedStatement statement3 = connection.prepareStatement("DELETE FROM film WHERE nomOeuvre = ?");
+                    statement3.setString(1, nom);
+                    statement3.executeUpdate();
+                    trouve = true;
+                }
+            }
             connection.close();             // Fermeture de la connexion à la BDD
         }
         catch(ClassNotFoundException e) {
@@ -178,20 +192,35 @@ public class BibliothequeDAO {
         catch(SQLException e) {
             System.out.println("Erreur: " + e.getMessage());
         }
+        return trouve;
     }
 
     /**
-     * Méthode permettant de supprimer une série
-     * @param nom Le titre exact de la série
+     * Méthode permettant de supprimer une serie
+     * @param nom Le titre exact de la serie
+     * @return Un booléen disant que la serie est trouvée ou non
      */
-    public void supprimerSerie(String nom) {
+    public boolean supprimerSerie(String nom) {
+        /// Déclaration de variable
+        boolean trouve = false;
+
         try {
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
             Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
-            PreparedStatement statement3 = connection.prepareStatement("DELETE FROM serie WHERE nomOeuvre = ?");
-            statement3.setString(1, nom);
-            statement3.executeUpdate();
+            String sql2 = "SELECT * FROM serie";                                                                                        // Ecriture de la requête SQL
+            Statement statement2 =  connection.createStatement();
+            ResultSet result2 = statement2.executeQuery(sql2);
+
+            /// Recherche du compte
+            while(result2.next()) {
+                if(result2.getString("nomOeuvre").equals(nom)) {    // Si le compte a été trouvé
+                    PreparedStatement statement3 = connection.prepareStatement("DELETE FROM serie WHERE nomOeuvre = ?");
+                    statement3.setString(1, nom);
+                    statement3.executeUpdate();
+                    trouve = true;
+                }
+            }
             connection.close();             // Fermeture de la connexion à la BDD
         }
         catch(ClassNotFoundException e) {
@@ -200,6 +229,6 @@ public class BibliothequeDAO {
         catch(SQLException e) {
             System.out.println("Erreur: " + e.getMessage());
         }
+        return trouve;
     }
-
 }
