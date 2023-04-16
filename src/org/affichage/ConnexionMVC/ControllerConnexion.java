@@ -161,19 +161,35 @@ public class ControllerConnexion implements ActionListener {
                 this.modelConnexion.setIsStaff(0);
             }
 
-            this.modelConnexion.getCompteDAO().creerCompte(this.modelConnexion.getPrenom_Creationn(), this.modelConnexion.getNom_Creation(), this.modelConnexion.getID_Creation(), this.modelConnexion.getMDP_Creation(), this.modelConnexion.getIsStaff());
+            boolean trouve = this.modelConnexion.getCompteDAO().verifierCreerCompte(this.modelConnexion.getID_Creation());
+            if(trouve==false) {                 // Si le l'email n'existe pas dans la BDD
+                this.modelConnexion.getCompteDAO().creerCompte(this.modelConnexion.getPrenom_Creationn(), this.modelConnexion.getNom_Creation(), this.modelConnexion.getID_Creation(), this.modelConnexion.getMDP_Creation(), this.modelConnexion.getIsStaff());
 
-            this.vueConnexion.setID2("");
-            this.vueConnexion.setMDP2("");
-            this.vueConnexion.setNom("");
-            this.vueConnexion.setPrenom("");
+                this.vueConnexion.setID2("");
+                this.vueConnexion.setMDP2("");
+                this.vueConnexion.setNom("");
+                this.vueConnexion.setPrenom("");
 
-            this.modelConnexion.setID_Creation("");
-            this.modelConnexion.setMDP_Creation("");
-            this.modelConnexion.setNom_Creation("");
-            this.modelConnexion.setPrenom_Creationn("");
+                this.modelConnexion.setID_Creation("");
+                this.modelConnexion.setMDP_Creation("");
+                this.modelConnexion.setNom_Creation("");
+                this.modelConnexion.setPrenom_Creationn("");
 
-            this.vueConnexion.getBRetour().doClick();
+                this.vueConnexion.getBRetour().doClick();
+            }
+            else {
+                this.vueConnexion.setID2("");
+                this.vueConnexion.setMDP2("");
+                this.vueConnexion.setNom("");
+                this.vueConnexion.setPrenom("");
+
+                this.modelConnexion.setID_Creation("");
+                this.modelConnexion.setMDP_Creation("");
+                this.modelConnexion.setNom_Creation("");
+                this.modelConnexion.setPrenom_Creationn("");
+
+                this.vueConnexion.getBRetour().doClick();
+            }
 
         }
 

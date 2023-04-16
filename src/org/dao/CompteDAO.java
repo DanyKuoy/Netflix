@@ -142,7 +142,7 @@ public class CompteDAO {
     }
 
     /* Méthode permettant de verifier si un compte est dans la BDD.
-    La méthode passe en paramètre l'email et le mot de passe. Elle retourne un compte */
+    La méthode passe en paramètre l'email et le mot de passe. Elle retourne un booléen */
     public boolean verifierCompte(String ID, String MDP) {
         /// Creation d'objets et de variables
         boolean trouve = false;
@@ -166,6 +166,35 @@ public class CompteDAO {
             }
             if(trouve==false) {
                 System.out.println("Erreur dans l'email ou le mot de passe!");
+            }
+            connection.close();             // Fermeture de la connexion à la BDD
+        }
+        catch(ClassNotFoundException e) {
+            System.out.println("Erreur: le pilote JDBC n'a pas ete trouve!");
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+        return false;
+    }
+
+    /* Méthode permettant de verifier si l'email existe déjà dans la BDD */
+    public boolean verifierCreerCompte(String ID) {
+        try {
+            /// Communication avec la base de données
+            Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
+            Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
+            String sql = "SELECT * FROM compte";                                                                                        // Ecriture de la requête SQL
+            Statement statement =  connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            /// Recherche du compte
+            while(result.next()) {
+                System.out.println(result.getString("emailCompte") + result.getString("mdpCompte"));
+                if(result.getString("emailCompte").equals(ID)) {    // Si le compte a été trouvé
+                    System.out.println("Email déjà existant");
+                    return true;
+                }
             }
             connection.close();             // Fermeture de la connexion à la BDD
         }
