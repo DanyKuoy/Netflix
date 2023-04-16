@@ -26,8 +26,9 @@ public class VueInformationFilms extends JFrame{
     private String acteur;
 
     private JButton BFermerInfo = new JButton();
+    private JButton BRegarder = new JButton("Regarder");
 
-    public VueInformationFilms(Film film, Compte compte, int profil){
+    public VueInformationFilms(Film film){
 
         this.film = film;
 
@@ -66,7 +67,7 @@ public class VueInformationFilms extends JFrame{
         description.setLayout(new BoxLayout(description, BoxLayout.Y_AXIS));
 
         constraints.gridy = 2;
-        description.setPreferredSize(new Dimension(1300,420));
+        description.setPreferredSize(new Dimension(1300,175));
 
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.insets = new Insets(10, 10, 10, 10);
@@ -121,6 +122,16 @@ public class VueInformationFilms extends JFrame{
         description.add(acteurs,constraints);
 
         panelInfoFilm.add(description, constraints);
+
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.insets = new Insets(10, 10, 10, 10);
+
+        BRegarder.setBackground(Color.DARK_GRAY);
+        BRegarder.setFont(new Font("Arial", Font.BOLD, 30));
+        BRegarder.setForeground(Color.white);
+
+        BRegarder.setPreferredSize(new Dimension(200,100));
+        panelInfoFilm.add(BRegarder,constraints);
     }
 
     public void Afficher() {
@@ -134,17 +145,7 @@ public class VueInformationFilms extends JFrame{
         return BFermerInfo;
     }
 
-    public static String insertNewLines(String text, int lineLength) {
-        StringBuilder builder = new StringBuilder();
-        int i = 0;
-        for (char c : text.toCharArray()) {
-            if (++i % lineLength == 0) {
-                builder.append(c).append("\n");
-            } else {
-                builder.append(c);
-            }
-        }
-        return builder.toString();
-    }
+    public JButton getBRegarder(){return BRegarder;}
+    public Film getFilm(){return film;}
 
 }

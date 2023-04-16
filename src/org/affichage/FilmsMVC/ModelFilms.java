@@ -47,6 +47,7 @@ public class ModelFilms {
             }
             j++;
             System.out.println(listefilm.size());
+            System.out.println("---------------------------------");
         }
 
         this.compte = compte;

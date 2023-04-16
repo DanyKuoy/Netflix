@@ -116,6 +116,8 @@ public class VueFilms extends JFrame{
     private Dimension dim = new Dimension(200, 50);
     private Dimension esp = new Dimension(1440,10);
 
+    private JLabel Films = new JLabel();
+
     private Compte compte;
     private int profil;
 
@@ -155,7 +157,7 @@ public class VueFilms extends JFrame{
 
         panelBandeau.setPreferredSize(new Dimension(1350, 75));
         panelBandeau.setLayout(new GridBagLayout());
-        panel.setPreferredSize(new Dimension(140, 4150));
+        panel.setPreferredSize(new Dimension(140, 4200));
         GridBagConstraints constraints = new GridBagConstraints();
         JPanel espace = new JPanel();
         espace.setBackground(Color.DARK_GRAY);
@@ -205,6 +207,13 @@ public class VueFilms extends JFrame{
         panelBandeau.add(BRetourConnexion, constraints);
 
         panel.add(panelBandeau);
+
+        Films.setBackground(Color.DARK_GRAY);
+        Films.setFont(new Font("Arial", Font.BOLD, 45));
+        Films.setForeground(Color.WHITE);
+        Films.setText("Films                                                                                       ");
+
+        panel.add(Films);
 
         scrollFilm1.setPreferredSize(new Dimension(1300, 200));
         scrollFilm2.setPreferredSize(new Dimension(1300, 200));
@@ -375,7 +384,7 @@ public class VueFilms extends JFrame{
             BFilm1[i].setPreferredSize(new Dimension(110,160));
             panelFilm1.add(BFilm1[i]);
         }
-        for(int i=0; i<14; i++) {
+        for(int i=0; i<13; i++) {
             ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][9]+".png");
             Image image = photoIcon.getImage(); // transform it
             Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way

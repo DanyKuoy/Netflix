@@ -382,7 +382,8 @@ public class VueSeries extends JFrame{
             panelFilm16.add(BFilm16[i]);
         }
 
-        Serie.setFont(new Font("Arial", Font.BOLD, 30));
+        Serie.setFont(new Font("Arial", Font.BOLD, 50));
+        Serie.setForeground(Color.white);
         panel.add(Serie);
 
         espaceFilm1.setPreferredSize(esp);
