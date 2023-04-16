@@ -5,6 +5,9 @@ import org.affichage.FilmsMVC.VueFilms;
 import org.affichage.InterfaceGraphiqueMVC.ControllerInterface;
 import org.affichage.InterfaceGraphiqueMVC.ModelInterface;
 import org.affichage.InterfaceGraphiqueMVC.VueInterface;
+import org.affichage.MenuStaffMVC.ControllerStaff;
+import org.affichage.MenuStaffMVC.ModelStaff;
+import org.affichage.MenuStaffMVC.VueStaff;
 import org.compte.Profil;
 import org.compte.*;
 import org.dao.*;
@@ -276,7 +279,7 @@ public class ControllerConnexion implements ActionListener {
             this.vueConnexion.getpanelCreationProfil().setVisible(false);
         }
 
-        else if(e.getSource() == this.vueConnexion.getBProfil1()){
+        else if(e.getSource() == this.vueConnexion.getBProfil1() && this.modelConnexion.getCompte().getStaff() == false){
             this.vueConnexion.dispose();
             ModelInterface modelInterface = new ModelInterface(this.modelConnexion.getCompte(),1);
             VueInterface vueInterface = new VueInterface(this.modelConnexion.getCompte(),1);
@@ -284,27 +287,56 @@ public class ControllerConnexion implements ActionListener {
             vueInterface.afficher();
 
         }
-        else if(e.getSource() == this.vueConnexion.getBProfil2()){
+        else if(e.getSource() == this.vueConnexion.getBProfil2() && this.modelConnexion.getCompte().getStaff() == false){
             this.vueConnexion.dispose();
             ModelInterface modelInterface = new ModelInterface(this.modelConnexion.getCompte(),2);
             VueInterface vueInterface = new VueInterface(this.modelConnexion.getCompte(),3);
             ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
             vueInterface.afficher();
         }
-        else if(e.getSource() == this.vueConnexion.getBProfil3()){
+        else if(e.getSource() == this.vueConnexion.getBProfil3() && this.modelConnexion.getCompte().getStaff() == false){
             this.vueConnexion.dispose();
             ModelInterface modelInterface = new ModelInterface(this.modelConnexion.getCompte(),3);
             VueInterface vueInterface = new VueInterface(this.modelConnexion.getCompte(),3);
             ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
             vueInterface.afficher();
         }
-        else if(e.getSource() == this.vueConnexion.getBProfil4()){
+        else if(e.getSource() == this.vueConnexion.getBProfil4() && this.modelConnexion.getCompte().getStaff() == false){
             this.vueConnexion.dispose();
             ModelInterface modelInterface = new ModelInterface(this.modelConnexion.getCompte(),4);
             VueInterface vueInterface = new VueInterface(this.modelConnexion.getCompte(),4);
             ControllerInterface controllerInterface = new ControllerInterface(modelInterface, vueInterface);
             vueInterface.afficher();
         }
+        else if(e.getSource() == this.vueConnexion.getBProfil1() && this.modelConnexion.getCompte().getStaff() == true){
+            this.vueConnexion.dispose();
+            ModelStaff modelStaff = new ModelStaff(this.modelConnexion.getCompte(),1);
+            VueStaff vueStaff = new VueStaff();
+            ControllerStaff controllerStaff = new ControllerStaff(modelStaff, vueStaff);
+            vueStaff.afficher();
+        }
+        else if(e.getSource() == this.vueConnexion.getBProfil2() && this.modelConnexion.getCompte().getStaff() == true){
+            this.vueConnexion.dispose();
+            ModelStaff modelStaff = new ModelStaff(this.modelConnexion.getCompte(),2);
+            VueStaff vueStaff = new VueStaff();
+            ControllerStaff controllerStaff = new ControllerStaff(modelStaff, vueStaff);
+            vueStaff.afficher();
+        }
+        else if(e.getSource() == this.vueConnexion.getBProfil3() && this.modelConnexion.getCompte().getStaff() == true){
+            this.vueConnexion.dispose();
+            ModelStaff modelStaff = new ModelStaff(this.modelConnexion.getCompte(),3);
+            VueStaff vueStaff = new VueStaff();
+            ControllerStaff controllerStaff = new ControllerStaff(modelStaff, vueStaff);
+            vueStaff.afficher();
+        }
+        else if(e.getSource() == this.vueConnexion.getBProfil4() && this.modelConnexion.getCompte().getStaff() == true){
+            this.vueConnexion.dispose();
+            ModelStaff modelStaff = new ModelStaff(this.modelConnexion.getCompte(),4);
+            VueStaff vueStaff = new VueStaff();
+            ControllerStaff controllerStaff = new ControllerStaff(modelStaff, vueStaff);
+            vueStaff.afficher();
+        }
+
         else if(e.getSource() == this.vueConnexion.getBRetour3()){
             this.vueConnexion.getpanelCreation().setVisible(false);
             this.vueConnexion.getpanelConnexion().setVisible(false);

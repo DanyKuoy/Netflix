@@ -2,6 +2,9 @@ import org.affichage.ConnexionMVC.ControllerConnexion;
 import org.affichage.ConnexionMVC.ModelConnexion;
 import org.affichage.ConnexionMVC.VueConnexion;
 import org.affichage.InformationFilmsMVC.ModelInformationFilms;
+import org.affichage.MenuStaffMVC.ControllerStaff;
+import org.affichage.MenuStaffMVC.ModelStaff;
+import org.affichage.MenuStaffMVC.VueStaff;
 import org.affichage.RechercheMVC.ControllerRecherche;
 import org.affichage.RechercheMVC.ModelRecherche;
 import org.affichage.RechercheMVC.VueRecherche;
@@ -23,6 +26,13 @@ public class Main {
         VueConnexion vueConnexion = new VueConnexion();
         ControllerConnexion controllerConnexion = new ControllerConnexion(vueConnexion, modelConnexion);
         vueConnexion.Afficher();
+/*
+        ModelStaff modelStaff = new ModelStaff(new Compte(),1);
+        VueStaff vueStaff = new VueStaff();
+        ControllerStaff controllerStaff = new ControllerStaff(modelStaff, vueStaff);
+        vueStaff.afficher();
+
+*/
 /*
         ModelInterface modelInterface = new ModelInterface(new Compte(),1);
         VueInterface vueInterface = new VueInterface(new Compte(),1);
