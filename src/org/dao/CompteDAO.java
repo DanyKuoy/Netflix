@@ -379,4 +379,26 @@ public class CompteDAO {
             System.out.println("Erreur: " + e.getMessage());
         }
     }
+
+    /**
+     * Méthode permettant de supprimer un compte selon l'email
+     * @param email L'email du compte à supprimer
+     */
+    public void supprimerCompte(String email) {
+        try {
+            /// Communication avec la base de données
+            Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
+            Connection connection = DriverManager.getConnection(this.getUrlBDD(), this.getUsernameBDD(), this.getPasswordBDD());        // Etablissement de la connexion avec la BDD
+            PreparedStatement statement3 = connection.prepareStatement("DELETE FROM compte WHERE emailCompte = ?");
+            statement3.setString(1, email);
+            statement3.executeUpdate();
+            connection.close();             // Fermeture de la connexion à la BDD
+        }
+        catch(ClassNotFoundException e) {
+            System.out.println("Erreur: le pilote JDBC n'a pas ete trouve!");
+        }
+        catch(SQLException e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+    }
 }
