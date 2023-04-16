@@ -117,6 +117,29 @@ public class Bibliotheque {
         return listeRecherche;
     }
 
+    /* Méthode de recherche d'oeuvre */
+    public boolean rechercheOeuvre(String nom, ArrayList<Oeuvre> listeRecherche) {
+        /// Déclaration de variable
+        boolean trouve1 = false;
+        boolean trouve2= false;
+        boolean trouve3 = false;
+        boolean trouve4 = false;
+
+        /// Appels de méthodes
+        trouve1 = rechercheTitre(nom, listeRecherche);
+        trouve2 = rechercheRealisateur(nom, listeRecherche);
+        trouve3 = rechercheActeur(nom, listeRecherche);
+        trouve4 = rechercheGenre(nom, listeRecherche);
+
+        /// Si au moins une oeuvre a été trouvé
+        if(trouve1==false && trouve2==false && trouve3==false && trouve4==false) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     /* Méthode permettant de réaliser une recherche d'oeuvre par son titre */
     public boolean rechercheTitre(String nom, ArrayList<Oeuvre> listeRecherche) {
         /// Déclaration de variable
@@ -221,10 +244,24 @@ public class Bibliotheque {
         int nbOeuvre = 0;
 
         /// Recherche dans la map des films
-
+        for(String genre: this.getTriFilm().keySet()) {
+            if(genre.toLowerCase().equals(nom.toLowerCase())) {
+                for(int i=0; i<this.getTriFilm().get(genre).size(); i++) {
+                    listeRecherche.add(this.getTriFilm().get(genre).get(i));
+                    nbOeuvre++;
+                }
+            }
+        }
 
         /// Recherche dans la map des series
-
+        for(String genre: this.getTriSerie().keySet()) {
+            if(genre.toLowerCase().equals(nom.toLowerCase())) {
+                for(int j=0; j<this.getTriSerie().get(genre).size(); j++) {
+                    listeRecherche.add(this.getTriSerie().get(genre).get(j));
+                    nbOeuvre++;
+                }
+            }
+        }
 
         /// Retourner un booléen selon le nombre d'oeuvres trouvé
         if(nbOeuvre==0) {
