@@ -1,7 +1,4 @@
-package org.affichage;
-
-import org.oeuvre.*;
-import org.compte.*;
+package org.affichage.InformationFilmsMVC;
 
 import javax.swing.*;
 import java.awt.*;

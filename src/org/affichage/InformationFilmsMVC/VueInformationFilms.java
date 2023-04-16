@@ -1,0 +1,150 @@
+package org.affichage.InformationFilmsMVC;
+
+import org.oeuvre.Film;
+import org.compte.*;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class VueInformationFilms extends JFrame{
+
+
+    private JPanel panelInfoFilm = new JPanel();
+    private JPanel image = new JPanel();
+    private JPanel description = new JPanel();
+    private JLabel descriptionFilm = new JLabel();
+    private JLabel duree = new JLabel();
+    private JLabel acteurs = new JLabel();
+    private JLabel real = new JLabel();
+    private JLabel titre = new JLabel();
+    private JLabel espace = new JLabel();
+    private JLabel espace1 = new JLabel();
+    private JLabel espace2 = new JLabel();
+    private JLabel espace3 = new JLabel();
+    private Film film;
+    private String descri;
+    private String acteur;
+
+    private JButton BFermerInfo = new JButton();
+
+    public VueInformationFilms(Film film, Compte compte, int profil){
+
+        this.film = film;
+
+        setSize(720,1440);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        InitInfoFilm();
+        setLocationRelativeTo(null);
+        getContentPane().add(panelInfoFilm, BorderLayout.CENTER);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        System.out.println("Fin classe");
+    }
+
+    private void InitInfoFilm(){
+
+        panelInfoFilm.setPreferredSize(new Dimension(1440,720));
+        panelInfoFilm.setBackground(Color.DARK_GRAY);
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        constraints.insets = new Insets(10, 10, 10, 10);
+
+        constraints.gridy = 0;
+        constraints.gridx = 0;
+
+        BFermerInfo.setPreferredSize(new Dimension(30,30));
+
+        panelInfoFilm.add(BFermerInfo,constraints);
+
+        constraints.gridy = 1;
+        image.setPreferredSize(new Dimension(1440,300));
+
+        panelInfoFilm.add(image, constraints);
+
+        description.setBackground(Color.DARK_GRAY);
+        description.setLayout(new BoxLayout(description, BoxLayout.Y_AXIS));
+
+        constraints.gridy = 2;
+        description.setPreferredSize(new Dimension(1300,420));
+
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.insets = new Insets(10, 10, 10, 10);
+        constraints.gridy = 0;
+        constraints.gridx = 0;
+
+        descriptionFilm.setText(this.film.getSynopsisOeuvre());
+        duree.setText("Durée : " + this.film.getDureeFilm() + " minutes            ");
+        acteurs.setText("Acteurs : " + this.film.getDistributionOeuvre());
+        real.setText("Réalisateur : " + this.film.getRealisateurOeuvre());
+        titre.setText(this.film.getNomOeuvre());
+
+        descriptionFilm.setFont(new Font("Arial", Font.BOLD, 15));
+        descriptionFilm.setForeground(Color.WHITE);
+        duree.setFont(new Font("Arial", Font.ITALIC, 15));
+        duree.setForeground(Color.WHITE);
+        acteurs.setFont(new Font("Arial", Font.ITALIC, 15));
+        acteurs.setForeground(Color.WHITE);
+        real.setFont(new Font("Arial", Font.ITALIC, 15));
+        real.setForeground(Color.WHITE);
+        titre.setFont(new Font("Arial", Font.BOLD, 30));
+        titre.setForeground(Color.WHITE);
+
+        espace.setFont(new Font("Arial", Font.BOLD, 10));
+        espace1.setFont(new Font("Arial", Font.BOLD, 10));
+        espace2.setFont(new Font("Arial", Font.BOLD, 10));
+        espace3.setFont(new Font("Arial", Font.BOLD, 10));
+
+
+
+
+        description.add(titre,constraints);
+        constraints.gridy = 1;
+        description.add(espace,constraints);
+        constraints.gridx = 20;
+        constraints.gridy = 2;
+        description.add(descriptionFilm,constraints);
+        constraints.gridy = 3;
+        description.add(espace1,constraints);
+        constraints.gridx = 20;
+        constraints.gridy = 4;
+        description.add(duree,constraints);
+        constraints.gridy = 5;
+        description.add(espace2,constraints);
+        constraints.gridx = 20;
+        constraints.gridy = 6;
+        description.add(real,constraints);
+        constraints.gridy = 7;
+        description.add(espace3,constraints);
+        constraints.gridx = 20;
+        constraints.gridy = 8;
+        description.add(acteurs,constraints);
+
+        panelInfoFilm.add(description, constraints);
+    }
+
+    public void Afficher() {
+        panelInfoFilm.setVisible(true);
+        this.getContentPane().add(panelInfoFilm);
+        revalidate();
+        repaint();
+    }
+
+    public JButton getBFermerInfo(){
+        return BFermerInfo;
+    }
+
+    public static String insertNewLines(String text, int lineLength) {
+        StringBuilder builder = new StringBuilder();
+        int i = 0;
+        for (char c : text.toCharArray()) {
+            if (++i % lineLength == 0) {
+                builder.append(c).append("\n");
+            } else {
+                builder.append(c);
+            }
+        }
+        return builder.toString();
+    }
+
+}

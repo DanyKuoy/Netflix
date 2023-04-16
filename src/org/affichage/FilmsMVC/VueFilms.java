@@ -116,11 +116,16 @@ public class VueFilms extends JFrame{
     private Dimension dim = new Dimension(200, 50);
     private Dimension esp = new Dimension(1440,10);
 
+    private Compte compte;
+    private int profil;
 
 
     public VueFilms(Compte compte, int profil) {
         setSize(1440, 720);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        this.compte = compte;
+        this.profil = profil;
 
         InitInterface();
 
@@ -289,9 +294,9 @@ public class VueFilms extends JFrame{
         scrollFilm15.setBorder(null);
         scrollFilm16.setBorder(null);
 
-        ModelFilms modelFilms = new ModelFilms();
+        ModelFilms modelFilms = new ModelFilms(compte,profil);
 
-        for(int i=0; i<6; i++) {
+        for(int i=0; i<12; i++) {
             ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][0]+".png");
             Image image = photoIcon.getImage(); // transform it
             Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -300,7 +305,7 @@ public class VueFilms extends JFrame{
             panelFilm7.add(BFilm7[i]);
         }
 
-        for(int i=0; i<8; i++) {
+        for(int i=0; i<22; i++) {
             ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][1]+".png");
             Image image = photoIcon.getImage(); // transform it
             Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -309,7 +314,7 @@ public class VueFilms extends JFrame{
             panelFilm11.add(BFilm11[i]);
         }
 
-        for(int i=0; i<6; i++) {
+        for(int i=0; i<18; i++) {
             ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][2]+".png");
             Image image = photoIcon.getImage(); // transform it
             Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -318,7 +323,7 @@ public class VueFilms extends JFrame{
             panelFilm3.add(BFilm3[i]);
         }
 
-        for(int i=0; i<13; i++) {
+        for(int i=0; i<21; i++) {
             System.out.println(modelFilms.getLiens()[i][1]+".png");
             ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][3]+".png");
             Image image = photoIcon.getImage(); // transform it
@@ -328,7 +333,7 @@ public class VueFilms extends JFrame{
             panelFilm6.add(BFilm6[i]);
         }
 
-        for(int i=0; i<8; i++) {
+        for(int i=0; i<15; i++) {
             ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][4]+".png");
             Image image = photoIcon.getImage(); // transform it
             Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -341,18 +346,90 @@ public class VueFilms extends JFrame{
             ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][5]+".png");
             Image image = photoIcon.getImage(); // transform it
             Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm16[i] = new JButton (new ImageIcon(newimg));
+            BFilm16[i].setPreferredSize(new Dimension(110,160));
+            panelFilm16.add(BFilm16[i]);
+        }
+
+        for(int i=0; i<1; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][6]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm8[i] = new JButton (new ImageIcon(newimg));
+            BFilm8[i].setPreferredSize(new Dimension(110,160));
+            panelFilm8.add(BFilm8[i]);
+        }
+        for(int i=0; i<12; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][7]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
             BFilm5[i] = new JButton (new ImageIcon(newimg));
             BFilm5[i].setPreferredSize(new Dimension(110,160));
             panelFilm5.add(BFilm5[i]);
         }
-
-        for(int i=0; i<17; i++) {
-            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][6]+".png");
+        for(int i=0; i<19; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][8]+".png");
             Image image = photoIcon.getImage(); // transform it
             Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
             BFilm1[i] = new JButton (new ImageIcon(newimg));
             BFilm1[i].setPreferredSize(new Dimension(110,160));
             panelFilm1.add(BFilm1[i]);
+        }
+        for(int i=0; i<14; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][9]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm14[i] = new JButton (new ImageIcon(newimg));
+            BFilm14[i].setPreferredSize(new Dimension(110,160));
+            panelFilm14.add(BFilm14[i]);
+        }
+        for(int i=0; i<13; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][10]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm10[i] = new JButton (new ImageIcon(newimg));
+            BFilm10[i].setPreferredSize(new Dimension(110,160));
+            panelFilm10.add(BFilm10[i]);
+        }
+        for(int i=0; i<17; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][11]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm13[i] = new JButton (new ImageIcon(newimg));
+            BFilm13[i].setPreferredSize(new Dimension(110,160));
+            panelFilm13.add(BFilm13[i]);
+        }
+        for(int i=0; i<5; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][12]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm12[i] = new JButton (new ImageIcon(newimg));
+            BFilm12[i].setPreferredSize(new Dimension(110,160));
+            panelFilm12.add(BFilm12[i]);
+        }
+        for(int i=0; i<12; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][13]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm16[i+4] = new JButton (new ImageIcon(newimg));
+            BFilm16[i+4].setPreferredSize(new Dimension(110,160));
+            panelFilm16.add(BFilm16[i+4]);
+        }
+        for(int i=0; i<12; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][14]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm9[i] = new JButton (new ImageIcon(newimg));
+            BFilm9[i].setPreferredSize(new Dimension(110,160));
+            panelFilm9.add(BFilm9[i]);
+        }
+        for(int i=0; i<10; i++) {
+            ImageIcon photoIcon = new ImageIcon("image/Film/"+modelFilms.getLiens()[i][15]+".png");
+            Image image = photoIcon.getImage(); // transform it
+            Image newimg = image.getScaledInstance(110, 160,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            BFilm4[i] = new JButton (new ImageIcon(newimg));
+            BFilm4[i].setPreferredSize(new Dimension(110,160));
+            panelFilm4.add(BFilm4[i]);
         }
 
         espaceFilm1.setPreferredSize(esp);

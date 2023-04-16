@@ -86,10 +86,14 @@ public class VueInterface extends JFrame{
 
     private Dimension dim = new Dimension(200, 50);
     private Dimension esp = new Dimension(1440,10);
+    private Compte compte;
+    private int profil;
 
     public VueInterface(Compte compte, int profil) {
         setSize(1440, 720);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.compte = compte;
+        this.profil = profil;
 
         InitInterface();
     }
