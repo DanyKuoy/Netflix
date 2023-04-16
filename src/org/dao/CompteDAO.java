@@ -358,7 +358,7 @@ public class CompteDAO {
      *  @param mdp le mot de passe
      *  @param staff un booléen qui dit si on est un membre du staff ou pas
      */
-    public void modifierCompte(String prenom, String nom, String mdp, boolean staff) {
+    public void modifierCompte(String prenom, String nom, String mdp, boolean staff, String emailCompte) {
         try {
             /// Communication avec la base de données
             Class.forName("com.mysql.cj.jdbc.Driver");                                                                         // Chargement du pilote JDBC
@@ -368,6 +368,7 @@ public class CompteDAO {
             statement3.setString(2, nom);
             statement3.setString(3, mdp);
             statement3.setBoolean(4, staff);
+            statement3.setString(5, emailCompte);
             statement3.executeUpdate();
             connection.close();
         }
